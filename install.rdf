@@ -4,18 +4,14 @@
 	<Description about="urn:mozilla:install-manifest">
 
 		<em:id>ststusscicalc@sunny</em:id>
+		<em:type>2</em:type>
 		<em:name>Scientific Calculator</em:name>
-		<em:version>5.1</em:version>
+		<em:version>5.1.1</em:version>
 		<em:description>A scientific calculator in the toolbar. Enter the expression to calculate and hit enter to evaluate.</em:description>
 		<em:creator>Sunny Goyal</em:creator>
-		<em:homepageURL>http://calc.sunnygoyal.com/</em:homepageURL>
-		<em:file>
-			<Description about="urn:mozilla:extension:file:statusscicalc">
-				<em:package>content/</em:package>
-			</Description>
-		</em:file>
+		<em:homepageURL>https://github.com/sunnygoyal/scienfic-calculator</em:homepageURL>
 		<em:iconURL>chrome://statusscicalc/skin/icon.png</em:iconURL>
-		<em:optionsURL>chrome://quickjava/content/options.xul</em:optionsURL>
+		<em:optionsURL>chrome://statusscicalc/content/options.xul</em:optionsURL>
 
 		<em:targetApplication>
 			<!-- firefox -->
