@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+	<title>Code Editor</title>
+	<meta name="description" content="CodePress - source code editor window" />
+
+	<script type="text/javascript">
+		var language = 'javascript';
+		var engine = 'gecko';
+		var ua = navigator.userAgent;
+	</script>
+	<style>
+		body {
+			margin: 2px 2px 2px 2px;
+			background:white;
+			font-family:monospace;
+			font-size:13px;
+			white-space:pre;
+			line-height:16px;
+			height:100%;
+		}
+		pre {margin:0;padding-left:10px; border:none;}
+
+		pre:focus {background-color:#eee;}
+
+		P {margin:0;padding:0;border:0;outline:0;display:block;white-space:pre;}
+		b, i, s, u, a, em, tt, ins, big, cite, strong, var, dfn {text-decoration:none;font-weight:normal;font-style:normal;font-size:13px;}
+
+		#codeT, #codeE {
+			color:#00f;
+		}
+
+		b {color:#7F0055;font-weight:bold;}
+		u {color:darkblue;font-weight:bold;} 
+		i, i b, i s, i u {color:green;font-weight:normal;}
+		s, s b, s u {color:#2A00FF;font-weight:normal;}
+	</style>	
+	<script type="text/javascript" src="gecko.js"></script>
+</head>
+
+<body><b id="codeT"></b><pre> </pre><b id="codeE"></b></body>
+</html>

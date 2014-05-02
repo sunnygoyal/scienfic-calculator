@@ -1,0 +1,1 @@
+<operators><operator name="|" code="return x | y;" desc="Bitwise or"/><operator name="&amp;" code="return x &amp; y;" desc="Bitwise and"/></operators>

@@ -1,0 +1,44 @@
+<!ENTITY options.window.title "Wissenschaftlicher Taschenrechner">
+<!ENTITY options.tab.settings "Einstellungen">
+<!ENTITY options.tab.constants "Konstanten">
+<!ENTITY options.tab.functions "Funktionen">
+<!ENTITY options.tab.operators "Operatoren">
+<!ENTITY settings.label.usemodulo "Benutze '&#37;' als">
+<!ENTITY settings.menuitem.modulo "Modulo">
+<!ENTITY settings.menuitem.percent "Prozent">
+<!ENTITY settings.label.operator "Operator">
+<!ENTITY settings.label.angle "Winkel (Standard)">
+<!ENTITY settings.label.angle.radians "Bogenmaß">
+<!ENTITY settings.label.angle.degrees "Grad">
+<!ENTITY settings.label.mode "Modus (Standard)">
+<!ENTITY settings.label.mode.bin "Bin">
+<!ENTITY settings.label.mode.dec "Dezember">
+<!ENTITY settings.label.mode.hex "Hex">
+<!ENTITY settings.label.mode.other "Andere ...">
+<!ENTITY settings.label.mode.complex "Komplexe">
+<!ENTITY settings.label.history "Anzahl der Einträge in der Chronik:">
+<!ENTITY settings.label.round "Dezimalzahlen runden">
+<!ENTITY settings.label.roundlength "Anzahl der Dezimalstellen:">
+<!ENTITY settings.checkbox.comma "Komma (,) ">
+<!ENTITY settings.checkbox.comma.argument "Behandlung als Argument seperator">
+<!ENTITY settings.checkbox.comma.dot "Gönnen als dot">
+<!ENTITY settings.checkbox.comma.ignore "Ignorieren">
+<!ENTITY constants.listitem.calculated "*calculated*">
+<!ENTITY constants.listitem.natlogbase "Basis natürlicher Logarithmus">
+<!ENTITY constants.listitem.answer "Lösung des letzten Ausdrucks">
+<!ENTITY constants.button.add "Hinzufügen">
+<!ENTITY constants.button.delete "Löschen">
+<!ENTITY constants.button.edit "Bearbeiten">
+<!ENTITY constants.button.reload "Neu laden">
+<!ENTITY constants.button.save "Speichern">
+<!ENTITY constants.label.identifier "Bezeichner:">
+<!ENTITY constants.label.value "Wert:">
+<!ENTITY constants.label.description "Beschreibung:">
+<!ENTITY constants.button.cancel "Abbrechen">
+<!ENTITY constants.button.done "Fertig">
+<!ENTITY functions.label.name "Funktions Name:">
+<!ENTITY functions.label.args "Anz. der Argumente:">
+<!ENTITY operators.label.operator "Operator:">
+<!ENTITY operators.label.asst "Associatief:">
+<!ENTITY operators.label.moveUp "Omhoog">
+<!ENTITY operators.label.moveDown "Omlaag">

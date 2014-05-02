@@ -1,0 +1,92 @@
+toolbarbutton {
+  -moz-box-orient: vertical;
+  min-width: 0;
+  padding: 5px 5px 2px 5px;
+  border: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  border-radius: 5px;
+}
+
+toolbarbutton:hover {
+  border: 1px solid #f0f0f0;
+  border-bottom: 2px solid #ccc;
+  box-shadow: inset 0 -1px 1px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.8);
+}
+
+toolbarbutton:active {
+  border: 1px solid #f0f0f0;
+  border-top: 2px solid #ccc;
+  box-shadow: inset 0 -1px 1px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.8);
+}
+
+toolbarbutton[disabled="true"] {
+  border: 1px solid transparent;
+  border-bottom: 2px solid transparent;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+toolbarbutton > .toolbarbutton-icon {
+  -moz-margin-end: 0px;
+}
+
+.listcontrol_toolbar> toolbarbutton,
+#but_moveup,
+#but_movedown{
+	list-style-image: url("chrome://statusscicalc/skin/toolbarimages.png");
+}
+
+#but_moveup {
+	-moz-image-region: rect(0px, 96px, 16px, 80px);
+}
+
+#but_movedown{
+	-moz-image-region: rect(0px, 112px, 16px, 96px);
+}
+
+#const_but_add, #func_but_add, #oper_but_add {
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+#const_but_del, #func_but_del, #oper_but_del{
+	-moz-image-region: rect(0px, 32px, 16px, 16px);
+}
+
+#const_but_edit, #func_but_edit, #oper_but_edit {
+	-moz-image-region: rect(0px, 48px, 16px, 32px);
+}
+
+#const_but_reload, #func_but_reload, #oper_but_reload {
+	-moz-image-region: rect(0px, 64px, 16px, 48px);
+}
+
+#const_but_save, #func_but_save, #oper_but_save {
+	-moz-image-region: rect(0px, 80px, 16px, 64px);
+}
+
+#const_but_cancel, #func_but_cancel, #oper_but_cancel {
+	list-style-image: url("chrome://statusscicalc/skin/okcancel.png");
+	-moz-image-region: rect(0px, 32px, 16px, 16px);
+}
+
+#const_but_done, #func_but_done, #oper_but_done {
+	list-style-image: url("chrome://statusscicalc/skin/okcancel.png");
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+
+
+#func_code, #oper_code{
+	border: 1px solid #aaa;
+}
+
+#func_code[redback="true"],
+#oper_code[redback="true"]{
+	border: 1px solid #f00;
+}
+
+textbox[redback="true"] {
+	-moz-appearance:none;
+	border: 1px solid #000000;
+	color: #000000;
+	background : #ffaaaa;
+}

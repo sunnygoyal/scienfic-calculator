@@ -1,0 +1,8 @@
+content    statusscicalc    content/
+
+overlay	   chrome://browser/content/browser.xul    chrome://statusscicalc/content/browserOverlay.xul
+skin	statusscicalc	classic/1.0	chrome://statusscicalc/content/skin/
+
+locale    statusscicalc   en-US   locale/en-US/
+locale	  statusscicalc	  fr-FR   locale/fr-FR/
+locale	  statusscicalc	  de-DE   locale/de-DE/

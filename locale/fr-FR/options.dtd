@@ -1,0 +1,43 @@
+<!ENTITY options.tab.settings "Réglages">
+<!ENTITY options.tab.constants "Constantes">
+<!ENTITY options.tab.functions "Fonctions">
+<!ENTITY options.tab.operators "Opérateurs">
+<!ENTITY settings.label.usemodulo "Utiliser le signe '&#37;' comme">
+<!ENTITY settings.menuitem.modulo "modulo">
+<!ENTITY settings.menuitem.percent "pourcentage">
+<!ENTITY settings.label.operator "opérateur">
+<!ENTITY settings.label.angle "Unité d'angle par défaut">
+<!ENTITY settings.label.angle.radians "radians">
+<!ENTITY settings.label.angle.degrees "degrés">
+<!ENTITY settings.label.mode "Base par défaut">
+<!ENTITY settings.label.mode.bin "binaire">
+<!ENTITY settings.label.mode.dec "décimale">
+<!ENTITY settings.label.mode.hex "hexadécimale">
+<!ENTITY settings.label.mode.other "autre...">
+<!ENTITY settings.label.mode.complex "complexe">
+<!ENTITY settings.label.history "Taille de l'historique">
+<!ENTITY settings.label.round "Arrondir">
+<!ENTITY settings.label.roundlength "Nombre de décimales :">
+<!ENTITY settings.checkbox.comma "Virgule (,)">
+<!ENTITY settings.checkbox.comma.argument "Traiter comme séparateur d'arguments">
+<!ENTITY settings.checkbox.comma.dot "Traiter comme séparateur décimal">
+<!ENTITY settings.checkbox.comma.ignore "Ignorer">
+<!ENTITY constants.listitem.calculated "*calculée*">
+<!ENTITY constants.listitem.natlogbase "Base du logarithme naturel">
+<!ENTITY constants.listitem.answer "Résultat de la dernière expression">
+<!ENTITY constants.button.add "Ajouter">
+<!ENTITY constants.button.delete "Supprimer">
+<!ENTITY constants.button.edit "Modifier">
+<!ENTITY constants.button.reload "Recharger">
+<!ENTITY constants.button.save "Enregistrer">
+<!ENTITY constants.label.identifier "Symbole :">
+<!ENTITY constants.label.value "Valeur :">
+<!ENTITY constants.label.description "Description :">
+<!ENTITY constants.button.cancel "Annuler">
+<!ENTITY constants.button.done "Valider">
+<!ENTITY functions.label.name "Nom de fonction:">
+<!ENTITY functions.label.args "Nbre d'arguments:">
+<!ENTITY operators.label.operator "Opérateur:">
+<!ENTITY operators.label.asst "Associativité:">
+<!ENTITY operators.label.moveUp "Vers le haut">
+<!ENTITY operators.label.moveDown "Vers le bas">

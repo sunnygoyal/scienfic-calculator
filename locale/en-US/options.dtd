@@ -1,0 +1,44 @@
+<!ENTITY options.window.title "Scientific Calculator">
+<!ENTITY options.tab.settings "Settings">
+<!ENTITY options.tab.constants "Constants">
+<!ENTITY options.tab.functions "Functions">
+<!ENTITY options.tab.operators "Operators">
+<!ENTITY settings.label.usemodulo "Use '&#37;' as">
+<!ENTITY settings.menuitem.modulo "modulo">
+<!ENTITY settings.menuitem.percent "percent">
+<!ENTITY settings.label.operator "operator">
+<!ENTITY settings.label.angle "Angle (default)">
+<!ENTITY settings.label.angle.radians "radians">
+<!ENTITY settings.label.angle.degrees "degrees">
+<!ENTITY settings.label.mode "Mode (default)">
+<!ENTITY settings.label.mode.bin "Bin">
+<!ENTITY settings.label.mode.dec "Dec">
+<!ENTITY settings.label.mode.hex "Hex">
+<!ENTITY settings.label.mode.other "Other...">
+<!ENTITY settings.label.mode.complex "Complex">
+<!ENTITY settings.label.history "History List Length">
+<!ENTITY settings.label.round "Roundoff Decimals">
+<!ENTITY settings.label.roundlength "Number of digits after decimal :">
+<!ENTITY settings.checkbox.comma "Comma (,) ">
+<!ENTITY settings.checkbox.comma.argument "Treat as argument seperator">
+<!ENTITY settings.checkbox.comma.dot "Treat as dot">
+<!ENTITY settings.checkbox.comma.ignore "Ignore">
+<!ENTITY constants.listitem.calculated "*calculated*">
+<!ENTITY constants.listitem.natlogbase "Natural Log Base">
+<!ENTITY constants.listitem.answer "Solution of last Expression">
+<!ENTITY constants.button.add "Add">
+<!ENTITY constants.button.delete "Delete">
+<!ENTITY constants.button.edit "Edit">
+<!ENTITY constants.button.reload "Reload">
+<!ENTITY constants.button.save "Save">
+<!ENTITY constants.label.identifier "Identifier :">
+<!ENTITY constants.label.value "Value :">
+<!ENTITY constants.label.description "Description :">
+<!ENTITY constants.button.cancel "Cancel">
+<!ENTITY constants.button.done "Done">
+<!ENTITY functions.label.name "Function Name:">
+<!ENTITY functions.label.args "No. of args.:">
+<!ENTITY operators.label.operator "Operator:">
+<!ENTITY operators.label.asst "Associativity:">
+<!ENTITY operators.label.moveUp "Move Up">
+<!ENTITY operators.label.moveDown "Move Down">

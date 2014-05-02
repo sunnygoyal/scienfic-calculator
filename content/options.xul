@@ -1,0 +1,255 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://statusscicalc/skin/options.css" type="text/css"?>
+
+<!DOCTYPE window [
+  <!ENTITY % commonDTD SYSTEM "chrome://statusscicalc/locale/scicalc.dtd">
+  %commonDTD;
+  <!ENTITY % optionsDTD SYSTEM "chrome://statusscicalc/locale/options.dtd">
+  %optionsDTD;
+]><prefwindow title="&scicalc.app.name;"
+            id="statusscicalc-pref"
+            xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        buttons="accept,cancel" ondialogaccept="return options_accept();">
+
+  <prefpane id="statussicalc_pref" onpaneload="intiValues()">
+	<script type="application/x-javascript" src="lib/listcontrol.js"/>
+	<script type="application/x-javascript" src="lib/fileIO.js"/>
+	<script type="application/x-javascript" src="codepress.js"/>
+	<script type="application/x-javascript" src="options.js"/>
+	
+  	<preferences id="prefs">
+		<preference id="pref-width" name="extensions.ststusscicalc.expWidth" type="int"/>
+		<preference id="pref-modulo" name="extensions.ststusscicalc.useModulo" type="bool"/>
+		<preference id="pref-angleradian" name="extensions.ststusscicalc.defaultRadian" type="bool"/>
+		<preference id="pref-mode" name="extensions.ststusscicalc.defaultMode" type="int"/>
+		<preference id="pref-digit" name="extensions.ststusscicalc.decimal" type="int"/>
+		<preference id="pref-history" name="extensions.ststusscicalc.history" type="int"/>
+		<preference id="pref-comma" name="extensions.ststusscicalc.ignorecomma" type="int"/>
+	</preferences>
+	<tabbox>
+		<tabs>
+			<tab label="&options.tab.settings;"/>
+			<tab label="&options.tab.constants;"/>
+			<tab label="&options.tab.functions;"/>
+			<tab label="&options.tab.operators;"/>
+		</tabs>
+		<tabpanels>
+	        <tabpanel orient="vertical">
+				<groupbox orient="vertical">
+					<grid flex="1">
+						<columns>
+							<column/>
+							<column/>
+							<column/>
+						</columns>
+						<rows>
+							<row align="center">
+								<label value="&settings.label.usemodulo;" control="usemodulo"/>
+								<menulist id="usemodulo" preference="pref-modulo">
+									<menupopup>
+										<menuitem label="&settings.menuitem.modulo;" value="true"/>
+										<menuitem label="&settings.menuitem.percent;" value="false"/>
+									</menupopup>
+								</menulist>
+								<label value="&settings.label.operator;" control="usemodulo"/>
+							</row>
+							<row align="center">
+								<label value="&settings.label.angle;" control="pref_angle"/>
+								<menulist id="pref_angle" preference="pref-angleradian">
+									<menupopup>
+										<menuitem label="&settings.label.angle.radians;" value="true"/>
+										<menuitem label="&settings.label.angle.degrees;" value="false"/>
+									</menupopup>
+								</menulist> 
+								<spacer />
+							</row>
+							<row align="center">
+								<label value="&settings.label.mode;" control="pref_modeselect"/>
+								<menulist id="pref_modeselect" oncommand="dochangemode();">
+									<menupopup>
+										<menuitem label="&settings.label.mode.bin;" value="2"/>
+										<menuitem label="&settings.label.mode.dec;" value="10"/>
+										<menuitem label="&settings.label.mode.hex;" value="16"/>
+										<menuitem label="&settings.label.mode.other;" value="0"/>
+										<menuitem label="&settings.label.mode.complex;" value="1"/>
+									</menupopup>
+								</menulist>
+								<textbox id="pref_mode_other_value" onchange="dochangemode();" type="number" size="1" value="10" min="2" max="24" disabled="true"/>
+							</row>
+							<hbox align="center">
+								<label value="&settings.label.history;" control="history_length"/>
+								<textbox id="history_length"  type="number" size="2" preference="pref-history" min="5" max="20"/>
+							</hbox>
+							<hbox align="center">
+								<label value="&settings.checkbox.comma;" control="pref_commamode"/>
+								<menulist id="pref_commamode" preference="pref-comma">
+									<menupopup>
+										<menuitem label="&settings.checkbox.comma.argument;" value="0"/>
+										<menuitem label="&settings.checkbox.comma.dot;" value="1"/>
+										<menuitem label="&settings.checkbox.comma.ignore;" value="2"/>
+									</menupopup>
+								</menulist>
+							</hbox>
+						</rows>
+					</grid>
+				</groupbox>
+				<groupbox orient="horizontal" align="center">
+					<caption>
+						<checkbox id="roundAllowed" label="&settings.label.round;" checked="false" oncommand="dotDigit();"/>
+					</caption>
+					<label value="&settings.label.roundlength;" control="digit_af_dot"/>
+					<textbox id="digit_af_dot"  type="number" size="1" value="6" min="2" max="24" onchange="dotDigit();"/>
+				</groupbox>
+			
+			</tabpanel>
+
+			<tabpanel orient="horizontal">
+				<listbox id="const_list" onselect="constHandler.list_sel()" width="80">
+					<listitem value="&constants.listitem.calculated;" desc="&constants.listitem.natlogbase;" label="e" />
+					<listitem value="&constants.listitem.calculated;" desc="3.14159" label="pi" />
+					<listitem value="&constants.listitem.calculated;" desc="&constants.listitem.answer;" label="ans" />
+				</listbox>
+				<vbox flex="1">
+					<hbox class="listcontrol_toolbar">
+						<spacer flex="1"/>
+						<toolbarbutton id="const_but_add"    oncommand="constHandler.clicked_add();" tooltiptext="&constants.button.add;"/>
+						<toolbarbutton id="const_but_del"    oncommand="constHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
+						<toolbarbutton id="const_but_edit"   oncommand="constHandler.clicked_edit();" tooltiptext="&constants.button.edit;"/>
+						<toolbarbutton id="const_but_reload" oncommand="constHandler.clicked_reload();" tooltiptext="&constants.button.reload;"/>
+						<toolbarbutton id="const_but_save"   oncommand="constHandler.clicked_save();" tooltiptext="&constants.button.save;"/>	
+					</hbox>
+					<grid>
+						<columns>
+							<column />
+							<column flex="1"/>
+						</columns>
+						<rows>
+							<row align="center">
+								<label control="const_name" value="&constants.label.identifier;" />
+								<textbox id="const_name" size="10"/>
+							</row>
+							<row align="center">
+								<label control="const_value" value="&constants.label.value;" />
+								<textbox id="const_value" size="10" />
+							</row>
+							<label control="const_desc" value="&constants.label.description;" />
+							<textbox id="const_desc" />
+						</rows>
+					</grid>
+					<spacer flex="1"/>
+					<hbox>
+						<spacer flex="1" />
+						<button id="const_but_cancel" label="&constants.button.cancel;" oncommand="constHandler.list_sel();"/>
+						<button id="const_but_done"   label="&constants.button.done;" oncommand="constHandler.clicked_done();" />
+					</hbox>
+				</vbox>
+			</tabpanel>
+
+			<tabpanel orient="vertical">
+				<hbox>
+					<listbox id="func_list" onselect="funcHandler.list_sel()" height="40" flex="1" width="80"/>
+					<vbox flex="1">
+						<hbox class="listcontrol_toolbar">
+							<spacer flex="1"/>
+							<toolbarbutton id="func_but_add"    oncommand="funcHandler.clicked_add();" tooltiptext="&constants.button.add;"/>
+							<toolbarbutton id="func_but_del"    oncommand="funcHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
+							<toolbarbutton id="func_but_edit"   oncommand="funcHandler.clicked_edit();" tooltiptext="&constants.button.edit;"/>
+							<toolbarbutton id="func_but_reload" oncommand="funcHandler.clicked_reload();" tooltiptext="&constants.button.reload;"/>
+							<toolbarbutton id="func_but_save"   oncommand="funcHandler.clicked_save();" tooltiptext="&constants.button.save;"/>	
+						</hbox>
+						<grid>
+							<columns>
+								<column />
+								<column />
+							</columns>
+							<rows>
+								<row align="center">
+									<label control="func_name" value="&functions.label.name;" />
+									<textbox id="func_name" size="10" onchange="func_name_changed()"/>
+								</row>
+								<row align="center">
+									<label control="func_args" value="&functions.label.args;" />
+									<hbox>
+										<textbox id="func_args" onchange="func_update_sig()" type="number" size="2" min="0" max="6" value="1"/>
+										<spacer flex="1"/>
+									</hbox>
+								</row>
+							</rows>
+						</grid>
+					</vbox>
+				</hbox>
+				<hbox align="center">
+					<label control="func_desc" value="&constants.label.description;" />
+					<textbox id="func_desc" flex="1" />
+				</hbox>
+				
+				<label control="func_code" value="Code:" />
+				<iframe id="func_code" name="func_code" src="" frameBorder="1" flex="1"/>
+				
+				<hbox>
+					<spacer flex="1" />
+					<button id="func_but_cancel" label="&constants.button.cancel;" oncommand="funcHandler.list_sel();"/>
+					<button id="func_but_done"   label="&constants.button.done;" oncommand="funcHandler.clicked_done();" />
+				</hbox>
+			</tabpanel>
+
+			<tabpanel orient="vertical">
+				<hbox>
+					<listbox id="oper_list" onselect="operHandler.list_sel()" height="40" flex="1" width="60">
+						<listitem desc="Exponential Power operator" code="return Math.pow(x,y);" label="^" asst="rt"/>
+					</listbox>
+					<vbox>
+						<toolbarbutton id="but_moveup" oncommand="operMoveUp();" tooltiptext="&operators.label.moveUp;"/>
+						<spacer flex="1"/>
+						<toolbarbutton id="but_movedown"   oncommand="operMoveDown();" tooltiptext="&operators.label.moveDown;"/>
+					</vbox>
+					<vbox flex="1">
+						<hbox class="listcontrol_toolbar">
+							<spacer flex="1"/>
+							<toolbarbutton id="oper_but_add"    oncommand="operHandler.clicked_add();" tooltiptext="&constants.button.add;"/>
+							<toolbarbutton id="oper_but_del"    oncommand="operHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
+							<toolbarbutton id="oper_but_edit"   oncommand="operHandler.clicked_edit();" tooltiptext="&constants.button.edit;"/>
+							<toolbarbutton id="oper_but_reload" oncommand="operHandler.clicked_reload();" tooltiptext="&constants.button.reload;"/>
+							<toolbarbutton id="oper_but_save"   oncommand="operHandler.clicked_save();" tooltiptext="&constants.button.save;"/>	
+						</hbox>
+						<grid>
+							<columns>
+								<column />
+								<column />
+							</columns>
+							<rows>
+								<row align="center">
+									<label control="oper_name" value="&operators.label.operator;" />
+									<textbox id="oper_name" size="5" onchange="oper_name_changed()"/>
+								</row>
+								<row align="center">
+									<label control="oper_asst" value="&operators.label.asst;" />
+									<menulist id="oper_asst">
+										<menupopup>
+											<menuitem label="Left" value=""/>
+											<menuitem label="Right" value="rt"/>
+										</menupopup>
+									</menulist>
+								</row>
+							</rows>
+						</grid>
+					</vbox>
+				</hbox>
+				<hbox align="center">
+					<label control="oper_desc" value="&constants.label.description;" />
+					<textbox id="oper_desc" flex="1" />
+				</hbox>
+				<label control="oper_code" value="Code:" />
+				<iframe id="oper_code" name="oper_code" src="" frameBorder="1" flex="1"/>
+			
+				<hbox>
+					<spacer flex="1" />
+					<button id="oper_but_cancel" label="&constants.button.cancel;" oncommand="operHandler.list_sel();"/>
+					<button id="oper_but_done"   label="&constants.button.done;" oncommand="operHandler.clicked_done();" />
+				</hbox>
+			</tabpanel>
+		</tabpanels>
+	</tabbox>
+	</prefpane>
+</prefwindow>

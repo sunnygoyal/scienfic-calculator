@@ -1,0 +1,14 @@
+<!ENTITY scicalc.app.name "Calculatrice scientifique">
+<!ENTITY scicalc.label.selectbase "Base arithmétique">
+<!ENTITY scicalc.askmode.help "Saisissez un nombre entier entre 2 et 24 ou 'h' pour hexadécimal, 'b' pour binaire, 'd' pour décimal">
+<!ENTITY scicalc.mode.popup.bin "Binaire">
+<!ENTITY scicalc.mode.popup.dec "Décimal">
+<!ENTITY scicalc.mode.popup.hex "Hexadécimal">
+<!ENTITY scicalc.mode.popup.other "Autre...">
+<!ENTITY scicalc.mode.popup.complex "Complexe">
+<!ENTITY scicalc.angle.angle "Angle">
+<!ENTITY scicalc.angle.radians "radians">
+<!ENTITY scicalc.angle.degrees "degrés">
+<!ENTITY scicalc.menu.options "Options">
+<!ENTITY scicalc.info.variables "Variables">
+<!ENTITY scicalc.info.history "Calculs récents">

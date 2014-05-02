@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
+
+	<Description about="urn:mozilla:install-manifest">
+
+		<em:id>ststusscicalc@sunny</em:id>
+		<em:name>Scientific Calculator</em:name>
+		<em:version>5.1</em:version>
+		<em:description>A scientific calculator in the toolbar. Enter the expression to calculate and hit enter to evaluate.</em:description>
+		<em:creator>Sunny Goyal</em:creator>
+		<em:homepageURL>http://calc.sunnygoyal.com/</em:homepageURL>
+		<em:file>
+			<Description about="urn:mozilla:extension:file:statusscicalc">
+				<em:package>content/</em:package>
+			</Description>
+		</em:file>
+		<em:iconURL>chrome://statusscicalc/skin/icon.png</em:iconURL>
+		<em:optionsURL>chrome://quickjava/content/options.xul</em:optionsURL>
+
+		<em:targetApplication>
+			<!-- firefox -->
+			<Description>
+				<em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
+				<em:minVersion>9.0</em:minVersion>
+				<em:maxVersion>30.0</em:maxVersion>
+			</Description>
+		</em:targetApplication>
+	</Description>
+
+</RDF>	

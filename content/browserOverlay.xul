@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://statusscicalc/skin/scicalc.css" type="text/css"?> 
+<!DOCTYPE window SYSTEM "chrome://statusscicalc/locale/scicalc.dtd" >
+<overlay id="status-bar-calculator" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"> 
+
+	<popupset id="mainPopupSet">
+      <panel id="scicalc-askmode" level="top" orient="vertical" type="arrow" onpopupshown="scicalc.main.setFocus('scicalc-modeaskpopup-value');">
+        <vbox id="scicalc-askmode-content">
+          <label id="scicalc-calcPopupTitle" value="&scicalc.label.selectbase;" flex="1"/>
+          <hbox>
+              <textbox size="2" maxlength="2" id="scicalc-modeaskpopup-value" onkeydown="if(event.which==13) scicalc.main.acceptAskPopup();"/>
+              <spacer flex="1"/>
+              <button class="calcbutton butok" oncommand="scicalc.main.acceptAskPopup();"/>
+              <button class="calcbutton butcancel" oncommand="scicalc.main.hideAskPopup();"/>
+          </hbox>
+        </vbox>
+		<description style="width: 180px; min-height:40px;">&scicalc.askmode.help;</description>
+	</panel>
+
+	<menupopup id="scicalc_mode_popup" position="before_start">
+      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_bin" label="&scicalc.mode.popup.bin;" autocheck="false" oncommand="scicalc.main.changeMode('bin',2);" />
+      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_dec" label="&scicalc.mode.popup.dec;" autocheck="false" oncommand="scicalc.main.changeMode('dec',10);" />
+      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_hex" label="&scicalc.mode.popup.hex;" autocheck="false" oncommand="scicalc.main.changeMode('hex',16);" />
+      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_ask" label="&scicalc.mode.popup.other;" autocheck="false" oncommand="scicalc.main.showAskPopup();" />
+      <menuseparator/>
+      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_complex" label="&scicalc.mode.popup.complex;" autocheck="false" oncommand="scicalc.main.changeMode('complex',1);" />
+      <menuseparator/>
+      <menu label="&scicalc.angle.angle;">
+          <menupopup>
+              <menuitem type="radio" name="scicalc_angle_radio" id="scicalc_angle_rad" label="&scicalc.angle.radians;" autocheck="false" oncommand="scicalc.main.changeAngle(true);" />
+              <menuitem type="radio" name="scicalc_angle_radio" id="scicalc_angle_deg" label="&scicalc.angle.degrees;" autocheck="false" oncommand="scicalc.main.changeAngle(false);" />
+          </menupopup>
+      </menu>
+      <menuitem label="&scicalc.menu.options;" oncommand="scicalc.main.openOptions();" />
+	</menupopup>
+
+	<panel id="scicalc-info" level="top" orient="vertical" onpopupshown="document.getElementById('scicalc-historyBox').focus();">
+		<label value="&scicalc.info.variables;"/>
+		<description id="scicalc-vlist"/>
+		<label value="&scicalc.info.history;"/>
+		<listbox id="scicalc-historyBox">
+			  <listcols>
+					<listcol flex="1" crop="end"/>
+					<listcol/>
+			  </listcols>
+		</listbox>
+	</panel>
+
+	<panel id="scicalc-error" ignorekeys="true" level="top" noautofocus="true" orient="vertical" type="arrow" fade="slow">
+		<description id="scicalc-errordesc"/>
+	</panel>
+  </popupset>
+
+  <toolbarpalette id="BrowserToolbarPalette">
+	<toolbaritem id="scicalc-container" title="&scicalc.app.name;"
+		align="center" class="chromeclass-toolbar-additional panel-wide-item"
+		cui-areatype="toolbar" persist="width" removable="true">
+			<textbox id="scicalc-input" flex="1" class="searchbar-textbox" onkeydown="return scicalc.main.doType(event);" >
+				<image id="scicalc-icon" onclick="scicalc.main.imgClicked();"/>
+			</textbox>
+	</toolbaritem>
+  </toolbarpalette>
+
+  <keyset>
+	<key id="scicalc-key" modifiers="alt" key="C" oncommand="scicalc.main.openCalc();"/>
+  </keyset>
+
+  <script type="application/x-javascript" src="chrome://statusscicalc/content/lib/complexMath.js" />
+  <script type="application/x-javascript" src="chrome://statusscicalc/content/lib/strFunctions.js" />
+  <script type="application/x-javascript" src="chrome://statusscicalc/content/lib/realMath.js" />
+  <script type="application/x-javascript" src="chrome://statusscicalc/content/lib/fileIO.js" />
+  <script type="application/x-javascript" src="chrome://statusscicalc/content/browserOverlay.js" />
+</overlay> 
