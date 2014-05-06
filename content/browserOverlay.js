@@ -1,7 +1,10 @@
+// The global namespace
 if(!scicalc) var scicalc={};
 
+// Used for detecting panel UI related features.
 Components.utils.import("resource:///modules/CustomizableUI.jsm");
 
+// User for displaying localizaiton strings
 scicalc.str = Components.classes["@mozilla.org/intl/stringbundle;1"]
 			.getService(Components.interfaces.nsIStringBundleService)
 			.createBundle("chrome://statusscicalc/locale/scicalc.properties")
@@ -9,86 +12,159 @@ scicalc.str = Components.classes["@mozilla.org/intl/stringbundle;1"]
 
 scicalc.invalidExpError = {desc: scicalc.str("expError")};
 
-const WIDGET_ID = "scicalc-container";
+/**
+ * The main namespace is used for all UI related controls
+ */
+scicalc.main = (function() {
+  const WIDGET_ID = "scicalc-container";
+  const EVAL_CLASS_REAL = "realMath";
+  const EVAL_CLASS_COMPLEX = "complexMath";
 
-scicalc.main = (function(){
-  var evalClass = 'real';
+  const MODES = {
+    1: "complex",
+    2: "bin",
+    10: "dec",
+    16: "hex"
+  }
+
+  var evalClass = EVAL_CLASS_REAL;
+
+  // Various popups
   var askPop,infoPop,errorPop;
 
-  var expBox = null;
-  var calcIcon;
-
+  // Various parameters related to history
   var historyBox = null;
   var historyLength = 10;
   var historyDoc = null;
-  var calcPanel;
-  
-  /***************** Private Method ***************/
+
+  /**
+   * shorthand for getting element by id
+   */
   var ebd = function(id){
 	return document.getElementById(id);
   };
 
-  var init = function() {
-	if (expBox != null) {
-	  return;
-	}
-	askPop = ebd("scicalc-askmode");
+  /**
+   * Sets focus to an input box and selects all text
+   */
+  var setFocus = function(el) {
+    el.focus();
+    try{
+	  el.editor.selectAll();
+	} catch(e) { }
+  }
+
+  /**
+   * Preference manager
+   */
+  var prefManager;
+  var prefObserver = {
+    observe: function(subject, topic, prefName) {
+	  if (topic != "nsPref:changed") return;
+
+      if (this.handler[prefName]) {
+        this.handler[prefName](prefName);
+      }
+	},
+
+    /**
+     * Various prefenrece handlers.
+     * k should be same as the haldler name
+     */
+    handler : {
+      useModulo: function(k) {
+        scicalc.realMath.useModulo = prefManager.getBoolPref(k);
+      },
+      history: function(k) {
+        historyLength = prefManager.getIntPref(k);
+      },
+      ignorecomma: function(k) {
+        scicalc.realMath.ignoreComma = prefManager.getIntPref(k);
+      },
+      decimal: function(k) {
+        scicalc.realMath.decimalPrecision = prefManager.getIntPref(k);
+      }
+    }
+  }
+
+  // The calculator UI corresponding to the toolbar item.
+  var defaultCalculatorUI;
+  var activeCalculatorUI;
+  var widgetAddObserver = {
+    onWidgetAdded: function(widgetId, area, aPosition) {
+	  if (widgetId == WIDGET_ID) {
+		initiateDefaultUI(true);
+	  }
+    },
+    onPanelUIOpened: function() {
+      initiateDefaultUI(true);
+    }
+  }
+
+  /*
+   * Initiates the default calculator UI. Once added, it removes all observers
+   * waiting for UI initialization.
+   */
+  var initiateDefaultUI = function(listenersAlreadyAdded) {
+    if (defaultCalculatorUI) {
+      // Already initialized.
+      return;
+    }
+    var updateListeners = !listenersAlreadyAdded;
+    var panel = ebd(WIDGET_ID);
+    if (panel) {
+      // UI found. initiate the rest.
+      defaultCalculatorUI = new CalculatorUI(panel, ebd("scicalc-input"), ebd("scicalc-icon"));
+      
+      // We need to update listeners if they are alredy added.
+      updateListeners = listenersAlreadyAdded;
+    }
+
+    if (updateListeners) {
+      if (CustomizableUI) {
+        CustomizableUI[panel ? 'removeListener' : 'addListener'](widgetAddObserver);
+      }
+      var panelUI = ebd("PanelUI-popup")
+      if (panelUI) {
+        panelUI[panel ? 'removeEventListener' : 'addEventListener']("popupshown", widgetAddObserver.onPanelUIOpened, false);
+      }
+    }
+  }
+
+  /**
+   * Addon initialization
+   */
+  window.addEventListener("load", function() {
+    //set preference manaegr
+	prefManager = Components.classes["@mozilla.org/preferences-service;1"]
+	  .getService(Components.interfaces.nsIPrefBranch)
+	  .getBranch("extensions.ststusscicalc.");
+    prefManager.QueryInterface(Components.interfaces.nsIPrefBranch2);
+	prefManager.addObserver("", prefObserver, false);
+
+    // Initiate various preferences
+	for (k in prefObserver.handler) {
+      prefObserver.handler[k](k);
+    }
+
+    askPop = ebd("scicalc-askmode");
 	infoPop = ebd("scicalc-info");
 	errorPop = ebd("scicalc-error");
-	expBox = ebd("scicalc-input");
-	calcIcon = ebd("scicalc-icon");
-	calcPanel = ebd(WIDGET_ID);
 
-	historyBox = ebd("scicalc-historyBox");
-	historyBox.onmousemove =  historyMouseMove;
-	historyBox.onmouseup =  historyMouseUp;
-	historyBox.onkeydown =  historyKeyDown;
-	
-	var mode = scicalc.main.prefManager.getIntPref("defaultMode");
-	var modeId;
-	switch(mode){
-		case 1: modeId = 'complex'; break;
-		case 2: modeId = 'bin'; break;
-		case 10: modeId = 'dec'; break;
-		case 16: modeId = 'hex'; break;
-		default: modeId = 'ask';		
-	}
+    // Calculation mode
+	var mode = prefManager.getIntPref("defaultMode");
+	changeModeInternal(MODES[mode] ? MODES[mode] : "ask", mode);
 
-	scicalc.main.changeMode(modeId, mode);
-	
-	historyLength = scicalc.main.prefManager.getIntPref("history");
-	scicalc.main.changeAngle(scicalc.main.prefManager.getBoolPref("defaultRadian"));
-	
-	scicalc.realMath.useModulo = scicalc.main.prefManager.getBoolPref("useModulo");
-	scicalc.realMath.ignoreComma = scicalc.main.prefManager.getIntPref("ignorecomma");
-  };
+    // Angle: radians or degrees
+    scicalc.main.changeAngle(prefManager.getBoolPref("defaultRadian"));
 
-  var error = function(){
-	calcIcon.setAttribute("error", false);
-	window.setTimeout(function() {
-	  calcIcon.setAttribute("error", true);
-	},50);
-  };
+    // Custom user functions
+    scicalc.realMath.setUserData();
 
-  var showError = function(err){
-	  ebd("scicalc-errordesc").value = err;
-	  errorPop.openPopup(calcIcon, "before_start");
-  };
+    // Initiate history
+    historyBox = ebd("scicalc-historyBox");
 
-  /************** History Methods ****************/
-  var addHistoryEl = function(exp,val){
-	  var a = document.createElement("listitem");
-	  var b = document.createElement("listcell");
-	  b.setAttribute("label",exp);
-	  var c = document.createElement("listcell");
-	  c.setAttribute("label",val);
-	  a.appendChild(b);
-	  a.appendChild(c);
-	  historyBox.appendChild(a);
-  };
-	
-  var initHistory = function() {
-	historyDoc = scicalc.fileIO.getXML("history.xml");
+    historyDoc = scicalc.fileIO.getXML("history.xml");
 	var hnodes = historyDoc.firstChild.childNodes;
 	var n = historyLength;
 	if(hnodes.length == 0) n=0;
@@ -99,160 +175,219 @@ scicalc.main = (function(){
 		addHistoryEl(hnodes[i+shift].getAttribute("ques"), hnodes[i+shift].getAttribute("ans"));
 	};
 	historyBox.setAttribute('rows', n);
-  };
-	
-  var historyLastMoved = Date.now();
-  var historyMouseMove = function(event){
-	if (Date.now() - historyLastMoved > 30) {
-	  var item = event.target;
-	  while (item && item.localName != "listitem")
-		  item = item.parentNode;
-	  if (!item) return;
 
-	  var rc = this.getIndexOfItem(item);
-	  if (rc != this.selectedIndex)
-		  this.selectedIndex = rc;
+    // initiate default UI
+    initiateDefaultUI(false);
+  }, false);
 
-	  historyLastMoved = Date.now();
-	}
-  };
-  var historyMouseUp = function(event) {
-	// don't call onPopupClick for the scrollbar buttons, thumb, slider, etc.
-	var item = event.originalTarget;
+  /**
+   * Addon unload
+   */
+  window.addEventListener("unload", function() {
+    if(prefManager) {
+      prefManager.removeObserver("", prefObserver);
+    }
+    if (CustomizableUI) {
+      CustomizableUI.removeListener(widgetAddObserver);
+    }
+  }, false);
 
-	while (item && item.localName != "listitem")
-		item = item.parentNode;
+  // ******************* BEGIN_CODE_FOR_HISTORY_MANAGEMENE
+  /**
+   * Selects the history item on white the moise is current entering.
+   */
+  var historyElMouseOver = function() {
+	historyBox.selectedIndex = historyBox.getIndexOfItem(this);
+  }
 
-	if (!item) return;
-	historyAccept(item);
+  /**
+   * Adds a history item with
+   */
+  var addHistoryEl = function(exp,val){
+    var a = document.createElement("listitem");
+    var b = document.createElement("listcell");
+    b.setAttribute("label",exp);
+    var c = document.createElement("listcell");
+    c.setAttribute("label",val);
+    a.appendChild(b);
+    a.appendChild(c);
+    a.addEventListener("mouseover", historyElMouseOver, false);
+    historyBox.appendChild(a);
   };
-  var historyKeyDown = function(event){
-	if(event.which == 13){ //  hit Enter
-	  historyAccept(historyBox.selectedItem);
-	  return false;
-	}
-	return true;
-  };
-  var historyAccept = function(item){
-	if (!item) return;
-	expBox.value = item.firstChild.getAttribute('label');
-	infoPop.hidePopup();
-	scicalc.main.setFocus();
-  };
+  // ******************* END_CODE_FOR_HISTORY_MANAGEMENT
 
-  var showHistoryPopup = function(){
-	var getStr;
-	var clas;
-	if(evalClass == 'real'){
-	  clas = scicalc.realMath;
-	  if(clas.mode==10){
-		getStr = function(i){ return i };
+  /**
+   * Changes the current evaluation mode.
+   *
+   * @param nid, the id of the corresponding menu item, one of: bin, dec, hex, ask or complex
+   * @param mode, the actual base value
+   * @param uihandler the correnponding CalculatorUI to operate on or null.
+   */
+  var changeModeInternal = function(nid, mode, uihandler) {
+    if(nid=="ask") ebd("scicalc_mode_ask").label = "Base ("+mode+")...";
+    
+    if ((mode<1) || (mode>24)) mode = 10;
+    ebd("scicalc_mode_" + nid).setAttribute("checked", "true");
+
+    if (uihandler) {
+      var updateExp = function(mode, exp) {
+  		if (mode == 1)
+		  return (evalClass=="complex") ? exp : "";
+		if (evalClass == "complex") 
+		  return "";
+
+		if (scicalc.realMath.mode == mode) return exp;
+
+		var reg = new RegExp("[\\-\\+]?[" + scicalc.Strings.getRegxSeries(scicalc.realMath.mode) + "\\.]+");
+		var m = reg.exec(exp);
+
+		if ((m == null) || (m[0] != exp))
+		  return "error";
+
+		var result, pre;
+		if ((exp.charAt(0) == "-") || (exp.charAt(0) == "+")){
+		  pre = exp.charAt(0);
+		  result = scicalc.realMath.converttodec(exp.substr(1));
+		} else {
+		  pre = "";
+		  result = scicalc.realMath.converttodec(exp);
+		}
+	    return (pre + result.toString(mode).toUpperCase());
+	  }
+
+      uihandler.inputbox.value = uihandler.inputbox.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
+      var ret = updateExp(mode, uihandler.inputbox.value);
+	  if (ret == "error")
+        uihandler.error();
+	  else
+		uihandler.inputbox.value = ret;
+    }
+
+    if (mode == 1)
+      evalClass = EVAL_CLASS_COMPLEX;
+	else{
+	  evalClass = EVAL_CLASS_REAL;
+  	scicalc.realMath.mode = mode;
+    }
+  }
+
+  /**
+   * An abstraction of the calculator UI. This abstraction allows us to potentially have more that one
+   * calculatos active in a browser, for example one calculator in the toolsbar and another in
+   * the status bar.
+   */
+  function CalculatorUI(panel, inputbox, icon) {
+    this.panel = panel;
+    this.inputbox = inputbox;
+    this.icon = icon;
+
+    var that = this;
+
+    var showError = function(err){
+      ebd("scicalc-errordesc").value = err;
+      errorPop.openPopup(icon, "before_start");
+    };
+
+    inputbox.addEventListener("keydown", function(e) {
+      errorPop.hidePopup();
+	  if (!e.which) return;
+      
+      if(e.which == 13) { //  hit Enter
+		var exp = this.value;
+		var result;
+		  try {
+		  	result = scicalc[evalClass].compute(exp);
+		  	this.value = result;
+		  	setFocus(this);
+		  } catch (e) {
+		  	that.error();
+		  	if(e.desc && typeof(e.desc)=="string") showError(e.desc);
+		  	else if (e.name.toLowerCase() == "syntaxerror")
+			  showError(scicalc.invalidExpError.desc);
+		  }
+          e.preventDefault();
+		} else if (e.which == 34) { //  hit page down
+			that.showAskPopup();
+		} else if (e.which==40 || e.which==38) {
+			that.showHistoryPopup();
+            e.preventDefault();
+		}
+    }, false);
+
+    icon.addEventListener("click", function() {
+      activeCalculatorUI = that;
+      ebd('scicalc_mode_popup').showPopup(this,-1,-1,"popup","topleft","bottomleft");
+    }, false);
+  }
+
+  // Animates the icon to indicate an error.
+  CalculatorUI.prototype.error = function() {
+    var icon = this.icon;
+    icon.setAttribute("error", false);    
+	window.setTimeout(function() {
+	  icon.setAttribute("error", true);
+	}, 50);
+  }
+
+  // Shows the history popup attached to this panel
+  CalculatorUI.prototype.showHistoryPopup = function() {
+    var getStr;
+	var clas = scicalc[evalClass];
+	if (evalClass == EVAL_CLASS_REAL) {
+	  if (clas.mode==10) {
+		getStr = function(i) {return i };
 	  } else{
-		getStr = function(i){ return i.toString(clas.mode).toUpperCase(); };
+		getStr = function(i) {return i.toString(clas.mode).toUpperCase(); };
 	  }
 	} else {
-	  clas = scicalc.complexMath;
-	  getStr = function(i){ return i.toString(); };
+	  getStr = function(i) {return i.toString(); };
 	}
 
-	var vlist = "ans="+getStr(clas.ans);
-	for ( var i=0;i<clas.variables.length;i++ ){
+	var vlist = "ans=" + getStr(clas.ans);
+	for (var i=0; i < clas.variables.length; i++) {
 	  vlist += " ,  ";
 	  if(clas.variables[i] != 'ans')
 		vlist += clas.variables[i] + "=" + getStr(clas.values[i]);
 	}
 	var vlistHolder = ebd("scicalc-vlist");
-	if(vlist == "")
+	if (vlist == "")
 	  vlistHolder.hidden = true;
 	else {
 	  vlistHolder.removeAttribute("hidden");
 	  vlistHolder.value = vlist;
 	}
 
-	infoPop.openPopup(calcPanel,"before_start");
-  };
+    // Update the key listener to accept the history entry to the
+    // current input box.
+    var inputbox = this.inputbox;
+    historyBox.onkeydown = function(event){
+      if(event.which == 13){ //  hit Enter
+        if (historyBox.selectedItem) {
+          inputbox.value = historyBox.selectedItem.firstChild.getAttribute('label');
+          infoPop.hidePopup();
+          setFocus(inputbox);
+        }
+        return false;
+      }
+      return true;
+    };
+
+	infoPop.openPopup(this.panel,"before_start");
+  }
+
+  CalculatorUI.prototype.showAskPopup = function() {
+    var modeAsk = ebd("scicalc_mode_ask");
+	var textbox = ebd("scicalc-modeaskpopup-value");
+	textbox.value = modeAsk.label.substring(modeAsk.label.indexOf("(")+1, modeAsk.label.indexOf(")"));
+	askPop.openPopup(this.icon, "before_start");
+  }
 
   /************** Public Methods *****************/
   return {
-	prefManager : null,
-	onLoad : function() {		
-	  //set preference manaegr
-	  scicalc.main.prefManager = Components.classes["@mozilla.org/preferences-service;1"]
-		  .getService(Components.interfaces.nsIPrefBranch)
-		  .getBranch("extensions.ststusscicalc.");
-
-	  scicalc.main.prefManager.QueryInterface(Components.interfaces.nsIPrefBranch2);
-	  scicalc.main.prefManager.addObserver("",scicalc.main, false);
-	  
-	  init();
-	  scicalc.realMath.setUserData();
-	  initHistory();
+	setFocusEl : function(id) {
+      setFocus(ebd(id));
 	},
 
-	observe: function(subject, topic, prefName) {
-	  if (topic != "nsPref:changed") return;
-	  var pf = scicalc.main.prefManager;
-	  switch(prefName){
-		case "useModulo":
-		  scicalc.realMath.useModulo = pf.getBoolPref("useModulo");
-		  break;
-		case "history":
-		  historyLength = pf.getIntPref("history");
-		  break;
-		case "ignorecomma":
-		  scicalc.realMath.ignoreComma = pf.getIntPref("ignorecomma");
-		  break;
-	  }
-	},
-
-	onUnLoad : function() {
-		if(scicalc.main.prefManager!=null)
-			scicalc.main.prefManager.removeObserver("" , scicalc.main);
-	},
-	
-	doType : function(e) {          //  when something is typed
-		init();
-		errorPop.hidePopup();
-		if (!e.which)
-			return true;
-		if(e.which == 13) { //  hit Enter
-		  var exp = expBox.value;
-		  scicalc.main.historyFlag = false;
-		  var result;
-		  try {
-		  	result = (evalClass == "real") ? scicalc.realMath.compute(exp) : scicalc.complexMath.compute(exp);
-		  	expBox.value = result;
-		  	scicalc.main.setFocus();
-		  } catch (e) {
-		  	error();
-		  	if(e.desc && typeof(e.desc)=="string") showError(e.desc);
-		  	else if (e.name.toLowerCase() == "syntaxerror")
-			  showError(scicalc.invalidExpError.desc);
-		  }
-		  return false;
-		} else if (e.which == 34) { //  hit page down
-			this.showAskPopup();
-		} else if (e.which==40 || e.which==38) {
-			showHistoryPopup();
-			return false;
-		}
-		return true;
-	},
-
-	imgClicked : function(){
-	  init();
-	  ebd('scicalc_mode_popup').showPopup (calcIcon,-1,-1,"popup","topleft","bottomleft");
-	},
-
-	setFocus : function(id) {
-		init();
-		var t = id==undefined ? expBox : ebd(id);
-		t.focus();
-		try{
-			t.editor.selectAll();
-		} catch(e){ }
-	},
-	
 	onWidgetAdded: function(widgetId, area, aPosition) {
 	  if (widgetId == WIDGET_ID) {
 		init();
@@ -266,70 +401,28 @@ scicalc.main = (function(){
 		  // widget not added
 		  return;
 		} else if (pos.area == "nav-bar") {
-		  this.setFocus();
+          if (defaultCalculatorUI) {
+            setFocus(defaultCalculatorUI.inputbox);
+          }
 		} else {
 		  // Panel UI
-		  PanelUI.show();
-		  window.setTimeout(function() {
-			scicalc.main.setFocus();
-		  }, 200)
+          var panelUI = ebd("PanelUI-popup")
+          if (panelUI && PanelUI) {
+            var showHandler = function() {
+              if (defaultCalculatorUI) {
+                setFocus(defaultCalculatorUI.inputbox);
+              }
+              panelUI.removeEventListener("popupshown", showHandler, false);
+            };
+            panelUI.addEventListener("popupshown", showHandler, false);
+            PanelUI.show();
+          }
 		}
-	  } else {
-		this.setFocus();
+	  } else if (defaultCalculatorUI) {
+        setFocus(defaultCalculatorUI.inputbox);
 	  }
 	},
 
-	changeMode : function(nid,mode) {
-	  if(nid=="ask") ebd("scicalc_mode_ask").label="Base ("+mode+")...";
-	  
-	  if ((mode<1) || (mode>24)) mode = 10;
-	  ebd("scicalc_mode_" + nid).setAttribute("checked", "true");
-		
-	  var updateExp = function(mode, exp) {
-  		if (mode == 1)
-		  return (evalClass=="complex") ? exp : "";
-			
-		if (evalClass == "complex") 
-		  return "";
-
-		if (scicalc.realMath.mode == mode) return exp;
-			
-		var reg = new RegExp("[\\-\\+]?[" + scicalc.Strings.getRegxSeries(scicalc.realMath.mode) + "\\.]+");
-		var m = reg.exec(exp);
-			
-		if ((m == null) || (m[0] != exp))
-		  return "error";
-			
-		var result,pre;
-		if ((exp.charAt(0) == "-") || (exp.charAt(0) == "+")){
-		  pre = exp.charAt(0);
-		  result = scicalc.realMath.converttodec(exp.substr(1));
-		} else {
-		  pre = "";
-		  result = scicalc.realMath.converttodec(exp);
-		}
-	    return (pre + result.toString(mode).toUpperCase());
-	  }
-
-	  if (expBox) {
-		expBox.value = expBox.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-		if (expBox.value != "") {
-		  var ret = updateExp(mode,expBox.value);
-		  if (ret == "error")
-			error();
-		  else
-			expBox.value = ret;
-		}
-	  }
-
-	  if (mode == 1)
-		evalClass = "complex";
-	  else{
-		evalClass = "real";
-		scicalc.realMath.mode = mode;
-	  }
-	},
-		
 	changeAngle : function(isRadian) {
 	  if (isRadian){
 		scicalc.realMath.trigoBase = "Math";
@@ -346,18 +439,11 @@ scicalc.main = (function(){
 		scicalc.realMath.setUserData();
 	},
 
-	showAskPopup :function() {
-	  var modeAsk = ebd("scicalc_mode_ask");
-	  var textbox = ebd("scicalc-modeaskpopup-value");
-	  textbox.value = modeAsk.label.substring(modeAsk.label.indexOf("(")+1,modeAsk.label.indexOf(")"));
-	  askPop.openPopup(calcIcon,"before_start");
-	},
-
 	hideAskPopup :function() {
 	  askPop.hidePopup();
 	},
-	
-	acceptAskPopup :function() {
+
+	acceptAskPopup : function() {
 	  var val = ebd("scicalc-modeaskpopup-value").value.toLowerCase();
 	  var ret = -1;
 	  if (val == "b")	ret = 2;
@@ -369,11 +455,13 @@ scicalc.main = (function(){
 		if((x>=2) && (x<=24)) ret = x;
 	  }
 	  if(ret == -1) return;
-	  this.changeMode('ask',ret);
-	  this.setFocus(); 
+	  changeModeInternal('ask',ret, activeCalculatorUI);
+      if (activeCalculatorUI) {
+        setFocus(activeCalculatorUI.inputbox);
+      }
 	  this.hideAskPopup();
 	},
-	
+
 	addHistory : function(ques, ans) {
 	  addHistoryEl(ques,ans);
 	  var popChildren = historyBox.childNodes;
@@ -392,10 +480,18 @@ scicalc.main = (function(){
 	  while(docf.childNodes.length>2*historyLength)
 		docf.removeChild(docf.childNodes[0]);
 	  scicalc.fileIO.saveXML(historyDoc,"history.xml");
-	}
+	},
+
+    /**
+     * Changes the mode to the specifid base if it is one of 1 (complex), 2, 10, 16. Ohterwise shows
+     * the ask popup.
+     */
+    changeMode : function(base) {
+      if (MODES[base]) {
+        changeModeInternal(MODES[base], base, activeCalculatorUI);
+      } else if (activeCalculatorUI) {
+        activeCalculatorUI.showAskPopup();
+      }
+    }
 }
 })();
-
-window.addEventListener("load", scicalc.main.onLoad, false);
-window.addEventListener("unload", scicalc.main.onUnLoad, false);
-CustomizableUI.addListener(scicalc.main);

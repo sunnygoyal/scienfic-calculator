@@ -14,6 +14,7 @@ scicalc.realMath = {
 	cOAsstRight : new Array(),
 	constants : null,
 	ignoreComma : 0,
+	decimalPrecision : 2,
 	
 	ln : function(x){
 		if(x>0)
@@ -289,8 +290,8 @@ scicalc.realMath = {
 			tempans =  scicalc.f.compute(exp);
 			if (!isNaN(tempans)){
 				this.ans = this.remove99(tempans);
-				var ret= this.mode==10?this.ans:this.ans.toString(this.mode).toUpperCase();
-				scicalc.main.addHistory(str2add,ret);
+				var ret = this.mode==10?this.ans:this.ans.toString(this.mode).toUpperCase();
+				scicalc.main.addHistory(str2add, ret);
 				if (assignMode) {
 					this.setVar(v2assign,this.ans);
 					return v2assign+"="+ret;
@@ -303,7 +304,7 @@ scicalc.realMath = {
 	
 	remove99 : function(val){
 		if (val==0) return 0;
-		var prec = scicalc.main.prefManager.getIntPref("decimal");
+		var prec = this.decimalPrecision;
 		if (prec <= 0) return val;
 		var sign = val>0?1:-1;
 		val = val*sign;

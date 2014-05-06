@@ -4,7 +4,7 @@
 <overlay id="status-bar-calculator" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"> 
 
 	<popupset id="mainPopupSet">
-      <panel id="scicalc-askmode" level="top" orient="vertical" type="arrow" onpopupshown="scicalc.main.setFocus('scicalc-modeaskpopup-value');">
+      <panel id="scicalc-askmode" level="top" orient="vertical" type="arrow" onpopupshown="scicalc.main.setFocusEl('scicalc-modeaskpopup-value');">
         <vbox id="scicalc-askmode-content">
           <label id="scicalc-calcPopupTitle" value="&scicalc.label.selectbase;" flex="1"/>
           <hbox>
@@ -18,12 +18,12 @@
 	</panel>
 
 	<menupopup id="scicalc_mode_popup" position="before_start">
-      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_bin" label="&scicalc.mode.popup.bin;" autocheck="false" oncommand="scicalc.main.changeMode('bin',2);" />
-      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_dec" label="&scicalc.mode.popup.dec;" autocheck="false" oncommand="scicalc.main.changeMode('dec',10);" />
-      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_hex" label="&scicalc.mode.popup.hex;" autocheck="false" oncommand="scicalc.main.changeMode('hex',16);" />
-      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_ask" label="&scicalc.mode.popup.other;" autocheck="false" oncommand="scicalc.main.showAskPopup();" />
+      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_bin" label="&scicalc.mode.popup.bin;" autocheck="false" oncommand="scicalc.main.changeMode(2);" />
+      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_dec" label="&scicalc.mode.popup.dec;" autocheck="false" oncommand="scicalc.main.changeMode(10);" />
+      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_hex" label="&scicalc.mode.popup.hex;" autocheck="false" oncommand="scicalc.main.changeMode(16);" />
+      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_ask" label="&scicalc.mode.popup.other;" autocheck="false" oncommand="scicalc.main.changeMode(0);" />
       <menuseparator/>
-      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_complex" label="&scicalc.mode.popup.complex;" autocheck="false" oncommand="scicalc.main.changeMode('complex',1);" />
+      <menuitem type="radio" name="scicalc_mode_radio" id="scicalc_mode_complex" label="&scicalc.mode.popup.complex;" autocheck="false" oncommand="scicalc.main.changeMode(1);" />
       <menuseparator/>
       <menu label="&scicalc.angle.angle;">
           <menupopup>
@@ -55,8 +55,8 @@
 	<toolbaritem id="scicalc-container" title="&scicalc.app.name;"
 		align="center" class="chromeclass-toolbar-additional panel-wide-item"
 		cui-areatype="toolbar" persist="width" removable="true">
-			<textbox id="scicalc-input" flex="1" class="searchbar-textbox" onkeydown="return scicalc.main.doType(event);" >
-				<image id="scicalc-icon" onclick="scicalc.main.imgClicked();"/>
+			<textbox id="scicalc-input" flex="1" class="searchbar-textbox" >
+				<image id="scicalc-icon" />
 			</textbox>
 	</toolbaritem>
   </toolbarpalette>
