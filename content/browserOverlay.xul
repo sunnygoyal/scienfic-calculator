@@ -34,7 +34,7 @@
       <menuitem label="&scicalc.menu.options;" oncommand="scicalc.main.openOptions();" />
 	</menupopup>
 
-	<panel id="scicalc-info" level="top" orient="vertical" onpopupshown="document.getElementById('scicalc-historyBox').focus();">
+	<panel id="scicalc-info" level="top" orient="vertical">
 		<label value="&scicalc.info.variables;"/>
 		<description id="scicalc-vlist"/>
 		<label value="&scicalc.info.history;"/>

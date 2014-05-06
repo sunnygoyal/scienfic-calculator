@@ -40,8 +40,20 @@ scicalc.main = (function() {
   /**
    * shorthand for getting element by id
    */
-  var ebd = function(id){
+  const ebd = function(id){
 	return document.getElementById(id);
+  };
+
+  /**
+   * Shorthand for listening and removing lopup shown listenes
+   */
+  const POPUP_LISTENER = {
+	add: function(el, f) {
+	  el.addEventListener("popupshown", f, false);
+	},
+	remove: function(el, f) {
+	  el.removeEventListener("popupshown", f, false);
+	}
   };
 
   /**
@@ -126,7 +138,7 @@ scicalc.main = (function() {
       }
       var panelUI = ebd("PanelUI-popup")
       if (panelUI) {
-        panelUI[panel ? 'removeEventListener' : 'addEventListener']("popupshown", widgetAddObserver.onPanelUIOpened, false);
+		POPUP_LISTENER[panel ? 'remove' : 'add'](panelUI, widgetAddObserver.onPanelUIOpened);
       }
     }
   }
@@ -201,7 +213,7 @@ scicalc.main = (function() {
   }
 
   /**
-   * Adds a history item with
+   * Adds a history item at the top of the list, i.e., the second position.
    */
   var addHistoryEl = function(exp,val){
     var a = document.createElement("listitem");
@@ -212,8 +224,9 @@ scicalc.main = (function() {
     a.appendChild(b);
     a.appendChild(c);
     a.addEventListener("mouseover", historyElMouseOver, false);
-    historyBox.appendChild(a);
+	historyBox.insertBefore(a, historyBox.firstChild.nextSibling);
   };
+
   // ******************* END_CODE_FOR_HISTORY_MANAGEMENT
 
   /**
@@ -307,10 +320,17 @@ scicalc.main = (function() {
 		  }
           e.preventDefault();
 		} else if (e.which == 34) { //  hit page down
-			that.showAskPopup();
+		  that.showAskPopup();
 		} else if (e.which==40 || e.which==38) {
-			that.showHistoryPopup();
-            e.preventDefault();
+		  var key = e.which;
+		  var popupHandler = function() {
+			POPUP_LISTENER.remove(infoPop, popupHandler);
+			historyBox.focus();
+			historyBox.selectedIndex = (key==40) ? 0 : (historyBox.itemCount - 1);
+		  }
+		  POPUP_LISTENER.add(infoPop, popupHandler);
+		  that.showHistoryPopup();
+          e.preventDefault();
 		}
     }, false);
 
@@ -367,9 +387,14 @@ scicalc.main = (function() {
           infoPop.hidePopup();
           setFocus(inputbox);
         }
-        return false;
-      }
-      return true;
+      } else if ((event.which == 38) && (historyBox.selectedIndex == 0)) {
+		historyBox.selectedIndex = historyBox.itemCount - 1;
+	  } else if ((event.which == 40) && (historyBox.selectedIndex == (historyBox.itemCount - 1))) {
+		historyBox.selectedIndex = 0;
+	  } else {
+		return true;
+	  }
+	  return false;
     };
 
 	infoPop.openPopup(this.panel,"before_start");
@@ -412,9 +437,9 @@ scicalc.main = (function() {
               if (defaultCalculatorUI) {
                 setFocus(defaultCalculatorUI.inputbox);
               }
-              panelUI.removeEventListener("popupshown", showHandler, false);
+			  POPUP_LISTENER.remove(panelUI, showHandler);
             };
-            panelUI.addEventListener("popupshown", showHandler, false);
+			POPUP_LISTENER.add(panelUI, showHandler);
             PanelUI.show();
           }
 		}
@@ -465,8 +490,9 @@ scicalc.main = (function() {
 	addHistory : function(ques, ans) {
 	  addHistoryEl(ques,ans);
 	  var popChildren = historyBox.childNodes;
-	  while (popChildren.length>(historyLength+1))
-		historyBox.removeChild(popChildren[1]);
+	  for (var nodesToRemove = historyLength+1; nodesToRemove < popChildren.length; nodesToRemove++) {
+		historyBox.removeChild(popChildren[nodesToRemove]);
+	  }
 
 	  historyBox.setAttribute('rows', popChildren.length-1);
   
@@ -474,7 +500,7 @@ scicalc.main = (function() {
 	  entry.setAttribute("ques", ques);
 	  entry.setAttribute("ans", ans);
 	  
-	  var docf =historyDoc.firstChild;
+	  var docf = historyDoc.firstChild;
 	  docf.appendChild(entry);
 
 	  while(docf.childNodes.length>2*historyLength)
