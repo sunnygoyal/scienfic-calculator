@@ -171,7 +171,7 @@ scicalc.main = (function() {
     scicalc.main.changeAngle(prefManager.getBoolPref("defaultRadian"));
 
     // Custom user functions
-    scicalc.realMath.setUserData();
+    scicalc.realMath.loadUserData();
 
     // Initiate history
     historyBox = ebd("scicalc-historyBox");
@@ -461,7 +461,7 @@ scicalc.main = (function() {
 	openOptions : function() {
 		window.openDialog("chrome://statusscicalc/content/options.xul","omanager",
 						  "chrome, modal=yes, toolbar");
-		scicalc.realMath.setUserData();
+		scicalc.realMath.loadUserData();
 	},
 
 	hideAskPopup :function() {

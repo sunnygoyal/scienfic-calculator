@@ -219,7 +219,7 @@ scicalc.realMath = {
 		}
 	},
 	
-	setUserData : function(){
+	loadUserData : function(){
 		scicalc.realMath.loadConstants();
 		scicalc.realMath.loadCustomFunctions();
 		scicalc.realMath.loadCustomOperators();
