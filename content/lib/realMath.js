@@ -224,7 +224,7 @@ scicalc.realMath = {
 		scicalc.realMath.loadCustomOperators();
 	},
 	
-	eval : function(exp) {
+	compute : function(exp) {
 	
 		var str2add = exp;
 		
@@ -286,7 +286,7 @@ scicalc.realMath = {
 		var tempans;
 		
 		
-			tempans =  scicalc.f.eval(exp);
+			tempans =  scicalc.f.compute(exp);
 			if (!isNaN(tempans)){
 				this.ans = this.remove99(tempans);
 				var ret= this.mode==10?this.ans:this.ans.toString(this.mode).toUpperCase();

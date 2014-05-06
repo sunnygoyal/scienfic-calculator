@@ -27,7 +27,7 @@ function const_checkvalid(editmode){
 		return false;
 	}
 	try {
-		if((typeof scicalc.f.eval(ebd("const_value").value)).toLowerCase() != "number") {
+		if((typeof scicalc.f.compute(ebd("const_value").value)).toLowerCase() != "number") {
 			showblink(7,"const_value");
 			ebd("const_value").focus();
 			return false;

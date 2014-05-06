@@ -179,7 +179,7 @@ scicalc.complexMath = {
 		return exp;
 	},
 	
-	eval : function(exp){
+	compute : function(exp){
 		var str2add = exp;
 		exp = exp.replace(/\s/g, ""); //remove spaces
 		
@@ -219,7 +219,7 @@ scicalc.complexMath = {
 
 		var tempans;
 	
-		tempans = scicalc.f.eval(exp);
+		tempans = scicalc.f.compute(exp);
 		
 		this.ans = tempans;
 		scicalc.main.addHistory(str2add,tempans);

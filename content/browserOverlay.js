@@ -220,7 +220,7 @@ scicalc.main = (function(){
 		  scicalc.main.historyFlag = false;
 		  var result;
 		  try {
-		  	result = (evalClass == "real") ? scicalc.realMath.eval(exp) : scicalc.complexMath.eval(exp);
+		  	result = (evalClass == "real") ? scicalc.realMath.compute(exp) : scicalc.complexMath.compute(exp);
 		  	expBox.value = result;
 		  	scicalc.main.setFocus();
 		  } catch (e) {

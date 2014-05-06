@@ -60,7 +60,7 @@ scicalc.f = {
     return Function.apply(null, params);
   },
  
-  eval: function(code) {
+  compute: function(code) {
     return this.create("return " + code, 0)();
   }
 }
