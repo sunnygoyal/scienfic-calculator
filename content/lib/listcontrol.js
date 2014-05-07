@@ -24,9 +24,9 @@ function askConfirm(title, msg, ync){
 
 function showblink(t, id){
 	if(t%2 == 0)
-		document.getElementById(id).removeAttribute('redback');
+		ebd(id).removeAttribute('redback');
 	else
-		document.getElementById(id).setAttribute('redback', true);
+		ebd(id).setAttribute('redback', true);
 	var t2 = t - 1;
 	if(t>0)	window.setTimeout( function() { showblink(t2, id); }, 100);
 }

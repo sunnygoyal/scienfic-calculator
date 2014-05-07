@@ -15,7 +15,7 @@
   <prefpane id="statussicalc_pref" onpaneload="intiValues()">
 	<script type="application/x-javascript" src="lib/listcontrol.js"/>
 	<script type="application/x-javascript" src="lib/fileIO.js"/>
-	<script type="application/x-javascript" src="codepress.js"/>
+	<script type="application/x-javascript" src="editor/cmEditor.js"/>
 	<script type="application/x-javascript" src="options.js"/>
 	
   	<preferences id="prefs">

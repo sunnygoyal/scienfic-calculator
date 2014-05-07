@@ -108,7 +108,7 @@ function func_update_sig(){
 	}
 	var sig = "";
 	if(ebd("func_name").value != "")
-		sig = "function "+ebd("func_name").value+" (" + args + ") ";
+		sig = "function "+ebd("func_name").value+" (" + args + ") {";
 	funcEditor.setLabel(sig);
 }
 
@@ -124,7 +124,7 @@ function oper_name_changed(){
 function oper_update_sig(){
 	var sig = "";
 	if(ebd("oper_name").value != "")
-		sig = "operator:  x "+ebd("oper_name").value+" y ";
+		sig = "function /* "+ebd("oper_name").value+" */ (x, y) {";
 	operEditor.setLabel(sig);
 }
 
@@ -208,8 +208,8 @@ function intiValues() {
 	ebd("digit_af_dot").value = (dec>0)?dec:10;
 	ebd("digit_af_dot").disabled = !(dec>0);
 	
-	funcEditor = new CodePress("func_code");
-	operEditor = new CodePress("oper_code");
+	funcEditor = new CodeEditor("func_code");
+	operEditor = new CodeEditor("oper_code");
 	
 	funcHandler = new listControl("func", "function", ["args","desc"], "new", funcEditor);
 	funcHandler.checkValid = func_checkvalid;
