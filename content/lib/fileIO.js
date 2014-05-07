@@ -36,7 +36,7 @@ scicalc.fileIO = (function () {
 			var URL = ios.newFileURI(file);
 			url = URL.spec;
 		} else {
-			url = "chrome://statusscicalc/content/" + fileName;
+			url = "chrome://statusscicalc/content/data/" + fileName;
 		}
 
 		var req = new XMLHttpRequest();
