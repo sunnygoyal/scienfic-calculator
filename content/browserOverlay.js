@@ -105,7 +105,7 @@ scicalc.main = (function() {
   }
 
   // The calculator UI corresponding to the toolbar item.
-  var defaultCalculatorUI;
+  var defaultCalculatorUI, statusCalculatorUI;
   var activeCalculatorUI;
   var widgetAddObserver = {
     onWidgetAdded: function(widgetId, area, aPosition) {
@@ -150,6 +150,53 @@ scicalc.main = (function() {
       }
     }
   }
+
+  
+  var makeStatusbarCalculator = function() {
+	var cr = function(name, parent) {
+	  var el = document.createElement(name);
+	  if (parent) {
+		parent.appendChild(el);
+	  }
+	  return el;
+	}
+
+	var panel = cr("statusbarpanel", ebd("status-bar"));
+	panel.setAttribute("id", "scicalc-statusbar-container");
+	
+	var icon = cr("image", panel);
+	icon.className = "statusbarpanel-iconic";
+	
+	var txtBox = cr("textbox", null);
+	txtBox.style.maxWidth = "250px";
+
+	var closeIcon = cr("image", txtBox);
+
+	statusCalculatorUI = new CalculatorUI(panel, txtBox, icon);
+	statusCalculatorUI.openIfNeeded = function() {
+	  if (txtBox.parentNode) {
+		return false;
+	  } else {
+		txtBox.style.width = "0px";
+		panel.appendChild(txtBox);
+		
+		setTimeout(function() {
+		  setFocus(txtBox);
+		  txtBox.style.width = "1000px";
+		}, 50);
+		return true;
+	  }
+	}
+
+	closeIcon.addEventListener("click", function() {
+	  if (txtBox.parentNode) {
+		txtBox.style.width = "0px";
+		setTimeout(function() {
+		  panel.removeChild(txtBox);  
+		}, 300);
+	  }
+	}, false);
+  };
 
   /**
    * Addon initialization
@@ -198,6 +245,9 @@ scicalc.main = (function() {
 
     // initiate default UI
     initiateDefaultUI(false);
+
+	// Init calculator UI
+	makeStatusbarCalculator();
   }, false);
 
   /**
@@ -344,9 +394,18 @@ scicalc.main = (function() {
 		}
     }, false);
 
+	/**
+	 * Opens the calculator and returns true if the was needed.
+	 */
+	this.openIfNeeded = function() {
+	  return false;
+	}
+
     icon.addEventListener("click", function() {
-      activeCalculatorUI = that;
-      ebd('scicalc_mode_popup').showPopup(this,-1,-1,"popup","topleft","bottomleft");
+	  if (!that.openIfNeeded()) {
+		activeCalculatorUI = that;
+		ebd('scicalc_mode_popup').showPopup(this,-1,-1,"popup","topleft","bottomleft");
+	  }
     }, false);
   }
 
@@ -434,12 +493,7 @@ scicalc.main = (function() {
 		var pos = CustomizableUI.getPlacementOfWidget(WIDGET_ID);
 		if (pos == null) {
 		  // widget not added
-		  return;
-		} else if (pos.area == "nav-bar") {
-          if (defaultCalculatorUI) {
-            setFocus(defaultCalculatorUI.inputbox);
-          }
-		} else {
+		} else if (pos.area == "PanelUI-contents") {
 		  // Panel UI
           var panelUI = ebd("PanelUI-popup")
           if (panelUI && PanelUI) {
@@ -451,10 +505,25 @@ scicalc.main = (function() {
             };
 			POPUP_LISTENER.add(panelUI, showHandler);
             PanelUI.show();
+			return;
+          }
+		} else {
+		  // Nav bar or some other toolbar
+          if (defaultCalculatorUI) {
+            setFocus(defaultCalculatorUI.inputbox);
+			return;
           }
 		}
-	  } else if (defaultCalculatorUI) {
+	  } else if (defaultCalculatorUI
+				 && defaultCalculatorUI.panel.parentNode
+				 && (defaultCalculatorUI.panel.parentNode.id == "nav-bar")) {
         setFocus(defaultCalculatorUI.inputbox);
+		return;
+	  }
+
+	  // Use the status bar calculator ui
+	  if (statusCalculatorUI && !statusCalculatorUI.openIfNeeded()) {
+		setFocus(statusCalculatorUI.inputbox);
 	  }
 	},
 

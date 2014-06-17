@@ -25,9 +25,44 @@ toolbarpaletteitem[place="palette"] > #scicalc-container {
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
-#scicalc-icon[error="true"] {
+/** Addon bar panel **/
+#scicalc-statusbar-container {
+	padding: 2px;
+}
+#scicalc-statusbar-container > textbox {
+	max-height: 16px !important;
+	background-color: -moz-field;
+	padding: 1px;
+	margin: 0 0 0 2px;
+	-moz-transition: width .3s;
+}
+#scicalc-statusbar-container > textbox > image {
+	width: 14px !important;
+	height: 14px;
+	padding: 0px 2px !important;
+	list-style-image: url("chrome://statusscicalc/skin/close.png");
+	-moz-image-region: rect(0px, 12px, 12px, 0px);
+	-moz-box-ordinal-group: 2;
+	cursor: default;
+	opacity: 0.5;
+}
+#scicalc-statusbar-container > textbox > image:hover {
+	opacity: 0.9;
+}
+
+#scicalc-statusbar-container > image {
+	margin: 0;
+	cursor: default;
+	list-style-image: url("chrome://statusscicalc/skin/calc.png");
+	-moz-image-region: rect(0px, 16px, 16px, 0px);
+}
+/** End of status bar styles **/
+
+
+#scicalc-icon[error="true"], #scicalc-statusbar-container > image[error="true"] {
 	-moz-animation: error 0.2s step-end 0s 5;
 }
+
 
 @-moz-keyframes error {
 	0% {
