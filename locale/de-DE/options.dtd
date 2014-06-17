@@ -6,15 +6,6 @@
 <!ENTITY settings.menuitem.modulo "Modulo">
 <!ENTITY settings.menuitem.percent "Prozent">
 <!ENTITY settings.label.operator "Operator">
-<!ENTITY settings.label.angle "Winkel (Standard)">
-<!ENTITY settings.label.angle.radians "Bogenmaß">
-<!ENTITY settings.label.angle.degrees "Grad">
-<!ENTITY settings.label.mode "Modus (Standard)">
-<!ENTITY settings.label.mode.bin "Bin">
-<!ENTITY settings.label.mode.dec "Dezember">
-<!ENTITY settings.label.mode.hex "Hex">
-<!ENTITY settings.label.mode.other "Andere ...">
-<!ENTITY settings.label.mode.complex "Komplexe">
 <!ENTITY settings.label.history "Anzahl der Einträge in der Chronik:">
 <!ENTITY settings.label.round "Dezimalzahlen runden">
 <!ENTITY settings.label.roundlength "Anzahl der Dezimalstellen:">
@@ -22,6 +13,8 @@
 <!ENTITY settings.checkbox.comma.argument "Behandlung als Argument seperator">
 <!ENTITY settings.checkbox.comma.dot "Gönnen als dot">
 <!ENTITY settings.checkbox.comma.ignore "Ignorieren">
+<!ENTITY settings.addonbar.show "Im Addon-Leiste einblenden">
+<!ENTITY settings.addonbar.width "Calculator Breite">
 <!ENTITY constants.listitem.calculated "*calculated*">
 <!ENTITY constants.listitem.natlogbase "Basis natürlicher Logarithmus">
 <!ENTITY constants.listitem.answer "Lösung des letzten Ausdrucks">

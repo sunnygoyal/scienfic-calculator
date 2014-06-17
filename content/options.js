@@ -1,5 +1,3 @@
-var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-
 //***************************** Commom Functions  *******************************//
 
 function const_checkvalid(editmode){
@@ -191,18 +189,11 @@ function operMoveDown(){
 
 
 //***************************** End of Common Functions ****************************//
-
 function intiValues() {
-	var mode = prefManager.getIntPref("extensions.ststusscicalc.defaultMode");
-	switch(mode){
-		case 1:	case 2: case 10: case 16:
-			ebd("pref_modeselect").value = mode;
-			break;
-		default:
-			ebd("pref_modeselect").value = 0;
-			ebd("pref_mode_other_value").disabled = false;
-			ebd("pref_mode_other_value").value = mode;
-	}
+	var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
+
+	ebd('addon_bar_width').disabled = !prefManager.getBoolPref("extensions.ststusscicalc.showInAddonBar");
+
 	var dec = prefManager.getIntPref("extensions.ststusscicalc.decimal");
 	ebd("roundAllowed").checked = dec > 0;
 	ebd("digit_af_dot").value = (dec>0)?dec:10;
@@ -220,27 +211,10 @@ function intiValues() {
 	operHandler.checkValid = oper_checkvalid;
 	operHandler.after_list_sel = oper_update_sig;
 	operHandler.load();
-	
+
 	constHandler = new listControl("const", "constant", ["desc","value"], "new", null);
 	constHandler.checkValid = const_checkvalid;
 	constHandler.load();
-}
-
-function dochangemode(){
-	var m1 = parseInt(ebd("pref_modeselect").value);
-	var tbox = ebd("pref_mode_other_value");
-	var m3;
-	
-	switch(m1){
-		case 1:	case 2: case 10: case 16:
-			m3 = m1;
-			tbox.disabled = true;
-			break;
-		default:
-			m3 = tbox.value;
-			tbox.disabled = false;	
-	}
-	ebd("pref-mode").value = m3;
 }
 
 function dotDigit(){

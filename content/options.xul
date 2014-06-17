@@ -17,15 +17,19 @@
 	<script type="application/x-javascript" src="lib/fileIO.js"/>
 	<script type="application/x-javascript" src="editor/cmEditor.js"/>
 	<script type="application/x-javascript" src="options.js"/>
-	
+
   	<preferences id="prefs">
 		<preference id="pref-width" name="extensions.ststusscicalc.expWidth" type="int"/>
 		<preference id="pref-modulo" name="extensions.ststusscicalc.useModulo" type="bool"/>
 		<preference id="pref-angleradian" name="extensions.ststusscicalc.defaultRadian" type="bool"/>
-		<preference id="pref-mode" name="extensions.ststusscicalc.defaultMode" type="int"/>
 		<preference id="pref-digit" name="extensions.ststusscicalc.decimal" type="int"/>
 		<preference id="pref-history" name="extensions.ststusscicalc.history" type="int"/>
 		<preference id="pref-comma" name="extensions.ststusscicalc.ignorecomma" type="int"/>
+
+		<!-- Preference for addon bar -->
+		<preference id="pref-show-addonbar" name="extensions.ststusscicalc.showInAddonBar" type="bool"/>
+		<preference id="pref-width-addonbar" name="extensions.ststusscicalc.addonBarWidth" type="int"/>
+
 	</preferences>
 	<tabbox>
 		<tabs>
@@ -54,29 +58,6 @@
 								</menulist>
 								<label value="&settings.label.operator;" control="usemodulo"/>
 							</row>
-							<row align="center">
-								<label value="&settings.label.angle;" control="pref_angle"/>
-								<menulist id="pref_angle" preference="pref-angleradian">
-									<menupopup>
-										<menuitem label="&settings.label.angle.radians;" value="true"/>
-										<menuitem label="&settings.label.angle.degrees;" value="false"/>
-									</menupopup>
-								</menulist> 
-								<spacer />
-							</row>
-							<row align="center">
-								<label value="&settings.label.mode;" control="pref_modeselect"/>
-								<menulist id="pref_modeselect" oncommand="dochangemode();">
-									<menupopup>
-										<menuitem label="&settings.label.mode.bin;" value="2"/>
-										<menuitem label="&settings.label.mode.dec;" value="10"/>
-										<menuitem label="&settings.label.mode.hex;" value="16"/>
-										<menuitem label="&settings.label.mode.other;" value="0"/>
-										<menuitem label="&settings.label.mode.complex;" value="1"/>
-									</menupopup>
-								</menulist>
-								<textbox id="pref_mode_other_value" onchange="dochangemode();" type="number" size="1" value="10" min="2" max="24" disabled="true"/>
-							</row>
 							<hbox align="center">
 								<label value="&settings.label.history;" control="history_length"/>
 								<textbox id="history_length"  type="number" size="2" preference="pref-history" min="5" max="20"/>
@@ -100,6 +81,14 @@
 					</caption>
 					<label value="&settings.label.roundlength;" control="digit_af_dot"/>
 					<textbox id="digit_af_dot"  type="number" size="1" value="6" min="2" max="24" onchange="dotDigit();"/>
+				</groupbox>
+
+				<groupbox orient="horizontal" align="center">
+					<caption>
+						<checkbox preference="pref-show-addonbar" label="&settings.addonbar.show;" oncommand="ebd('addon_bar_width').disabled = !this.checked"/>
+					</caption>
+					<label value="&settings.addonbar.width;" control="addon_bar_width"/>
+					<textbox id="addon_bar_width"  type="number" size="3" min="100" max="500" preference="pref-width-addonbar"/>
 				</groupbox>
 			
 			</tabpanel>

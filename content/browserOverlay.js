@@ -100,7 +100,27 @@ scicalc.main = (function() {
       },
       decimal: function(k) {
         scicalc.realMath.decimalPrecision = prefManager.getIntPref(k);
-      }
+      },
+	  addonBarWidth: function(k) {
+		if (statusCalculatorUI) {
+		  statusCalculatorUI.inputbox.style.maxWidth = prefManager.getIntPref(k) + "px";
+		}
+	  },
+	  showInAddonBar: function(k) {
+		if (prefManager.getBoolPref(k)) {
+		  // Show addon.
+		  if (!statusCalculatorUI) {
+			makeStatusbarCalculator();
+		  } else if (!statusCalculatorUI.panel.parentNode) {
+			ebd("status-bar").appendChild(statusCalculatorUI.panel);
+		  }
+		} else {
+		  // Remove addon
+		  if (statusCalculatorUI && statusCalculatorUI.panel.parentNode) {
+			ebd("status-bar").removeChild(statusCalculatorUI.panel)
+		  }
+		}
+	  }
     }
   }
 
@@ -151,7 +171,6 @@ scicalc.main = (function() {
     }
   }
 
-  
   var makeStatusbarCalculator = function() {
 	var cr = function(name, parent) {
 	  var el = document.createElement(name);
@@ -168,7 +187,7 @@ scicalc.main = (function() {
 	icon.className = "statusbarpanel-iconic";
 	
 	var txtBox = cr("textbox", null);
-	txtBox.style.maxWidth = "250px";
+	txtBox.style.maxWidth = prefManager.getIntPref("addonBarWidth") + "px";
 
 	var closeIcon = cr("image", txtBox);
 
@@ -245,9 +264,6 @@ scicalc.main = (function() {
 
     // initiate default UI
     initiateDefaultUI(false);
-
-	// Init calculator UI
-	makeStatusbarCalculator();
   }, false);
 
   /**
@@ -329,7 +345,7 @@ scicalc.main = (function() {
 	  }
 
       uihandler.inputbox.value = uihandler.inputbox.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
-      var ret = updateExp(mode, uihandler.inputbox.value);
+      var ret = uihandler.inputbox.value == "" ? "" : updateExp(mode, uihandler.inputbox.value);
 	  if (ret == "error")
         uihandler.error();
 	  else
@@ -340,8 +356,11 @@ scicalc.main = (function() {
       evalClass = EVAL_CLASS_COMPLEX;
 	else{
 	  evalClass = EVAL_CLASS_REAL;
-  	scicalc.realMath.mode = mode;
+	  scicalc.realMath.mode = mode;
     }
+	if (prefManager) {
+	  prefManager.setIntPref("defaultMode", mode);
+	}
   }
 
   /**
@@ -522,7 +541,7 @@ scicalc.main = (function() {
 	  }
 
 	  // Use the status bar calculator ui
-	  if (statusCalculatorUI && !statusCalculatorUI.openIfNeeded()) {
+	  if (statusCalculatorUI && statusCalculatorUI.panel.parentNode && !statusCalculatorUI.openIfNeeded()) {
 		setFocus(statusCalculatorUI.inputbox);
 	  }
 	},
@@ -534,6 +553,10 @@ scicalc.main = (function() {
 	  } else {
 		scicalc.realMath.trigoBase = "scicalc.realMath";
 		ebd("scicalc_angle_deg").setAttribute("checked", "true");
+	  }
+
+	  if (prefManager) {
+		prefManager.setBoolPref("defaultRadian", isRadian);
 	  }
 	},
 

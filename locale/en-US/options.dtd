@@ -6,15 +6,6 @@
 <!ENTITY settings.menuitem.modulo "modulo">
 <!ENTITY settings.menuitem.percent "percent">
 <!ENTITY settings.label.operator "operator">
-<!ENTITY settings.label.angle "Angle (default)">
-<!ENTITY settings.label.angle.radians "radians">
-<!ENTITY settings.label.angle.degrees "degrees">
-<!ENTITY settings.label.mode "Mode (default)">
-<!ENTITY settings.label.mode.bin "Bin">
-<!ENTITY settings.label.mode.dec "Dec">
-<!ENTITY settings.label.mode.hex "Hex">
-<!ENTITY settings.label.mode.other "Other...">
-<!ENTITY settings.label.mode.complex "Complex">
 <!ENTITY settings.label.history "History List Length">
 <!ENTITY settings.label.round "Roundoff Decimals">
 <!ENTITY settings.label.roundlength "Number of digits after decimal :">
@@ -22,6 +13,8 @@
 <!ENTITY settings.checkbox.comma.argument "Treat as argument seperator">
 <!ENTITY settings.checkbox.comma.dot "Treat as dot">
 <!ENTITY settings.checkbox.comma.ignore "Ignore">
+<!ENTITY settings.addonbar.show "Show in Addon-bar">
+<!ENTITY settings.addonbar.width "Calculator width">
 <!ENTITY constants.listitem.calculated "*calculated*">
 <!ENTITY constants.listitem.natlogbase "Natural Log Base">
 <!ENTITY constants.listitem.answer "Solution of last Expression">
