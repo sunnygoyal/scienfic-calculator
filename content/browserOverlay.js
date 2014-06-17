@@ -1,8 +1,13 @@
 // The global namespace
 if(!scicalc) var scicalc={};
 
-// Used for detecting panel UI related features.
-Components.utils.import("resource:///modules/CustomizableUI.jsm");
+try {
+  // Used for detecting panel UI related features.
+  Components.utils.import("resource:///modules/CustomizableUI.jsm");
+} catch (e) {
+  // PanelUI not present
+  var CustomizableUI = null;
+}
 
 // User for displaying localizaiton strings
 scicalc.str = Components.classes["@mozilla.org/intl/stringbundle;1"]
@@ -135,7 +140,10 @@ scicalc.main = (function() {
     if (updateListeners) {
       if (CustomizableUI) {
         CustomizableUI[panel ? 'removeListener' : 'addListener'](widgetAddObserver);
-      }
+      } else {
+		ebd("navigator-toolbox")[panel ? 'removeEventListener' : 'addEventListener'](
+			"aftercustomization", widgetAddObserver.onPanelUIOpened, false);
+	  }
       var panelUI = ebd("PanelUI-popup")
       if (panelUI) {
 		POPUP_LISTENER[panel ? 'remove' : 'add'](panelUI, widgetAddObserver.onPanelUIOpened);
@@ -151,7 +159,7 @@ scicalc.main = (function() {
 	prefManager = Components.classes["@mozilla.org/preferences-service;1"]
 	  .getService(Components.interfaces.nsIPrefBranch)
 	  .getBranch("extensions.ststusscicalc.");
-    prefManager.QueryInterface(Components.interfaces.nsIPrefBranch);
+    prefManager.QueryInterface(Components.interfaces.nsIPrefBranch2);
 	prefManager.addObserver("", prefObserver, false);
 
     // Initiate various preferences
@@ -201,7 +209,9 @@ scicalc.main = (function() {
     }
     if (CustomizableUI) {
       CustomizableUI.removeListener(widgetAddObserver);
-    }
+    } else {
+	  ebd("navigator-toolbox").removeEventListener("aftercustomization", widgetAddObserver.onPanelUIOpened, false);
+	}
   }, false);
 
   // ******************* BEGIN_CODE_FOR_HISTORY_MANAGEMENE
