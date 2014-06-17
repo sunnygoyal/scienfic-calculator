@@ -13,22 +13,23 @@ toolbarpaletteitem[place="palette"] > #scicalc-container {
 #scicalc-input {
 	min-height: 22px;
 	background-color: -moz-field;
+	padding: 1px 2px;
 }
 
 #scicalc-icon {
 	height: 16px;
 	width: 16px;
-	margin: 0 2px;
+	margin-right: 2px;
 	cursor: default;
 	list-style-image: url("chrome://statusscicalc/skin/calc.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 }
 
 #scicalc-icon[error="true"] {
-	animation: error 0.2s step-end 0s 5;
+	-moz-animation: error 0.2s step-end 0s 5;
 }
 
-@keyframes error {
+@-moz-keyframes error {
 	0% {
 		-moz-image-region: rect(0px, 16px, 16px, 0px);
 	}
