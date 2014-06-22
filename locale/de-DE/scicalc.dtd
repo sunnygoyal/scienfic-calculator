@@ -1,14 +1,14 @@
 <!ENTITY scicalc.app.name "Wissenschaftlicher Taschenrechner">
 <!ENTITY scicalc.label.selectbase "Wähle Basis">
-<!ENTITY scicalc.askmode.help "Eine Ganzzahl zwischen 2 und 24 oder h=hex, b=bin, d=dec">
+<!ENTITY scicalc.askmode.help "Eine Ganzzahl zwischen 2 und 24 oder h=Hex, b=Bin, d=Dez">
 <!ENTITY scicalc.mode.popup.bin "Bin">
-<!ENTITY scicalc.mode.popup.dec "Dezember">
-<!ENTITY scicalc.mode.popup.hex "Hec">
-<!ENTITY scicalc.mode.popup.other "Andere...">
-<!ENTITY scicalc.mode.popup.complex "Complexe">
+<!ENTITY scicalc.mode.popup.dec "Dez">
+<!ENTITY scicalc.mode.popup.hex "Hex">
+<!ENTITY scicalc.mode.popup.other "Weitere...">
+<!ENTITY scicalc.mode.popup.complex "Komplex">
 <!ENTITY scicalc.angle.angle "Winkel">
 <!ENTITY scicalc.angle.radians "Bogenmaß">
-<!ENTITY scicalc.angle.degrees "Grad">
+<!ENTITY scicalc.angle.degrees "Gradmaß">
 <!ENTITY scicalc.menu.options "Optionen...">
 <!ENTITY scicalc.info.variables "Variablen">
 <!ENTITY scicalc.info.history "Letzte Berechnungen">
