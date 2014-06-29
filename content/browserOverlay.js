@@ -168,7 +168,7 @@ scicalc.main = (function() {
    * Addon initialization
    */
   window.addEventListener("load", function() {
-    //set preference manaegr
+    //set preference manager
 	prefManager = Components.classes["@mozilla.org/preferences-service;1"]
 	  .getService(Components.interfaces.nsIPrefBranch)
 	  .getBranch("extensions.ststusscicalc.");
@@ -338,7 +338,7 @@ scicalc.main = (function() {
       errorPop.hidePopup();
 	  if (!e.which) return;
       
-      if(e.which == 13) { //  hit Enter
+      if (e.which == 13) { // hit Enter
 		var exp = this.value;
 		var result;
 		  try {
