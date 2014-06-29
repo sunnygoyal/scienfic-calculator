@@ -13,7 +13,6 @@
 <!ENTITY settings.checkbox.comma.argument "als Trenner für Argumente behandeln">
 <!ENTITY settings.checkbox.comma.dot "als Dezimaltrenner behandeln">
 <!ENTITY settings.checkbox.comma.ignore "Ignorieren">
-<!ENTITY settings.addonbar.show "In der Add-on-Leiste anzeigen">
 <!ENTITY settings.addonbar.width "Breite des Eingabefeldes:">
 <!ENTITY settings.addonbar.collapsible "Erweiterbares Eingabefeld">
 <!ENTITY constants.listitem.calculated "*berechnet*">

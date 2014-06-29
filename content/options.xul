@@ -87,7 +87,7 @@
 				</groupbox>
 
 				<groupbox orient="vertical" align="left">
-					<hbox>
+					<hbox align="center">
 						<label value="&settings.addonbar.width;" control="addon_bar_width"/>
 						<textbox id="addon_bar_width" type="number" size="3" max="999" preference="pref-width-addonbar"/>
 					</hbox>

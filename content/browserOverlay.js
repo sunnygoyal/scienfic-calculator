@@ -369,6 +369,7 @@ scicalc.main = (function() {
 
 	button.addEventListener("click", function() {
 		panel.classList.remove("collapsed");
+		setFocus(inputbox);
 	}, false);
 
 	icon.addEventListener("click", function() {

@@ -6,14 +6,13 @@
 <!ENTITY settings.menuitem.modulo "modulo">
 <!ENTITY settings.menuitem.percent "percent">
 <!ENTITY settings.label.operator "operator">
-<!ENTITY settings.label.history "History List Length">
+<!ENTITY settings.label.history "History List Length:">
 <!ENTITY settings.label.round "Roundoff Decimals">
 <!ENTITY settings.label.roundlength "Number of digits after decimal:">
 <!ENTITY settings.checkbox.comma "Comma (,)">
 <!ENTITY settings.checkbox.comma.argument "Treat as argument seperator">
 <!ENTITY settings.checkbox.comma.dot "Treat as dot">
 <!ENTITY settings.checkbox.comma.ignore "Ignore">
-<!ENTITY settings.addonbar.show "Show in Add-on Bar">
 <!ENTITY settings.addonbar.width "Width of the input field:">
 <!ENTITY settings.addonbar.collapsible "Collapsible input field">
 <!ENTITY constants.listitem.calculated "*calculated*">
