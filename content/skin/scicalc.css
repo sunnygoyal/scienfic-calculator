@@ -19,7 +19,7 @@
 	cursor: default;
 }
 
-#scicalc-icon[error="true"], #scicalc-statusbar-container > image[error="true"] {
+#scicalc-icon[error="true"] {
 	-moz-animation: error 0.2s step-end 0s 5;
 }
 @-moz-keyframes error {

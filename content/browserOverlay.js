@@ -30,7 +30,7 @@ scicalc.main = (function() {
     2: "bin",
     10: "dec",
     16: "hex"
-  }
+  };
 
   var evalClass = EVAL_CLASS_REAL;
 
@@ -69,7 +69,7 @@ scicalc.main = (function() {
     try{
 	  el.editor.selectAll();
 	} catch(e) { }
-  }
+  };
 
   /**
    * Preference manager
@@ -116,7 +116,7 @@ scicalc.main = (function() {
 		}
 	  }
     }
-  }
+  };
 
   // The calculator UI corresponding to the toolbar item.
   var defaultCalculatorUI;
@@ -129,7 +129,7 @@ scicalc.main = (function() {
     onPanelUIOpened: function() {
       initiateDefaultUI(true);
     }
-  }
+  };
 
   /*
    * Initiates the default calculator UI. Once added, it removes all observers
@@ -157,12 +157,12 @@ scicalc.main = (function() {
 		ebd("navigator-toolbox")[panel ? 'removeEventListener' : 'addEventListener'](
 			"aftercustomization", widgetAddObserver.onPanelUIOpened, false);
 	  }
-      var panelUI = ebd("PanelUI-popup")
+      var panelUI = ebd("PanelUI-popup");
       if (panelUI) {
 		POPUP_LISTENER[panel ? 'remove' : 'add'](panelUI, widgetAddObserver.onPanelUIOpened);
       }
     }
-  }
+  };
 
   /**
    * Addon initialization
@@ -176,11 +176,11 @@ scicalc.main = (function() {
 	prefManager.addObserver("", prefObserver, false);
 
     // Initiate various preferences
-	for (k in prefObserver.handler) {
+	for (var k in prefObserver.handler) {
       prefObserver.handler[k](k);
     }
 
-    askPop = ebd("scicalc-askmode");
+	askPop = ebd("scicalc-askmode");
 	infoPop = ebd("scicalc-info");
 	errorPop = ebd("scicalc-error");
 
@@ -204,9 +204,9 @@ scicalc.main = (function() {
 	if(hnodes.length < n) n = hnodes.length;
 	if(n > 0) {
 	  var shift = hnodes.length-n;
-	  for(var i=0;i<n;i++)
+	  for(var i=0; i<n; i++)
 		addHistoryEl(hnodes[i+shift].getAttribute("ques"), hnodes[i+shift].getAttribute("ans"));
-	};
+	}
 	historyBox.setAttribute('rows', n);
 
     // initiate default UI
@@ -233,7 +233,7 @@ scicalc.main = (function() {
    */
   var historyElMouseOver = function() {
 	historyBox.selectedIndex = historyBox.getIndexOfItem(this);
-  }
+  };
 
   /**
    * Adds a history item at the top of the list, i.e., the second position.
@@ -289,7 +289,7 @@ scicalc.main = (function() {
 		  result = scicalc.realMath.converttodec(exp);
 		}
 	    return (pre + result.toString(mode).toUpperCase());
-	  }
+	  };
 
       uihandler.inputbox.value = uihandler.inputbox.value.replace(/^\s\s*/, '').replace(/\s\s*$/, '');
       var ret = uihandler.inputbox.value == "" ? "" : updateExp(mode, uihandler.inputbox.value);
@@ -308,7 +308,7 @@ scicalc.main = (function() {
 	if (prefManager) {
 	  prefManager.setIntPref("defaultMode", mode);
 	}
-  }
+  };
 
   /**
    * An abstraction of the calculator UI. This abstraction allows us to potentially have more that one
@@ -360,7 +360,7 @@ scicalc.main = (function() {
 			POPUP_LISTENER.remove(infoPop, popupHandler);
 			historyBox.focus();
 			historyBox.selectedIndex = (key==40) ? 0 : (historyBox.itemCount - 1);
-		  }
+		  };
 		  POPUP_LISTENER.add(infoPop, popupHandler);
 		  that.showHistoryPopup();
           e.preventDefault();
@@ -389,7 +389,7 @@ scicalc.main = (function() {
 	window.setTimeout(function() {
 	  icon.setAttribute("error", true);
 	}, 50);
-  }
+  };
 
   // Shows the history popup attached to this panel
   CalculatorUI.prototype.showHistoryPopup = function() {
@@ -397,12 +397,12 @@ scicalc.main = (function() {
 	var clas = scicalc[evalClass];
 	if (evalClass == EVAL_CLASS_REAL) {
 	  if (clas.mode==10) {
-		getStr = function(i) {return i };
+		getStr = function(i) { return i; };
 	  } else{
-		getStr = function(i) {return i.toString(clas.mode).toUpperCase(); };
+		getStr = function(i) { return i.toString(clas.mode).toUpperCase(); };
 	  }
 	} else {
-	  getStr = function(i) {return i.toString(); };
+	  getStr = function(i) { return i.toString(); };
 	}
 
 	var vlist = "ans=" + getStr(clas.ans);
@@ -440,14 +440,14 @@ scicalc.main = (function() {
     };
 
 	infoPop.openPopup(this.panel,"before_start");
-  }
+  };
 
   CalculatorUI.prototype.showAskPopup = function() {
     var modeAsk = ebd("scicalc_mode_ask");
 	var textbox = ebd("scicalc-modeaskpopup-value");
 	textbox.value = modeAsk.label.substring(modeAsk.label.indexOf("(")+1, modeAsk.label.indexOf(")"));
 	askPop.openPopup(this.icon, "before_start", 10);
-  }
+  };
 
   /************** Public Methods *****************/
   return {
@@ -466,7 +466,7 @@ scicalc.main = (function() {
 	  if (CustomizableUI) {
 		var pos = CustomizableUI.getPlacementOfWidget(WIDGET_ID);
 		if (pos.area == "PanelUI-contents") {
-          var panelUI = ebd("PanelUI-popup")
+          var panelUI = ebd("PanelUI-popup");
           if (panelUI && PanelUI) {
             var showHandler = function() {
               if (defaultCalculatorUI) {
@@ -563,5 +563,5 @@ scicalc.main = (function() {
         defaultCalculatorUI.showAskPopup();
       }
     }
-}
+  };
 })();
