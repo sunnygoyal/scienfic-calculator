@@ -1,4 +1,5 @@
 <!ENTITY scicalc.app.name "Calculatrice scientifique">
+<!ENTITY scicalc.app.shortcut "C">
 <!ENTITY scicalc.label.selectbase "Base arithmétique">
 <!ENTITY scicalc.askmode.help "Saisissez un nombre entier entre 2 et 24 ou 'h' pour hexadécimal, 'b' pour binaire, 'd' pour décimal">
 <!ENTITY scicalc.mode.popup.bin "Binaire">

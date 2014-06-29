@@ -15,6 +15,7 @@
 <!ENTITY settings.checkbox.comma.ignore "Ignorer">
 <!ENTITY settings.addonbar.show "Afficher dans addon-bar">
 <!ENTITY settings.addonbar.width "Largeur de la calculatrice">
+<!ENTITY settings.addonbar.collapsible "Calculatrice pliante">
 <!ENTITY constants.listitem.calculated "*calculée*">
 <!ENTITY constants.listitem.natlogbase "Base du logarithme naturel">
 <!ENTITY constants.listitem.answer "Résultat de la dernière expression">

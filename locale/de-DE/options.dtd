@@ -15,6 +15,7 @@
 <!ENTITY settings.checkbox.comma.ignore "Ignorieren">
 <!ENTITY settings.addonbar.show "In der Add-on-Leiste anzeigen">
 <!ENTITY settings.addonbar.width "Breite des Eingabefeldes:">
+<!ENTITY settings.addonbar.collapsible "Erweiterbares Eingabefeld">
 <!ENTITY constants.listitem.calculated "*berechnet*">
 <!ENTITY constants.listitem.natlogbase "Basis des natürlichen Logarithmus">
 <!ENTITY constants.listitem.answer "Ergebnis des letzten Ausdrucks">

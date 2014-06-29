@@ -6,11 +6,12 @@
 		<em:id>ststusscicalc@sunny</em:id>
 		<em:type>2</em:type>
 		<em:name>Scientific Calculator</em:name>
-		<em:version>5.2.1</em:version>
+		<em:version>5.3</em:version>
 		<em:description>A scientific calculator in the toolbar. Enter the expression to calculate and hit enter to evaluate.</em:description>
 		<em:creator>Sunny Goyal</em:creator>
 		<em:homepageURL>https://github.com/sunnygoyal/scienfic-calculator</em:homepageURL>
 		<em:iconURL>chrome://statusscicalc/skin/icon.png</em:iconURL>
+		<em:icon64URL>chrome://statusscicalc/skin/icon64.png</em:icon64URL>
 		<em:optionsURL>chrome://statusscicalc/content/options.xul</em:optionsURL>
 
 		<em:targetApplication>

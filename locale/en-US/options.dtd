@@ -15,6 +15,7 @@
 <!ENTITY settings.checkbox.comma.ignore "Ignore">
 <!ENTITY settings.addonbar.show "Show in Add-on Bar">
 <!ENTITY settings.addonbar.width "Width of the input field:">
+<!ENTITY settings.addonbar.collapsible "Collapsible input field">
 <!ENTITY constants.listitem.calculated "*calculated*">
 <!ENTITY constants.listitem.natlogbase "Natural Log Base">
 <!ENTITY constants.listitem.answer "Solution of last Expression">

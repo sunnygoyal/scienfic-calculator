@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
-<?xml-stylesheet href="chrome://statusscicalc/skin/scicalc.css" type="text/css"?> 
+<?xml-stylesheet href="chrome://statusscicalc/skin/scicalc.css" type="text/css"?>
+
 <!DOCTYPE window SYSTEM "chrome://statusscicalc/locale/scicalc.dtd" >
+
 <overlay id="status-bar-calculator" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"> 
 
 	<popupset id="mainPopupSet">
@@ -14,7 +16,7 @@
               <button class="calcbutton butcancel" oncommand="scicalc.main.hideAskPopup();"/>
           </hbox>
         </vbox>
-		<description style="width: 180px; min-height:40px;">&scicalc.askmode.help;</description>
+		<description style="width:180px; margin:0px;">&scicalc.askmode.help;</description>
 	</panel>
 
 	<menupopup id="scicalc_mode_popup" position="before_start">
@@ -52,17 +54,24 @@
   </popupset>
 
   <toolbarpalette id="BrowserToolbarPalette">
-	<toolbaritem id="scicalc-container" title="&scicalc.app.name;"
-		align="center" class="chromeclass-toolbar-additional panel-wide-item"
-		cui-areatype="toolbar" persist="width" removable="true">
-			<textbox id="scicalc-input" flex="1" class="searchbar-textbox" >
-				<image id="scicalc-icon" />
+	<toolbaritem title="&scicalc.app.name;" id="scicalc-container"
+		class="chromeclass-toolbar-additional panel-wide-item collapsible collapsed"
+		align="center" cui-areatype="toolbar" persist="width" removable="true">
+			<textbox id="scicalc-input" flex="1" class="searchbar-textbox">
+				<image id="scicalc-icon" class="scicalc-icon" />
+				<image id="scicalc-close" />
 			</textbox>
+			<toolbarbutton id="scicalc-button"
+				label="&scicalc.app.name;"
+				tooltiptext="&scicalc.app.name;"
+				class="toolbarbutton-1 chromeclass-toolbar-additional custombutton">
+				<image class="scicalc-icon" />
+			</toolbarbutton>
 	</toolbaritem>
   </toolbarpalette>
 
   <keyset>
-	<key id="scicalc-key" modifiers="alt" key="C" oncommand="scicalc.main.openCalc();"/>
+	<key id="scicalc-key" modifiers="alt" key="&scicalc.app.shortcut;" oncommand="scicalc.main.openCalc();"/>
   </keyset>
 
   <script type="application/x-javascript" src="chrome://statusscicalc/content/lib/complexMath.js" />
