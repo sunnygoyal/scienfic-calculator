@@ -347,9 +347,12 @@ scicalc.main = (function() {
 		  	setFocus(this);
 		  } catch (e) {
 		  	that.error();
-		  	if(e.desc && typeof(e.desc)=="string") showError(e.desc);
-		  	else if (e.name.toLowerCase() == "syntaxerror")
+			if (e.desc && typeof(e.desc)=="string")
+			  showError(e.desc);
+			else if (e.name.toLowerCase() == "syntaxerror")
 			  showError(scicalc.invalidExpError.desc);
+			else
+			  console.log(e); // unexpected error
 		  }
           e.preventDefault();
 		} else if (e.which == 34) { // hit page down
