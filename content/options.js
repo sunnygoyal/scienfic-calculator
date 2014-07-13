@@ -1,4 +1,4 @@
-//***************************** Commom Functions  *******************************//
+//***************************** Common Functions  *******************************//
 
 function const_checkvalid(editmode){
 	var const_list = ebd("const_list");
@@ -191,8 +191,6 @@ function operMoveDown(){
 //***************************** End of Common Functions ****************************//
 function intiValues() {
 	var prefManager = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-
-	ebd('addon_bar_width').disabled = !prefManager.getBoolPref("extensions.ststusscicalc.showInAddonBar");
 
 	var dec = prefManager.getIntPref("extensions.ststusscicalc.decimal");
 	ebd("roundAllowed").checked = dec > 0;

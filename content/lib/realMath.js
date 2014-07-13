@@ -20,14 +20,14 @@ scicalc.realMath = {
 		if(x>0)
 			return Math.log(x);
 		else 
-			throw {desc: scicalc.str("logError") + x};
+			throw {desc: scicalc.str("logError") + " " + x};
 	},
 
 	log : function(x){
 		if(x>0)
 			return Math.log(x)/Math.log(10);
 		else 
-			throw {desc: scicalc.str("logError") + x};
+			throw {desc: scicalc.str("logError") + " " + x};
 	},
 	
 	asin : function(x){
@@ -96,7 +96,7 @@ scicalc.realMath = {
 	getVar : function(id){
 		for(var i=0;i<this.variables.length;i++)
 			if(this.variables[i] == id) return this.values[i];
-		throw {desc: scicalc.str("unknownVariable") + id};
+		throw {desc: scicalc.str("unknownVariable") + " " + id};
 	},
 	
 	setVar : function(id,val){

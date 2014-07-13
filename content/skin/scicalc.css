@@ -1,87 +1,111 @@
-/* **************** Toolbar *************** */
-#scicalc-container {
-    min-width: 22.35em;
-}
+/*************** TOOLBAR ***************/
 
-toolbarpaletteitem[place="palette"] > #scicalc-container {
-    min-width: 7.4em;
-}
-#scicalc-container[cui-areatype="menu-panel"] {
-	margin-top: 5px;
+/** general styles for toolbar panel **/
+#scicalc-container {
+	min-width: 28px; /* do not collapse when exchanging buttons during transition */
 }
 
 #scicalc-input {
-	min-height: 22px;
-	background-color: -moz-field;
-	padding: 1px 2px;
+	height: 22px;
+	width: 1000px;
+	max-width: 1000px;
+	-moz-transition: max-width .3s, width .3s;
 }
 
-#scicalc-icon {
-	height: 16px;
-	width: 16px;
-	margin-right: 2px;
-	cursor: default;
+.scicalc-icon {
 	list-style-image: url("chrome://statusscicalc/skin/calc.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
+	padding: 2px;
+	cursor: default;
 }
 
-/** Addon bar panel **/
-#scicalc-statusbar-container {
-	height: 18px;
+#scicalc-icon[error="true"] {
+	-moz-animation: error 0.2s step-end 0s 5;
 }
-#scicalc-statusbar-container > textbox {
-	max-height: 16px !important;
-	background-color: -moz-field;
-	padding: 1px;
-	-moz-transition: width .3s;
+@-moz-keyframes error {
+	0% { -moz-image-region: rect(0px, 16px, 16px, 0px); }
+	50% { -moz-image-region: rect(0px, 48px, 16px, 32px); }
+	100% { -moz-image-region: rect(0px, 16px, 16px, 0px); }
 }
-#scicalc-statusbar-container > textbox > image {
-	width: 14px !important;
-	height: 14px;
-	padding: 0px 2px !important;
+
+#scicalc-button {
+	visibility: collapse;
+	padding: 3px 4px !important;
+	margin: 0 !important;
+}
+
+#scicalc-close {
 	list-style-image: url("chrome://statusscicalc/skin/close.png");
 	-moz-image-region: rect(0px, 12px, 12px, 0px);
 	-moz-box-ordinal-group: 2;
 	cursor: default;
 	opacity: 0.5;
+	padding: 4px 3px;
+	-moz-transition: opacity .3s;
+	visibility: collapse;
 }
-#scicalc-statusbar-container > textbox > image:hover {
+
+#scicalc-close:hover {
 	opacity: 0.9;
 }
 
-#scicalc-statusbar-container > image {
-	cursor: default;
-	list-style-image: url("chrome://statusscicalc/skin/calc.png");
-	-moz-image-region: rect(0px, 16px, 16px, 0px);
-}
-/** End of status bar styles **/
-
-
-#scicalc-icon[error="true"], #scicalc-statusbar-container > image[error="true"] {
-	-moz-animation: error 0.2s step-end 0s 5;
+/** customizations (visibility and animations) for collapsible input panel **/
+#scicalc-container.collapsible #scicalc-close {
+	visibility: visible;
 }
 
-
-@-moz-keyframes error {
-	0% {
-		-moz-image-region: rect(0px, 16px, 16px, 0px);
-	}
-	
-	50% {
-		-moz-image-region: rect(0px, 48px, 16px, 32px);
-	}
-
-	100% {
-		-moz-image-region: rect(0px, 16px, 16px, 0px);
-	}
+#scicalc-container.collapsible.collapsed > #scicalc-input {
+	max-width: 21px;
+	visibility: collapse;
+	-moz-transition: max-width .3s, visibility .3s;
 }
 
-/** Various popups ***/
+#scicalc-container.collapsible.collapsed > #scicalc-button {
+	visibility: visible;
+	-moz-transition: visibility 0s .3s;
+}
+
+#scicalc-container.collapsible.collapsed #scicalc-close {
+	opacity: 0;
+}
+
+/** customizations for PanelUI toolbar panel **/
+#scicalc-container[cui-areatype="menu-panel"] #scicalc-input  {
+	min-width: 262px;
+	max-width: 262px !important;
+	visibility: visible !important;
+}
+
+#scicalc-container[cui-areatype="menu-panel"] > #scicalc-button {
+	display: none;
+}
+
+#scicalc-container[cui-areatype="menu-panel"] #scicalc-close {
+	display: none;
+}
+
+/** customization for customization mode **/
+toolbarpaletteitem[place="palette"]	#scicalc-input {
+	min-width: 5em;
+	max-width: 5em !important;
+	visibility: visible !important;
+}
+
+toolbarpaletteitem[place="palette"]	#scicalc-button,
+toolbarpaletteitem[place="palette"]	#scicalc-close {
+	display:none;
+}
+
+
+
+/*************** POPUPS ***************/
+
+/** Various popups **/
 #scicalc-error, #scicalc-info {
 	width: 22.35em;
 }
 
-/** Ask mode popup */
+/** Ask mode popup **/
 .calcbutton {
 	-moz-appearance: none;
 	color: #fff;
@@ -101,13 +125,13 @@ toolbarpaletteitem[place="palette"] > #scicalc-container {
 
 .calcbutton:hover:active,
 .calcbutton:hover:active {
-  background: linear-gradient(rgba(40,40,40,.9), rgba(70,70,70,.9));
-  box-shadow: inset 0 0 3px rgba(0,0,0,.2), inset 0 1px 7px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.1);
+	background: linear-gradient(rgba(40,40,40,.9), rgba(70,70,70,.9));
+	box-shadow: inset 0 0 3px rgba(0,0,0,.2), inset 0 1px 7px rgba(0,0,0,.4), 0 1px 0 rgba(255,255,255,.1);
 }
 
 .calcbutton:-moz-focusring,
 .calcbutton:-moz-focusring {
-  box-shadow: 0 0 1px -moz-mac-focusring inset, 0 0 4px 1px -moz-mac-focusring, 0 0 2px 1px -moz-mac-focusring;
+	box-shadow: 0 0 1px -moz-mac-focusring inset, 0 0 4px 1px -moz-mac-focusring, 0 0 2px 1px -moz-mac-focusring;
 }
 
 #scicalc-calcPopupTitle {
@@ -115,36 +139,36 @@ toolbarpaletteitem[place="palette"] > #scicalc-container {
 	font-weight: bold;
 }
 
-.butok{
+.butok {
 	list-style-image: url("chrome://statusscicalc/skin/okcancel.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
 }
-.butcancel{
+.butcancel {
 	list-style-image: url("chrome://statusscicalc/skin/okcancel.png");
 	-moz-image-region: rect(0px, 32px, 16px, 16px);
 }
 
 #scicalc-askmode-content {
-	background: url("chrome://statusscicalc/skin/icon.png") no-repeat 0 5px;
-	padding-left: 30px;
+	background: url("chrome://statusscicalc/skin/icon.png") no-repeat;
+	padding-left: 40px;
 	margin-bottom: 5px;
 }
 
 /** History popup **/
-#scicalc-historyBox{
+#scicalc-historyBox {
 	-moz-appearance: none;
 	border: none;
 	margin: 2px 0;
 	overflow: hidden;
 }
 
-#scicalc-historyBox > listitem >listcell:last-child{
+#scicalc-historyBox > listitem > listcell:last-child {
 	margin-left: 5px;
 	margin-right: 3px;
 	color: #777;
 }
 
-#scicalc-info >label {
+#scicalc-info > label {
 	font-weight:bold;
 }
 

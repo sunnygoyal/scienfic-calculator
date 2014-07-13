@@ -6,15 +6,15 @@
 <!ENTITY settings.menuitem.modulo "modulo">
 <!ENTITY settings.menuitem.percent "pourcentage">
 <!ENTITY settings.label.operator "opérateur">
-<!ENTITY settings.label.history "Taille de l'historique">
+<!ENTITY settings.label.history "Taille de l'historique:">
 <!ENTITY settings.label.round "Arrondir">
-<!ENTITY settings.label.roundlength "Nombre de décimales :">
+<!ENTITY settings.label.roundlength "Nombre de décimales:">
 <!ENTITY settings.checkbox.comma "Virgule (,)">
 <!ENTITY settings.checkbox.comma.argument "Traiter comme séparateur d'arguments">
 <!ENTITY settings.checkbox.comma.dot "Traiter comme séparateur décimal">
 <!ENTITY settings.checkbox.comma.ignore "Ignorer">
-<!ENTITY settings.addonbar.show "Afficher dans addon-bar">
 <!ENTITY settings.addonbar.width "Largeur de la calculatrice">
+<!ENTITY settings.addonbar.collapsible "Calculatrice pliante">
 <!ENTITY constants.listitem.calculated "*calculée*">
 <!ENTITY constants.listitem.natlogbase "Base du logarithme naturel">
 <!ENTITY constants.listitem.answer "Résultat de la dernière expression">
@@ -23,9 +23,9 @@
 <!ENTITY constants.button.edit "Modifier">
 <!ENTITY constants.button.reload "Recharger">
 <!ENTITY constants.button.save "Enregistrer">
-<!ENTITY constants.label.identifier "Symbole :">
+<!ENTITY constants.label.identifier "Symbole:">
 <!ENTITY constants.label.value "Valeur :">
-<!ENTITY constants.label.description "Description :">
+<!ENTITY constants.label.description "Description:">
 <!ENTITY constants.button.cancel "Annuler">
 <!ENTITY constants.button.done "Valider">
 <!ENTITY functions.label.name "Nom de fonction:">

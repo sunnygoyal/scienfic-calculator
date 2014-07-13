@@ -7,10 +7,12 @@
   %commonDTD;
   <!ENTITY % optionsDTD SYSTEM "chrome://statusscicalc/locale/options.dtd">
   %optionsDTD;
-]><prefwindow title="&scicalc.app.name;"
+]>
+
+<prefwindow title="&scicalc.app.name;"
             id="statusscicalc-pref"
             xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-        buttons="accept,cancel" ondialogaccept="return options_accept();">
+            buttons="accept,cancel" ondialogaccept="return options_accept();">
 
   <prefpane id="statussicalc_pref" onpaneload="intiValues()">
 	<script type="application/x-javascript" src="lib/listcontrol.js"/>
@@ -27,10 +29,10 @@
 		<preference id="pref-comma" name="extensions.ststusscicalc.ignorecomma" type="int"/>
 
 		<!-- Preference for addon bar -->
-		<preference id="pref-show-addonbar" name="extensions.ststusscicalc.showInAddonBar" type="bool"/>
 		<preference id="pref-width-addonbar" name="extensions.ststusscicalc.addonBarWidth" type="int"/>
-
+		<preference id="pref-collapsible-addonbar" name="extensions.ststusscicalc.addonBarCollapsible" type="bool"/>
 	</preferences>
+
 	<tabbox>
 		<tabs>
 			<tab label="&options.tab.settings;"/>
@@ -60,7 +62,7 @@
 							</row>
 							<hbox align="center">
 								<label value="&settings.label.history;" control="history_length"/>
-								<textbox id="history_length"  type="number" size="2" preference="pref-history" min="5" max="20"/>
+								<textbox id="history_length" type="number" size="2" preference="pref-history" min="5" max="20"/>
 							</hbox>
 							<hbox align="center">
 								<label value="&settings.checkbox.comma;" control="pref_commamode"/>
@@ -75,22 +77,22 @@
 						</rows>
 					</grid>
 				</groupbox>
+
 				<groupbox orient="horizontal" align="center">
 					<caption>
 						<checkbox id="roundAllowed" label="&settings.label.round;" checked="false" oncommand="dotDigit();"/>
 					</caption>
 					<label value="&settings.label.roundlength;" control="digit_af_dot"/>
-					<textbox id="digit_af_dot"  type="number" size="1" value="6" min="2" max="24" onchange="dotDigit();"/>
+					<textbox id="digit_af_dot" type="number" size="1" value="6" min="2" max="24" onchange="dotDigit();"/>
 				</groupbox>
 
-				<groupbox orient="horizontal" align="center">
-					<caption>
-						<checkbox preference="pref-show-addonbar" label="&settings.addonbar.show;" oncommand="ebd('addon_bar_width').disabled = !this.checked"/>
-					</caption>
-					<label value="&settings.addonbar.width;" control="addon_bar_width"/>
-					<textbox id="addon_bar_width"  type="number" size="3" min="100" max="500" preference="pref-width-addonbar"/>
+				<groupbox orient="vertical" align="left">
+					<hbox align="center">
+						<label value="&settings.addonbar.width;" control="addon_bar_width"/>
+						<textbox id="addon_bar_width" type="number" size="3" max="999" preference="pref-width-addonbar"/>
+					</hbox>
+					<checkbox preference="pref-collapsible-addonbar" label="&settings.addonbar.collapsible;"/>
 				</groupbox>
-			
 			</tabpanel>
 
 			<tabpanel orient="horizontal">
@@ -240,5 +242,5 @@
 			</tabpanel>
 		</tabpanels>
 	</tabbox>
-	</prefpane>
+  </prefpane>
 </prefwindow>

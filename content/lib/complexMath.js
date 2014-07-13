@@ -52,7 +52,7 @@ scicalc.complexMath = {
 		
 		for(var i=0;i<this.variables.length;i++)
 			if(this.variables[i] == id) return this.values[i];
-		throw {desc: scicalc.str("unknownVariable") + id};
+		throw {desc: scicalc.str("unknownVariable")+ " " + id};
 	},
 	
 	setVar : function(id,val){
