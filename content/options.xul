@@ -20,7 +20,7 @@
 	<script type="application/x-javascript" src="editor/cmEditor.js"/>
 	<script type="application/x-javascript" src="options.js"/>
 
-  	<preferences id="prefs">
+	<preferences id="prefs">
 		<preference id="pref-width" name="extensions.ststusscicalc.expWidth" type="int"/>
 		<preference id="pref-modulo" name="extensions.ststusscicalc.useModulo" type="bool"/>
 		<preference id="pref-angleradian" name="extensions.ststusscicalc.defaultRadian" type="bool"/>
@@ -97,9 +97,9 @@
 
 			<tabpanel orient="horizontal">
 				<listbox id="const_list" onselect="constHandler.list_sel()" width="80">
-					<listitem value="&constants.listitem.calculated;" desc="&constants.listitem.natlogbase;" label="e" />
-					<listitem value="&constants.listitem.calculated;" desc="3.14159" label="pi" />
-					<listitem value="&constants.listitem.calculated;" desc="&constants.listitem.answer;" label="ans" />
+					<listitem value="&constants.listitem.calculated;" desc="&constants.listitem.natlogbase;" label="e"/>
+					<listitem value="&constants.listitem.calculated;" desc="3.14159" label="pi"/>
+					<listitem value="&constants.listitem.calculated;" desc="&constants.listitem.answer;" label="ans"/>
 				</listbox>
 				<vbox flex="1">
 					<hbox class="listcontrol_toolbar">
@@ -112,34 +112,36 @@
 					</hbox>
 					<grid>
 						<columns>
-							<column />
+							<column/>
 							<column flex="1"/>
 						</columns>
 						<rows>
 							<row align="center">
-								<label control="const_name" value="&constants.label.identifier;" />
+								<label control="const_name" value="&constants.label.identifier;"/>
 								<textbox id="const_name" size="10"/>
 							</row>
 							<row align="center">
-								<label control="const_value" value="&constants.label.value;" />
-								<textbox id="const_value" size="10" />
+								<label control="const_value" value="&constants.label.value;"/>
+								<textbox id="const_value" size="10"/>
 							</row>
-							<label control="const_desc" value="&constants.label.description;" />
-							<textbox id="const_desc" />
+							<vbox>
+								<label control="const_desc" value="&constants.label.description;"/>
+								<textbox id="const_desc"/>
+							</vbox>
 						</rows>
 					</grid>
 					<spacer flex="1"/>
 					<hbox>
-						<spacer flex="1" />
+						<spacer flex="1"/>
 						<button id="const_but_cancel" label="&constants.button.cancel;" oncommand="constHandler.list_sel();"/>
-						<button id="const_but_done"   label="&constants.button.done;" oncommand="constHandler.clicked_done();" />
+						<button id="const_but_done"   label="&constants.button.done;"   oncommand="constHandler.clicked_done();"/>
 					</hbox>
 				</vbox>
 			</tabpanel>
 
 			<tabpanel orient="vertical">
 				<hbox>
-					<listbox id="func_list" onselect="funcHandler.list_sel()" height="40" flex="1" width="80"/>
+					<listbox id="func_list" onselect="funcHandler.list_sel()" width="80" height="40"/>
 					<vbox flex="1">
 						<hbox class="listcontrol_toolbar">
 							<spacer flex="1"/>
@@ -151,43 +153,40 @@
 						</hbox>
 						<grid>
 							<columns>
-								<column />
-								<column />
+								<column/>
+								<column/>
 							</columns>
 							<rows>
 								<row align="center">
-									<label control="func_name" value="&functions.label.name;" />
+									<label control="func_name" value="&functions.label.name;"/>
 									<textbox id="func_name" size="10" onchange="func_name_changed()"/>
 								</row>
 								<row align="center">
-									<label control="func_args" value="&functions.label.args;" />
-									<hbox>
-										<textbox id="func_args" onchange="func_update_sig()" type="number" size="2" min="0" max="6" value="1"/>
-										<spacer flex="1"/>
-									</hbox>
+									<label control="func_args" value="&functions.label.args;"/>
+									<textbox id="func_args" onchange="func_update_sig()" type="number" size="2" min="0" max="6" value="1"/>
 								</row>
+								<vbox>
+									<label control="func_desc" value="&constants.label.description;"/>
+									<textbox id="func_desc" flex="1"/>
+								</vbox>
 							</rows>
 						</grid>
 					</vbox>
 				</hbox>
-				<hbox align="center">
-					<label control="func_desc" value="&constants.label.description;" />
-					<textbox id="func_desc" flex="1" />
-				</hbox>
 				
-				<label control="func_code" value="Code:" />
+				<label control="func_code" value="Code:"/>
 				<iframe id="func_code" name="func_code" src="" frameBorder="1" flex="1"/>
 				
 				<hbox>
-					<spacer flex="1" />
+					<spacer flex="1"/>
 					<button id="func_but_cancel" label="&constants.button.cancel;" oncommand="funcHandler.list_sel();"/>
-					<button id="func_but_done"   label="&constants.button.done;" oncommand="funcHandler.clicked_done();" />
+					<button id="func_but_done"   label="&constants.button.done;"   oncommand="funcHandler.clicked_done();"/>
 				</hbox>
 			</tabpanel>
 
 			<tabpanel orient="vertical">
 				<hbox>
-					<listbox id="oper_list" onselect="operHandler.list_sel()" height="40" flex="1" width="60">
+					<listbox id="oper_list" onselect="operHandler.list_sel()" width="56" height="40">
 						<listitem desc="Exponential Power operator" code="return Math.pow(x,y);" label="^" asst="rt"/>
 					</listbox>
 					<vbox>
@@ -206,38 +205,39 @@
 						</hbox>
 						<grid>
 							<columns>
-								<column />
-								<column />
+								<column/>
+								<column/>
 							</columns>
 							<rows>
 								<row align="center">
-									<label control="oper_name" value="&operators.label.operator;" />
+									<label control="oper_name" value="&operators.label.operator;"/>
 									<textbox id="oper_name" size="5" onchange="oper_name_changed()"/>
 								</row>
 								<row align="center">
-									<label control="oper_asst" value="&operators.label.asst;" />
-									<menulist id="oper_asst">
+									<label control="oper_asst" value="&operators.label.asst;"/>
+									<menulist id="oper_asst" style="-moz-appearance:textfield;">
 										<menupopup>
 											<menuitem label="Left" value=""/>
 											<menuitem label="Right" value="rt"/>
 										</menupopup>
 									</menulist>
 								</row>
+								<vbox>
+									<label control="oper_desc" value="&constants.label.description;"/>
+									<textbox id="oper_desc" flex="1"/>
+								</vbox>
 							</rows>
 						</grid>
 					</vbox>
 				</hbox>
-				<hbox align="center">
-					<label control="oper_desc" value="&constants.label.description;" />
-					<textbox id="oper_desc" flex="1" />
-				</hbox>
-				<label control="oper_code" value="Code:" />
+				
+				<label control="oper_code" value="Code:"/>
 				<iframe id="oper_code" name="oper_code" src="" frameBorder="1" flex="1"/>
 			
 				<hbox>
-					<spacer flex="1" />
+					<spacer flex="1"/>
 					<button id="oper_but_cancel" label="&constants.button.cancel;" oncommand="operHandler.list_sel();"/>
-					<button id="oper_but_done"   label="&constants.button.done;" oncommand="operHandler.clicked_done();" />
+					<button id="oper_but_done"   label="&constants.button.done;"   oncommand="operHandler.clicked_done();"/>
 				</hbox>
 			</tabpanel>
 		</tabpanels>
