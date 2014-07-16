@@ -1,36 +1,13 @@
 toolbarbutton {
-  -moz-box-orient: vertical;
-  min-width: 0;
-  padding: 5px 5px 2px 5px;
-  border: 1px solid transparent;
-  border-bottom: 2px solid transparent;
-  border-radius: 5px;
-}
-
-toolbarbutton:hover {
-  border: 1px solid #f0f0f0;
-  border-bottom: 2px solid #ccc;
-  box-shadow: inset 0 -1px 1px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.8);
-}
-
-toolbarbutton:active {
-  border: 1px solid #f0f0f0;
-  border-top: 2px solid #ccc;
-  box-shadow: inset 0 -1px 1px rgba(0,0,0,0.5), inset 0 1px 1px rgba(255,255,255,0.8);
+  padding: 4px;
 }
 
 toolbarbutton[disabled="true"] {
-  border: 1px solid transparent;
-  border-bottom: 2px solid transparent;
-  box-shadow: none;
-  opacity: 0.6;
+  filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale");
 }
 
-toolbarbutton > .toolbarbutton-icon {
-  -moz-margin-end: 0px;
-}
 
-.listcontrol_toolbar> toolbarbutton,
+.listcontrol_toolbar > toolbarbutton,
 #but_moveup,
 #but_movedown{
 	list-style-image: url("chrome://statusscicalc/skin/toolbarimages.png");
@@ -85,8 +62,5 @@ toolbarbutton > .toolbarbutton-icon {
 }
 
 textbox[redback="true"] {
-	-moz-appearance:none;
-	border: 1px solid #000000;
-	color: #000000;
-	background : #ffaaaa;
+	box-shadow: inset 0 0 0 1px red;
 }
