@@ -6,7 +6,8 @@
 }
 
 #scicalc-input {
-	height: 22px;
+	-moz-box-align: center;
+	height: 24px;
 	width: 1000px;
 	max-width: 1000px;
 	-moz-transition: max-width .3s, width .3s;
@@ -15,7 +16,7 @@
 .scicalc-icon {
 	list-style-image: url("chrome://statusscicalc/skin/calc.png");
 	-moz-image-region: rect(0px, 16px, 16px, 0px);
-	padding: 2px;
+	padding: 0px 2px;
 	cursor: default;
 }
 
@@ -30,7 +31,7 @@
 
 #scicalc-button {
 	visibility: collapse;
-	padding: 3px 4px !important;
+	padding: 0px 4px !important;
 	margin: 0 !important;
 }
 
@@ -40,7 +41,7 @@
 	-moz-box-ordinal-group: 2;
 	cursor: default;
 	opacity: 0.5;
-	padding: 4px 3px;
+	padding: 0px 3px;
 	-moz-transition: opacity .3s;
 	visibility: collapse;
 }
@@ -54,8 +55,8 @@
 	visibility: visible;
 }
 
-#scicalc-container.collapsible.collapsed > #scicalc-input {
-	max-width: 21px;
+#scicalc-container.collapsible.collapsed #scicalc-input {
+	max-width: 22px;
 	visibility: collapse;
 	-moz-transition: max-width .3s, visibility .3s;
 }

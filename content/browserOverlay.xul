@@ -55,18 +55,22 @@
 
   <toolbarpalette id="BrowserToolbarPalette">
 	<toolbaritem title="&scicalc.app.name;" id="scicalc-container"
-		class="chromeclass-toolbar-additional panel-wide-item collapsible collapsed"
-		align="center" cui-areatype="toolbar" persist="width" removable="true">
-			<textbox id="scicalc-input" flex="1" class="searchbar-textbox">
+	             class="chromeclass-toolbar-additional panel-wide-item collapsible collapsed"
+	             cui-areatype="toolbar" removable="true">
+		<vbox>
+			<spacer flex="1"/>
+			<textbox id="scicalc-input" class="searchbar-textbox">
 				<image id="scicalc-icon" class="scicalc-icon" />
 				<image id="scicalc-close" />
 			</textbox>
-			<toolbarbutton id="scicalc-button"
-				label="&scicalc.app.name;"
-				tooltiptext="&scicalc.app.name;"
-				class="toolbarbutton-1 chromeclass-toolbar-additional custombutton">
-				<image class="scicalc-icon" />
-			</toolbarbutton>
+			<spacer flex="1"/>
+		</vbox>
+		<toolbarbutton id="scicalc-button"
+			label="&scicalc.app.name;"
+			tooltiptext="&scicalc.app.name;"
+			class="toolbarbutton-1 chromeclass-toolbar-additional custombutton">
+			<image class="scicalc-icon" />
+		</toolbarbutton>
 	</toolbaritem>
   </toolbarpalette>
 
