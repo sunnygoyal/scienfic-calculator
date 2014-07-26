@@ -59,7 +59,7 @@
 	             cui-areatype="toolbar" removable="true">
 		<vbox>
 			<spacer flex="1"/>
-			<textbox id="scicalc-input" class="searchbar-textbox">
+			<textbox id="scicalc-input" class="searchbar-textbox" flex="9">
 				<image id="scicalc-icon" class="scicalc-icon" />
 				<image id="scicalc-close" />
 			</textbox>
