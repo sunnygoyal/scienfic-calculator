@@ -357,34 +357,52 @@ scicalc.main = (function() {
           e.preventDefault();
 		} else if (e.which == 34) { // hit page down  (-> choose base)
 		  that.showAskPopup();
-		} else if (e.which==40 || e.which==38) { // hit arrow up/down (-> show history box)
+		} else if (e.which == 40 || e.which == 38) { // hit arrow up/down (-> show history box)
 		  var key = e.which;
 		  var popupHandler = function() {
 			POPUP_LISTENER.remove(infoPop, popupHandler);
 			historyBox.focus();
-			historyBox.selectedIndex = (key==40) ? 0 : (historyBox.itemCount - 1);
+			historyBox.selectedIndex = (key == 40) ? 0 : (historyBox.itemCount - 1);
 		  };
 		  POPUP_LISTENER.add(infoPop, popupHandler);
 		  that.showHistoryPopup();
           e.preventDefault();
-		} else if (e.which==27 && prefManager.getBoolPref("addonBarCollapsible")) { // hit escape (-> close calculator)
+		} else if (e.which == 27 && prefManager.getBoolPref("addonBarCollapsible")) { // hit escape (-> close calculator)
 		  panel.classList.add("collapsed");
 		  inputbox.blur();
 		}
     }, false);
+	
+	inputbox.addEventListener("click", function(e) {
+	  if (e.button == 1) { // middle click (-> show history box)
+		var popupHandler = function() {
+			POPUP_LISTENER.remove(infoPop, popupHandler);
+			historyBox.focus();
+			//historyBox.selectedIndex = (key == 40) ? 0 : (historyBox.itemCount - 1);
+		};
+		POPUP_LISTENER.add(infoPop, popupHandler);
+		that.showHistoryPopup();
+	  }
+	}, false);
 
-	button.addEventListener("click", function() {
+	button.addEventListener("click", function(e) {
+	  if (e.button == 0) { // left click
 		panel.classList.remove("collapsed");
 		setFocus(inputbox);
+	  }
 	}, false);
 
-	icon.addEventListener("click", function() {
+	icon.addEventListener("click", function(e) {
+	  if (e.button == 0) { // left click
 		defaultCalculatorUI = that;
 		ebd('scicalc_mode_popup').showPopup(this,-1,-1,"popup","topleft","bottomleft");
+	  }
 	}, false);
 
-	closeIcon.addEventListener("click", function() {
+	closeIcon.addEventListener("click", function(e) {
+	  if (e.button == 0) { // left click
 		panel.classList.add("collapsed");
+	  }
 	}, false);
   }
 
@@ -428,7 +446,7 @@ scicalc.main = (function() {
     // Update the key listener to accept the history entry to the
     // current input box.
     var inputbox = this.inputbox;
-    historyBox.onkeydown = function(event){
+    historyBox.onkeydown = function(event) {
       if(event.which == 13){ //  hit Enter
         if (historyBox.selectedItem) {
           inputbox.value = historyBox.selectedItem.firstChild.getAttribute('label');
@@ -444,6 +462,13 @@ scicalc.main = (function() {
 	  }
 	  return false;
     };
+    historyBox.onclick = function(event) {
+      if (historyBox.selectedItem) {
+          inputbox.value = historyBox.selectedItem.firstChild.getAttribute('label');
+          infoPop.hidePopup();
+          setFocus(inputbox);
+        }
+	 };
 
 	infoPop.openPopup(this.panel,"before_start");
   };
