@@ -107,7 +107,7 @@ scicalc.main = (function() {
 		}
 	  },
 	  addonBarCollapsible: function(k) {
-		if (defaultCalculatorUI ) {
+		if (defaultCalculatorUI) {
 		  if (prefManager.getBoolPref(k)) {
 			defaultCalculatorUI.panel.classList.add("collapsible");
 		  } else {
@@ -338,7 +338,7 @@ scicalc.main = (function() {
       errorPop.hidePopup();
 	  if (!e.which) return;
       
-      if (e.which == 13) { // hit Enter
+      if (e.which == 13) { // hit enter (-> evaluate)
 		var exp = this.value;
 		var result;
 		  try {
@@ -355,9 +355,9 @@ scicalc.main = (function() {
 			  console.log(e); // unexpected error
 		  }
           e.preventDefault();
-		} else if (e.which == 34) { // hit page down
+		} else if (e.which == 34) { // hit page down  (-> choose base)
 		  that.showAskPopup();
-		} else if (e.which==40 || e.which==38) {
+		} else if (e.which==40 || e.which==38) { // hit arrow up/down (-> show history box)
 		  var key = e.which;
 		  var popupHandler = function() {
 			POPUP_LISTENER.remove(infoPop, popupHandler);
@@ -367,6 +367,9 @@ scicalc.main = (function() {
 		  POPUP_LISTENER.add(infoPop, popupHandler);
 		  that.showHistoryPopup();
           e.preventDefault();
+		} else if (e.which==27 && prefManager.getBoolPref("addonBarCollapsible")) { // hit escape (-> close calculator)
+		  panel.classList.add("collapsed");
+		  inputbox.blur();
 		}
     }, false);
 
