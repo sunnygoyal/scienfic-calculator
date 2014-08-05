@@ -2,6 +2,7 @@
 # Build file to zip all the necessary files.
 
 # start fresh
+rm -f scicalc.xpi
 rm -rf build
 mkdir ./build
 
