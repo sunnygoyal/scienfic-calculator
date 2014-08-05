@@ -1,12 +1,17 @@
 Scienfic Calculator
 ===================
 
-A firefox addon to display a calculator in the toolbar.
+A Firefox add-on providing a full-featured scientific calculator which can be placed in any tool-bar or the Australis PanelUI. 
 
-Features:
-* Dynamic variable declaration using expressions like a=3+3
-* Define custom functions, constants and operator in options
-* Use different base for calculations, like hex or binary
-* Supports complex math calculations using 'i'
+Enter the expression you want to calculate and evaluate it by simply hitting the return key.
 
-https://addons.mozilla.org/en-US/firefox/addon/status-bar-scientific-calculat/
+##### Important features
+* Dynamic variable declaration using expressions like a=3+3.
+* Define custom constants, as well as arbitrary functions and operators.
+* Use different numeral systems for your calculations, e.g. binary or hexadecimal.<br>
+  Alternatively define an arbitrary base of your choice.
+* Support for complex calculations using the imaginary unit 'i'.
+* Quick calculator access via keyboard at all times (Alt+C in most locales).
+
+##### Add-on homepage
+https://addons.mozilla.org/firefox/addon/scientific-calculator/
