@@ -431,7 +431,7 @@ scicalc.main = (function() {
 
 	var vlist = "ans=" + getStr(clas.ans);
 	for (var i=0; i < clas.variables.length; i++) {
-	  vlist += " ,  ";
+	  vlist += "; ";
 	  if(clas.variables[i] != 'ans')
 		vlist += clas.variables[i] + "=" + getStr(clas.values[i]);
 	}
@@ -440,7 +440,7 @@ scicalc.main = (function() {
 	  vlistHolder.hidden = true;
 	else {
 	  vlistHolder.removeAttribute("hidden");
-	  vlistHolder.value = vlist;
+	  vlistHolder.textContent = vlist;
 	}
 
     // Update the key listener to accept the history entry to the

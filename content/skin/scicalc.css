@@ -177,8 +177,6 @@ toolbarpaletteitem[place="palette"]	#scicalc-close {
 }
 
 #scicalc-vlist {
-	-moz-appearance: none;
-	padding: 4px;
 	font-size: 120%;
 	margin-bottom: 10px;
 }
