@@ -355,6 +355,8 @@ scicalc.main = (function() {
 			  console.log(e); // unexpected error
 		  }
           e.preventDefault();
+		} else if (e.which == 33) { // hit page up  (-> show mode popup)
+		  that.showModePopup();
 		} else if (e.which == 34) { // hit page down  (-> choose base)
 		  that.showAskPopup();
 		} else if (e.which == 40 || e.which == 38) { // hit arrow up/down (-> show history box)
@@ -391,8 +393,7 @@ scicalc.main = (function() {
 
 	icon.addEventListener("click", function(e) {
 	  if (e.button == 0) { // left click
-		defaultCalculatorUI = that;
-		ebd('scicalc_mode_popup').showPopup(this,-1,-1,"popup","topleft","bottomleft");
+		that.showModePopup();
 	  }
 	}, false);
 
@@ -468,6 +469,11 @@ scicalc.main = (function() {
 	 };
 
 	infoPop.openPopup(this.panel,"before_start");
+  };
+
+  CalculatorUI.prototype.showModePopup = function() {
+	defaultCalculatorUI = this;
+	ebd('scicalc_mode_popup').showPopup(this.icon,-1,-1,"popup","topleft","bottomleft");
   };
 
   CalculatorUI.prototype.showAskPopup = function() {
