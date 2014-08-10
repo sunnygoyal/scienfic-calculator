@@ -367,9 +367,8 @@ scicalc.main = (function() {
 		  POPUP_LISTENER.add(infoPop, popupHandler);
 		  that.showHistoryPopup();
           e.preventDefault();
-		} else if (e.which == 27 && prefManager.getBoolPref("addonBarCollapsible")) { // hit escape (-> close calculator)
-		  panel.classList.add("collapsed");
-		  inputbox.blur();
+		} else if (e.which == 27) { // hit escape (-> close calculator)
+		  that.closeCalc();
 		}
     }, false);
 	
@@ -378,7 +377,6 @@ scicalc.main = (function() {
 		var popupHandler = function() {
 			POPUP_LISTENER.remove(infoPop, popupHandler);
 			historyBox.focus();
-			//historyBox.selectedIndex = (key == 40) ? 0 : (historyBox.itemCount - 1);
 		};
 		POPUP_LISTENER.add(infoPop, popupHandler);
 		that.showHistoryPopup();
@@ -387,8 +385,7 @@ scicalc.main = (function() {
 
 	button.addEventListener("click", function(e) {
 	  if (e.button == 0) { // left click
-		panel.classList.remove("collapsed");
-		setFocus(inputbox);
+		scicalc.main.openCalc();
 	  }
 	}, false);
 
@@ -401,7 +398,7 @@ scicalc.main = (function() {
 
 	closeIcon.addEventListener("click", function(e) {
 	  if (e.button == 0) { // left click
-		panel.classList.add("collapsed");
+		that.closeCalc();
 	  }
 	}, false);
   }
@@ -478,6 +475,14 @@ scicalc.main = (function() {
 	var textbox = ebd("scicalc-modeaskpopup-value");
 	textbox.value = modeAsk.label.substring(modeAsk.label.indexOf("(")+1, modeAsk.label.indexOf(")"));
 	askPop.openPopup(this.icon, "before_start", 10);
+  };
+  
+  CalculatorUI.prototype.closeCalc = function() {
+	if (prefManager.getBoolPref("addonBarCollapsible")) {
+	  this.panel.classList.add("collapsed");
+	}
+	this.inputbox.blur();
+	window.content.focus();
   };
 
   /************** Public Methods *****************/
