@@ -1,5 +1,4 @@
 <!ENTITY scicalc.app.name "Wissenschaftlicher Taschenrechner">
-<!ENTITY scicalc.app.shortcut "T">
 <!ENTITY scicalc.label.selectbase "Wähle Basis">
 <!ENTITY scicalc.askmode.help "Eine Ganzzahl zwischen 2 und 24 oder h=Hex, b=Bin, d=Dez">
 <!ENTITY scicalc.mode.popup.bin "Bin">

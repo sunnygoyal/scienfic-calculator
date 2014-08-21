@@ -31,6 +31,7 @@
 		<!-- Preference for addon bar -->
 		<preference id="pref-width-addonbar" name="extensions.ststusscicalc.addonBarWidth" type="int"/>
 		<preference id="pref-collapsible-addonbar" name="extensions.ststusscicalc.addonBarCollapsible" type="bool"/>
+		<preference id="pref-accessKey" name="extensions.ststusscicalc.accessKey" type="wstring"/>
 	</preferences>
 
 	<tabbox>
@@ -87,6 +88,10 @@
 				</groupbox>
 
 				<groupbox orient="vertical" align="left">
+					<hbox align="center">
+						<label value="&settings.addonbar.accessKey;" control="access_key"/>
+						<textbox id="access_key" preference="pref-accessKey" maxlength="1" size="1"/>
+					</hbox>
 					<hbox align="center">
 						<label value="&settings.addonbar.width;" control="addon_bar_width"/>
 						<textbox id="addon_bar_width" type="number" size="3" max="999" preference="pref-width-addonbar"/>

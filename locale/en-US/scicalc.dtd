@@ -1,5 +1,4 @@
 <!ENTITY scicalc.app.name "Scientific Calculator">
-<!ENTITY scicalc.app.shortcut "C">
 <!ENTITY scicalc.label.selectbase "Select Base">
 <!ENTITY scicalc.askmode.help "Any integer between 2 and 24 or h=hex, b=bin, d=dec">
 <!ENTITY scicalc.mode.popup.bin "Bin">

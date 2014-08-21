@@ -74,10 +74,6 @@
 	</toolbaritem>
   </toolbarpalette>
 
-  <keyset>
-	<key id="scicalc-key" modifiers="alt" key="&scicalc.app.shortcut;" oncommand="scicalc.main.openCalc();"/>
-  </keyset>
-
   <script type="application/x-javascript" src="chrome://statusscicalc/content/lib/complexMath.js" />
   <script type="application/x-javascript" src="chrome://statusscicalc/content/lib/strFunctions.js" />
   <script type="application/x-javascript" src="chrome://statusscicalc/content/lib/realMath.js" />

@@ -114,7 +114,10 @@ scicalc.main = (function() {
 			defaultCalculatorUI.panel.classList.remove("collapsible");
 		  }
 		}
-	  }
+	  },
+	  accessKey: function(k) {
+	    scicalc.main.updateAccessKey();
+	  },
     }
   };
 
@@ -604,6 +607,29 @@ scicalc.main = (function() {
       } else if (defaultCalculatorUI) {
         defaultCalculatorUI.showAskPopup();
       }
-    }
+    },
+
+	updateAccessKey : function() {
+	  var accessKey = prefManager.getComplexValue("accessKey", Components.interfaces.nsIPrefLocalizedString).data;
+
+	  // remove old keyset (simply updating the old key doesn't work for some reason)
+	  var oldKeyset = ebd("scicalc-keyset");
+	  if (oldKeyset)
+		  oldKeyset.parentNode.removeChild(oldKeyset);
+
+	  // create new keyset and key
+	  if (accessKey) {
+	    var keyset = document.createElement("keyset");
+	    keyset.id = "scicalc-keyset";
+	    var key = document.createElement("key");
+	    key.setAttribute("id", "scicalc-key");
+	    key.setAttribute("key", accessKey);
+	    key.setAttribute("modifiers", "access");
+	    key.setAttribute("oncommand", "scicalc.main.openCalc();");
+		keyset.appendChild(key);
+		var mainKeyset = ebd("mainKeyset");
+	    mainKeyset.parentNode.appendChild(keyset);
+	  }
+	}
   };
 })();

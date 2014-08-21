@@ -13,7 +13,8 @@
 <!ENTITY settings.checkbox.comma.argument "Traiter comme séparateur d'arguments">
 <!ENTITY settings.checkbox.comma.dot "Traiter comme séparateur décimal">
 <!ENTITY settings.checkbox.comma.ignore "Ignorer">
-<!ENTITY settings.addonbar.width "Largeur de la calculatrice">
+<!ENTITY settings.addonbar.accessKey "Touche d'accès:">
+<!ENTITY settings.addonbar.width "Largeur de la calculatrice:">
 <!ENTITY settings.addonbar.collapsible "Calculatrice pliante">
 <!ENTITY constants.listitem.calculated "*calculée*">
 <!ENTITY constants.listitem.natlogbase "Base du logarithme naturel">

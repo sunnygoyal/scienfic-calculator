@@ -13,6 +13,7 @@
 <!ENTITY settings.checkbox.comma.argument "Treat as argument seperator">
 <!ENTITY settings.checkbox.comma.dot "Treat as dot">
 <!ENTITY settings.checkbox.comma.ignore "Ignore">
+<!ENTITY settings.addonbar.accessKey "Access Key:">
 <!ENTITY settings.addonbar.width "Width of the input field:">
 <!ENTITY settings.addonbar.collapsible "Collapsible input field">
 <!ENTITY constants.listitem.calculated "*calculated*">

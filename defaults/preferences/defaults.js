@@ -6,3 +6,4 @@ pref("extensions.ststusscicalc.decimal", 10);
 pref("extensions.ststusscicalc.history", 10);
 pref("extensions.ststusscicalc.addonBarWidth", 250);
 pref("extensions.ststusscicalc.addonBarCollapsible", true);
+pref("extensions.ststusscicalc.accessKey", "chrome://statusscicalc/locale/options.properties");
