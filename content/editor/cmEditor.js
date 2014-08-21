@@ -8,14 +8,14 @@ var CodeEditor = function(frame){
 	codeEditorCount++;
 }
 CodeEditor.prototype.setCode = function(code) {
-	if(codeEditors[this.index]) {
+	if (codeEditors[this.index]) {
 		codeEditors[this.index].setCode(code);
 	}
 }
 CodeEditor.prototype.getCode = function() {
-	if(codeEditors[this.index]) 
+	if (codeEditors[this.index])
 		return codeEditors[this.index].getCode();
-	else 
+	else
 		return "";
 }
 CodeEditor.prototype.setDisable = function(d) {
@@ -24,12 +24,12 @@ CodeEditor.prototype.setDisable = function(d) {
 	} else {
 		this.frame.removeAttribute("disabled");
 	}
-	if(codeEditors[this.index]) codeEditors[this.index].setDisable(d);
+	if (codeEditors[this.index]) codeEditors[this.index].setDisable(d);
 }
 CodeEditor.prototype.setLabel = function(lbl) {
-	if(codeEditors[this.index]) codeEditors[this.index].setLabel(lbl);
+	if (codeEditors[this.index]) codeEditors[this.index].setLabel(lbl);
 }
 CodeEditor.prototype.focus = function() {
 	this.frame.focus();
-	if(codeEditors[this.index]) codeEditors[this.index].focus();
+	if (codeEditors[this.index]) codeEditors[this.index].focus();
 }

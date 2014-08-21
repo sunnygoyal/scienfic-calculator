@@ -1,4 +1,5 @@
-if(!scicalc) var scicalc={};
+if (!scicalc)
+	var scicalc = {};
 
 scicalc.fileIO = (function () {
 	var getStorageDir = function () {
@@ -17,7 +18,7 @@ scicalc.fileIO = (function () {
 	return {
 	saveXML : function(xml, filename){
 		var maindir = getStorageDir();
-		if(!maindir.exists() || !maindir.isDirectory()) maindir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0777);
+		if (!maindir.exists() || !maindir.isDirectory()) maindir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0777);
 		
 		var serializer = Components.classes["@mozilla.org/xmlextras/xmlserializer;1"].createInstance(Components.interfaces.nsIDOMSerializer);
 		var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
@@ -40,7 +41,7 @@ scicalc.fileIO = (function () {
 		}
 
 		var req = new XMLHttpRequest();
-		req.open("GET", url, false); 
+		req.open("GET", url, false);
 		req.send(null);
 		return req.responseXML;
 	}
@@ -53,13 +54,13 @@ scicalc.f = {
     if (shift == undefined) shift = 0;
 
     var params = [];
-    for(var j=0; j<argCount; j++){
+    for (var j = 0; j < argCount; j++) {
       params.push((10+j+shift).toString(36).toLowerCase());
     }
     params.push(code);
     return Function.apply(null, params);
   },
- 
+
   compute: function(code) {
     return this.create("return " + code, 0)();
   }

@@ -1,5 +1,5 @@
 // The global namespace
-if(!scicalc) var scicalc={};
+if (!scicalc) var scicalc = {};
 
 try {
   // Used for detecting panel UI related features.
@@ -148,7 +148,7 @@ scicalc.main = (function() {
     if (panel) {
       // UI found. initiate the rest.
       defaultCalculatorUI = new CalculatorUI(panel, ebd("scicalc-input"), ebd("scicalc-icon"), ebd("scicalc-button"), ebd("scicalc-close"));
-      
+
       // We need to update listeners if they are already added.
       updateListeners = listenersAlreadyAdded;
     }
@@ -203,11 +203,11 @@ scicalc.main = (function() {
     historyDoc = scicalc.fileIO.getXML("history.xml");
 	var hnodes = historyDoc.firstChild.childNodes;
 	var n = historyLength;
-	if(hnodes.length == 0) n=0;
-	if(hnodes.length < n) n = hnodes.length;
-	if(n > 0) {
+	if (hnodes.length == 0) n = 0;
+	if (hnodes.length < n) n = hnodes.length;
+	if (n > 0) {
 	  var shift = hnodes.length-n;
-	  for(var i=0; i<n; i++)
+	  for (var i = 0; i < n; i++)
 		addHistoryEl(hnodes[i+shift].getAttribute("ques"), hnodes[i+shift].getAttribute("ans"));
 	}
 	historyBox.setAttribute('rows', n);
@@ -220,7 +220,7 @@ scicalc.main = (function() {
    * Addon unload
    */
   window.addEventListener("unload", function() {
-    if(prefManager) {
+    if (prefManager) {
       prefManager.removeObserver("", prefObserver);
     }
     if (CustomizableUI) {
@@ -263,19 +263,22 @@ scicalc.main = (function() {
    * @param uihandler the correnponding CalculatorUI to operate on or null.
    */
   var changeModeInternal = function(nid, mode, uihandler) {
-    if(nid=="ask") ebd("scicalc_mode_ask").label = "Base ("+mode+")...";
-    
-    if ((mode<1) || (mode>24)) mode = 10;
+    if (nid == "ask")
+	  ebd("scicalc_mode_ask").label = "Base ("+mode+")...";
+
+    if ((mode < 1) || (mode > 24))
+	  mode = 10;
     ebd("scicalc_mode_" + nid).setAttribute("checked", "true");
 
     if (uihandler) {
       var updateExp = function(mode, exp) {
   		if (mode == 1)
-		  return (evalClass=="complex") ? exp : "";
-		if (evalClass == "complex") 
+		  return (evalClass == "complex") ? exp : "";
+		if (evalClass == "complex")
 		  return "";
 
-		if (scicalc.realMath.mode == mode) return exp;
+		if (scicalc.realMath.mode == mode)
+		  return exp;
 
 		var reg = new RegExp("[\\-\\+]?[" + scicalc.Strings.getRegxSeries(scicalc.realMath.mode) + "\\.]+");
 		var m = reg.exec(exp);
@@ -284,7 +287,7 @@ scicalc.main = (function() {
 		  return "error";
 
 		var result, pre;
-		if ((exp.charAt(0) == "-") || (exp.charAt(0) == "+")){
+		if ((exp.charAt(0) == "-") || (exp.charAt(0) == "+")) {
 		  pre = exp.charAt(0);
 		  result = scicalc.realMath.converttodec(exp.substr(1));
 		} else {
@@ -340,7 +343,7 @@ scicalc.main = (function() {
     inputbox.addEventListener("keydown", function(e) {
       errorPop.hidePopup();
 	  if (!e.which) return;
-      
+
       if (e.which == 13) { // hit enter (-> evaluate)
 		var exp = this.value;
 		var result;
@@ -350,7 +353,7 @@ scicalc.main = (function() {
 		  	setFocus(this);
 		  } catch (e) {
 		  	that.error();
-			if (e.desc && typeof(e.desc)=="string")
+			if (e.desc && typeof(e.desc) == "string")
 			  showError(e.desc);
 			else if (e.name.toLowerCase() == "syntaxerror")
 			  showError(scicalc.invalidExpError.desc);
@@ -410,7 +413,7 @@ scicalc.main = (function() {
   // Animates the icon to indicate an error.
   CalculatorUI.prototype.error = function() {
     var icon = this.icon;
-    icon.setAttribute("error", false);    
+    icon.setAttribute("error", false);
 	window.setTimeout(function() {
 	  icon.setAttribute("error", true);
 	}, 50);
@@ -421,7 +424,7 @@ scicalc.main = (function() {
     var getStr;
 	var clas = scicalc[evalClass];
 	if (evalClass == EVAL_CLASS_REAL) {
-	  if (clas.mode==10) {
+	  if (clas.mode == 10) {
 		getStr = function(i) { return i; };
 	  } else{
 		getStr = function(i) { return i.toString(clas.mode).toUpperCase(); };
@@ -431,9 +434,9 @@ scicalc.main = (function() {
 	}
 
 	var vlist = "ans=" + getStr(clas.ans);
-	for (var i=0; i < clas.variables.length; i++) {
+	for (var i = 0; i < clas.variables.length; i++) {
 	  vlist += "; ";
-	  if(clas.variables[i] != 'ans')
+	  if (clas.variables[i] != 'ans')
 		vlist += clas.variables[i] + "=" + getStr(clas.values[i]);
 	}
 	var vlistHolder = ebd("scicalc-vlist");
@@ -448,7 +451,7 @@ scicalc.main = (function() {
     // current input box.
     var inputbox = this.inputbox;
     historyBox.onkeydown = function(event) {
-      if(event.which == 13){ //  hit Enter
+      if (event.which == 13) { //  hit Enter
         if (historyBox.selectedItem) {
           inputbox.value = historyBox.selectedItem.firstChild.getAttribute('label');
           infoPop.hidePopup();
@@ -485,7 +488,7 @@ scicalc.main = (function() {
 	textbox.value = modeAsk.label.substring(modeAsk.label.indexOf("(")+1, modeAsk.label.indexOf(")"));
 	askPop.openPopup(this.icon, "before_start", 10);
   };
-  
+
   CalculatorUI.prototype.closeCalc = function() {
 	if (prefManager.getBoolPref("addonBarCollapsible")) {
 	  this.panel.classList.add("collapsed");
@@ -534,7 +537,7 @@ scicalc.main = (function() {
 	},
 
 	changeAngle : function(isRadian) {
-	  if (isRadian){
+	  if (isRadian) {
 		scicalc.realMath.trigoBase = "Math";
 		ebd("scicalc_angle_rad").setAttribute("checked", "true");
 	  } else {
@@ -565,10 +568,11 @@ scicalc.main = (function() {
 	  else if (val == "h") ret = 16;
 	  else {
 		var x = Math.floor(parseInt(val));
-		if(x.toString() == val)
-		if((x>=2) && (x<=24)) ret = x;
+		if (x.toString() == val)
+		  if ((x >= 2) && (x <= 24))
+		    ret = x;
 	  }
-	  if(ret == -1) return;
+	  if (ret == -1) return;
 	  changeModeInternal('ask',ret, defaultCalculatorUI);
       if (defaultCalculatorUI) {
         setFocus(defaultCalculatorUI.inputbox);
@@ -584,15 +588,15 @@ scicalc.main = (function() {
 	  }
 
 	  historyBox.setAttribute('rows', popChildren.length-1);
-  
+
 	  var entry = historyDoc.createElement("calc");
 	  entry.setAttribute("ques", ques);
 	  entry.setAttribute("ans", ans);
-	  
+
 	  var docf = historyDoc.firstChild;
 	  docf.appendChild(entry);
 
-	  while(docf.childNodes.length>2*historyLength)
+	  while(docf.childNodes.length > 2*historyLength)
 		docf.removeChild(docf.childNodes[0]);
 	  scicalc.fileIO.saveXML(historyDoc,"history.xml");
 	},
@@ -632,4 +636,4 @@ scicalc.main = (function() {
 	  }
 	}
   };
-})();
+})(); 
