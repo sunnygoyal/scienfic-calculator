@@ -6,7 +6,7 @@
 		<em:id>ststusscicalc@sunny</em:id>
 		<em:type>2</em:type>
 		<em:name>Scientific Calculator</em:name>
-		<em:version>5.3</em:version>
+		<em:version>5.3.1</em:version>
 		<em:description>A full-featured scientific calculator which can be placed in any Firefox tool-bar or the Australis PanelUI.</em:description>
 		<em:creator>Sunny Goyal</em:creator>
 		<em:homepageURL>https://github.com/sunnygoyal/scienfic-calculator</em:homepageURL>
