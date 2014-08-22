@@ -1,5 +1,6 @@
 // The global namespace
-if (!scicalc) var scicalc = {};
+if (!scicalc)
+  var scicalc = {};
 
 try {
   // Used for detecting panel UI related features.
@@ -45,7 +46,7 @@ scicalc.main = (function() {
   /**
    * shorthand for getting element by id
    */
-  const ebd = function(id){
+  const ebd = function(id) {
 	return document.getElementById(id);
   };
 
@@ -88,7 +89,7 @@ scicalc.main = (function() {
      * Various preference handlers.
      * k should be same as the handler name
      */
-    handler : {
+    handler: {
       useModulo: function(k) {
         scicalc.realMath.useModulo = prefManager.getBoolPref(k);
       },
@@ -241,7 +242,7 @@ scicalc.main = (function() {
   /**
    * Adds a history item at the top of the list, i.e., the second position.
    */
-  var addHistoryEl = function(exp,val){
+  var addHistoryEl = function(exp,val) {
     var a = document.createElement("listitem");
     var b = document.createElement("listcell");
     b.setAttribute("label",exp);
@@ -330,7 +331,7 @@ scicalc.main = (function() {
 
     var that = this;
 
-    var showError = function(err){
+    var showError = function(err) {
       ebd("scicalc-errordesc").value = err;
       errorPop.openPopup(icon, "before_start", 10);
     };
@@ -503,7 +504,7 @@ scicalc.main = (function() {
       setFocus(ebd(id));
 	},
 
-	onWidgetAdded: function(widgetId, area, aPosition) {
+	onWidgetAdded : function(widgetId, area, aPosition) {
 	  if (widgetId == WIDGET_ID) {
 		init();
 	  }

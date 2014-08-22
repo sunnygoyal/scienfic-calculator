@@ -4,11 +4,11 @@ const mystrings = Components.classes["@mozilla.org/intl/stringbundle;1"]
 			.GetStringFromName;
 
 
-function ebd(id){
+function ebd(id) {
 	return document.getElementById(id);
 }
 
-function askConfirm(title, msg, ync){
+function askConfirm(title, msg, ync) {
 	var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"].getService(Components.interfaces.nsIPromptService);
 	var flags = promptService.BUTTON_TITLE_YES * promptService.BUTTON_POS_0;
 	
@@ -22,7 +22,7 @@ function askConfirm(title, msg, ync){
 	return promptService.confirmEx(window, title, msg, flags, null, null, null, null, {});
 }
 
-function showblink(t, id){
+function showblink(t, id) {
 	if (t%2 == 0)
 		ebd(id).removeAttribute('redback');
 	else
@@ -32,13 +32,13 @@ function showblink(t, id){
 		window.setTimeout( function() { showblink(t2, id); }, 100);
 }
 
-function setDisable(ids, val){
+function setDisable(ids, val) {
 	for (var i = 0; i < ids.length; i++) {
 		ebd(ids[i]).disabled = val;
 	}
 }
 
-function listControl(prefix, nodeName, attributes, newname, codepressH){
+function listControl(prefix, nodeName, attributes, newname, codepressH) {
 
 	var editMode = "edit";
 	this.changed = false;
@@ -50,10 +50,10 @@ function listControl(prefix, nodeName, attributes, newname, codepressH){
 	var listBox = ebd(prefix+"_list");
 	var minListLength = listBox.getRowCount();
 	
-	this.checkValid = function(){return true;};		//to be changed
-	this.after_list_sel = function(){ };
+	this.checkValid = function() {return true;};		//to be changed
+	this.after_list_sel = function() { };
 	
-	this.list_sel = function(){
+	this.list_sel = function() {
 		setDisable(controlIds, true);
 		if (codepressH) codepressH.setDisable(true);
 		
@@ -72,9 +72,9 @@ function listControl(prefix, nodeName, attributes, newname, codepressH){
 			if (codepressH) codepressH.setCode("");
 		}
 		this.after_list_sel();
-	}
+	};
 
-	this.load = function(){
+	this.load = function() {
 		while (listBox.getRowCount() > minListLength)
 			listBox.removeItemAt(minListLength);		//remove old items
 
@@ -99,10 +99,9 @@ function listControl(prefix, nodeName, attributes, newname, codepressH){
 		this.list_sel();
 
 		this.changed = false;
-		
-	}
+	};
 	
-	this.clicked_add = function(){
+	this.clicked_add = function() {
 		setDisable(controlIds, false);
 		if (codepressH) {
 			codepressH.setDisable(false);
@@ -113,23 +112,23 @@ function listControl(prefix, nodeName, attributes, newname, codepressH){
 			ebd(prefix + "_" + attributes[i]).value = "";
 		editMode = "add";
 		this.after_list_sel();
-	}
+	};
 	
-	this.clicked_delete = function(){
+	this.clicked_delete = function() {
 		if (askConfirm(mystrings("deleteTitle"), mystrings(prefix + "DeleteDescription")) == 0) {
 			listBox.removeItemAt(listBox.selectedIndex);
 			this.changed = true;
 			this.list_sel();
 		}
-	}
+	};
 	
-	this.clicked_edit = function(){
+	this.clicked_edit = function() {
 		setDisable(controlIds, false);
 		if (codepressH) codepressH.setDisable(false);
 		editMode = "edit";
-	}
+	};
 	
-	this.clicked_done = function(){
+	this.clicked_done = function() {
 		if (!this.checkValid(editMode)) return;
 
 		var element;
@@ -145,15 +144,15 @@ function listControl(prefix, nodeName, attributes, newname, codepressH){
 		listBox.selectedItem = element;
 		this.changed = true;
 		this.list_sel();
-	}
+	};
 
-	this.clicked_reload = function(){
+	this.clicked_reload = function() {
 		if (this.changed && askConfirm(mystrings("reloadTitle"), mystrings(prefix+"ReloadDescription")) != 0)
 			return;
 		this.load();
-	}
+	};
 	
-	this.clicked_save = function(){
+	this.clicked_save = function() {
 		var doc = document.implementation.createDocument("", "", null);
 		var elements = doc.createElement(nodeName + "s");
 		for (var i = minListLength; i < listBox.getRowCount(); i++) {
@@ -171,9 +170,9 @@ function listControl(prefix, nodeName, attributes, newname, codepressH){
 		doc.appendChild(elements);
 		scicalc.fileIO.saveXML(doc,nodeName + "s.xml");
 		this.changed = false;
-	}
+	};
 	
-	this.accept = function(){
+	this.accept = function() {
 		if (!this.changed) return true;
 		var val = askConfirm(mystrings("saveTitle"), mystrings(prefix+"SaveDescription"), true);
 		if (val == 2) return true;
@@ -181,6 +180,6 @@ function listControl(prefix, nodeName, attributes, newname, codepressH){
 
 		this.clicked_save();
 		return true;
-	}
+	};
 
 }

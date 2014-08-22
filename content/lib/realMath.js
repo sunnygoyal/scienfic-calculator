@@ -8,70 +8,70 @@ scicalc.realMath = {
 	mode : 10,
 	useModulo : false,
 	trigoBase : "Math",
-	variables : new Array(),
-	values : new Array(),
-	customFunctions : new Array(),
-	customOperators : new Array(),
-	cOAsstRight : new Array(),
+	variables : [],
+	values : [],
+	customFunctions : [],
+	customOperators : [],
+	cOAsstRight : [],
 	constants : null,
 	ignoreComma : 0,
 	decimalPrecision : 2,
 	
-	ln : function(x){
+	ln : function(x) {
 		if (x > 0)
 			return Math.log(x);
 		else
 			throw {desc: scicalc.str("logError") + " " + x};
 	},
 
-	log : function(x){
+	log : function(x) {
 		if (x > 0)
 			return Math.log(x)/Math.log(10);
 		else
 			throw {desc: scicalc.str("logError") + " " + x};
 	},
 	
-	asin : function(x){
+	asin : function(x) {
 		return 180*Math.asin(x)/Math.PI;
 	},
 
-	acos : function(x){
+	acos : function(x) {
 		return 180*Math.acos(x)/Math.PI;
 	},	
 
-	atan : function(x){
+	atan : function(x) {
 		return 180*Math.atan(x)/Math.PI;
 	},
 
-	sin : function(x){
+	sin : function(x) {
 		return Math.sin(x*Math.PI/180);
 	},
 
-	cos : function(x){
+	cos : function(x) {
 		return Math.cos(x*Math.PI/180);
 	},
 
-	tan : function(x){
+	tan : function(x) {
 		return Math.tan(x*Math.PI/180);
 	},
 
-	percentAdd : function(x,y){
+	percentAdd : function(x,y) {
 		return x*(1 + (y/100));
 	},
 
-	percentSub : function(x,y){
+	percentSub : function(x,y) {
 		return x*(1 - (y/100));
 	},	
 
-	percentMul : function(x,y){
+	percentMul : function(x,y) {
 		return x*y/100;
 	},
 
-	percentDiv : function(x,y){
+	percentDiv : function(x,y) {
 		return 100/y;
 	},
 
-	fact : function(x,ignore){
+	fact : function(x,ignore) {
 		x++;
 		var g = new Array(0.0,1.0, 0.57721566490153286060651209,
 			-6.5587807152025388e-1,-4.200263503409524e-2,
@@ -84,8 +84,8 @@ scicalc.realMath = {
 			-1.18127457e-9,1.0434267e-10,7.78226e-12,
 			-3.69680e-12,5.1004e-13,-2.058e-14,
 			-5.35e-15,1.23e-15,-1.2e-16);
-		var gammap = 1; while (x > 1) {x--; gammap *= x;};
-		var gammaq = 1; while (x < 0) {gammaq *= x; x++;};
+		var gammap = 1; while (x > 1) {x--; gammap *= x;}
+		var gammaq = 1; while (x < 0) {gammaq *= x; x++;}
 		if (x < 1) {
 			var r = 0;
 			for (var i = 26; i >= 0; i--) {r *= x; r += g[i];}
@@ -95,20 +95,20 @@ scicalc.realMath = {
 		return gammap/gammaq;
 	},			// factorial function from google codes
 	
-	getVar : function(id){
+	getVar : function(id) {
 		for (var i = 0; i < this.variables.length; i++)
 			if (this.variables[i] == id) return this.values[i];
 		throw {desc: scicalc.str("unknownVariable") + " " + id};
 	},
 	
-	setVar : function(id,val){
+	setVar : function(id,val) {
 		var i = 0;
 		while (i < this.variables.length && this.variables[i] != id) i++;
 		this.variables[i] = id;
 		this.values[i] = val;		
 	},
 	
-	checkmalicious : function(exp){
+	checkmalicious : function(exp) {
 		var functions = ["asin", "acos", "atan", "sin", "cos", "tan", "sqrt", "log", "ln", "exp"];
 
 		var reg = "[" + scicalc.Strings.getRegxSeries(this.mode) +
@@ -134,7 +134,7 @@ scicalc.realMath = {
 		return (exp != "");
 	},
 
-	reformNumbers : function(exp){
+	reformNumbers : function(exp) {
 		if (this.mode != 10) return exp;
 		
 		var re = /\s(0x[A-F0-9]+)\s/g;
@@ -147,7 +147,7 @@ scicalc.realMath = {
 		return exp;
 	},
 	
-	reformConstants : function(exp){
+	reformConstants : function(exp) {
 		var consts = scicalc.realMath.constants;
 		for (var i = 0; i < consts.length; i++)
 			exp = exp.replace(new RegExp(" "+consts[i][0]+" ", "g") ," (" + consts[i][1] + ") ");
@@ -157,7 +157,7 @@ scicalc.realMath = {
 	
 	},
 	
-	loadCustomFunctions : function(){
+	loadCustomFunctions : function() {
 		var entries = scicalc.fileIO.getXML("functions.xml").firstChild.childNodes;
 		scicalc.realMath.customFunctions.length = 0;
 
@@ -181,7 +181,7 @@ scicalc.realMath = {
 		}
 	},
 	
-	loadCustomOperators : function(){
+	loadCustomOperators : function() {
 		var entries = scicalc.fileIO.getXML("operators.xml").firstChild.childNodes;
 		scicalc.realMath.customOperators.length = 0;
 		scicalc.realMath.cOAsstRight.length = 0;
@@ -209,7 +209,7 @@ scicalc.realMath = {
 		}
 	},
 	
-	loadConstants : function(){
+	loadConstants : function() {
 		scicalc.realMath.constants = [["e", " exp(1)"], ["pi", "Math.PI"], ["ans", "scicalc.realMath.ans"]];
 			
 		var entries = scicalc.fileIO.getXML("constants.xml").firstChild.childNodes;
@@ -221,7 +221,7 @@ scicalc.realMath = {
 		}
 	},
 	
-	loadUserData : function(){
+	loadUserData : function() {
 		scicalc.realMath.loadConstants();
 		scicalc.realMath.loadCustomFunctions();
 		scicalc.realMath.loadCustomOperators();
@@ -278,7 +278,7 @@ scicalc.realMath = {
 
 		exp = scicalc.Strings.reformOperators(exp,["scicalc.realMath.fact","Math.pow"],["!","^"],[false,true]);
 		
-		var opf = new Array();
+		var opf = [];
 		for (var i = 0; i < scicalc.realMath.customOperators.length; i++)
 			opf[i] = "scicalc.co.func"+i;
 
@@ -304,11 +304,11 @@ scicalc.realMath = {
 		
 	},
 	
-	remove99 : function(val){
+	remove99 : function(val) {
 		if (val == 0) return 0;
 		var prec = this.decimalPrecision;
 		if (prec <= 0) return val;
-		var sign = val > 0 ? 1 :- 1;
+		var sign = val > 0 ? 1 : -1;
 		val = val*sign;
 		var pf = Math.pow(10, prec-Math.round(this.log(val)));
 		var ret = Math.round(val*pf);
@@ -318,7 +318,7 @@ scicalc.realMath = {
 		return ((isNaN(ret2) || ret2 == Infinity) ? val : ret2)*sign;
 	},
 	
-	moduloToPercent : function(exp){
+	moduloToPercent : function(exp) {
 		var str2find = ")%";
 		var i = exp.indexOf(str2find);
 		while (i > -1) {		
@@ -338,7 +338,7 @@ scicalc.realMath = {
 			return exp;	
 	},
 	
-	bringtobase10 : function(exp){
+	bringtobase10 : function(exp) {
 		if (this.mode == 10) return exp;
 		
 		var re = new RegExp(" ([" + scicalc.Strings.getRegxSeries(this.mode) + "\\.]+) ","g");
@@ -346,7 +346,7 @@ scicalc.realMath = {
 		return str;
 	},
 	
-	converttodec : function(num){
+	converttodec : function(num) {
 		num = num.toString();
 		var dotpos = num.indexOf(".");
 		if (dotpos != num.lastIndexOf("."))
@@ -364,4 +364,4 @@ scicalc.realMath = {
 		}
 		return result;
 	}
-}
+};

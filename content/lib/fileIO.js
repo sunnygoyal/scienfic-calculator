@@ -6,17 +6,17 @@ scicalc.fileIO = (function () {
 		var file = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties).get("ProfD", Components.interfaces.nsIFile);
 		file.append("statuscicalc");
 		return file;
-	}
+	};
 
 	//get extensions file path
 	var getFilePath = function(filename) {
 		var file = getStorageDir();
 		file.append(filename);
 		return file;
-	}	
+	};
 
 	return {
-	saveXML : function(xml, filename){
+	saveXML : function(xml, filename) {
 		var maindir = getStorageDir();
 		if (!maindir.exists() || !maindir.isDirectory()) maindir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0777);
 		
@@ -29,7 +29,7 @@ scicalc.fileIO = (function () {
 		foStream.close();
 	},
 	
-	getXML : function(fileName){
+	getXML : function(fileName) {
 		var url;
 		var file = getFilePath(fileName);
 		if (file.exists()) {
@@ -45,12 +45,12 @@ scicalc.fileIO = (function () {
 		req.send(null);
 		return req.responseXML;
 	}
-}
+	};
 })();
 
 
 scicalc.f = {
-  create: function(code, argCount, shift) {
+  create : function(code, argCount, shift) {
     if (shift == undefined) shift = 0;
 
     var params = [];
@@ -61,7 +61,7 @@ scicalc.f = {
     return Function.apply(null, params);
   },
 
-  compute: function(code) {
+  compute : function(code) {
     return this.create("return " + code, 0)();
   }
-}
+};

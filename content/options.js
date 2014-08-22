@@ -1,6 +1,6 @@
 //***************************** Common Functions  *******************************//
 
-function const_checkvalid(editmode){
+function const_checkvalid(editmode) {
 	var const_list = ebd("const_list");
 	for (var i = 0; i < const_list.getRowCount(); i++) {
 		if ((editmode == "add") || (i != const_list.selectedIndex)) {
@@ -30,7 +30,7 @@ function const_checkvalid(editmode){
 			ebd("const_value").focus();
 			return false;
 		}
-	} catch (e){
+	} catch (e) {
 		showblink(7,"const_value");
 		ebd("const_value").focus();
 		return false;
@@ -43,7 +43,7 @@ function const_checkvalid(editmode){
 var func_name_old = "new";
 var oper_name_old = "";
 
-function func_checkvalid(editmode){
+function func_checkvalid(editmode) {
 	var func_list = ebd("func_list");
 	var s1 = ebd("func_name").value;
 	
@@ -87,7 +87,7 @@ function func_checkvalid(editmode){
 	return false;
 }
 
-function func_name_changed(){
+function func_name_changed() {
 	var t = ebd("func_name").value;
 	if (t.match(/[^a-z]/g) != null || t == "")
 		ebd("func_name").value = func_name_old;
@@ -97,7 +97,7 @@ function func_name_changed(){
 	func_update_sig();
 }
 
-function func_update_sig(){
+function func_update_sig() {
 	var t = parseInt(ebd("func_args").value);
 	var args = "";
 	for (var i = 0; i < t; i++) {
@@ -110,7 +110,7 @@ function func_update_sig(){
 	funcEditor.setLabel(sig);
 }
 
-function oper_name_changed(){
+function oper_name_changed() {
 	var t = ebd("oper_name").value;
 	if (t.match(/[^\`\~\@\$\^\&\_\\\|\:\;\?\<\>\-\+\*\/]/g) != null || t == "")
 		ebd("oper_name").value = oper_name_old;
@@ -119,14 +119,14 @@ function oper_name_changed(){
 	oper_update_sig();
 }
 
-function oper_update_sig(){
+function oper_update_sig() {
 	var sig = "";
 	if (ebd("oper_name").value != "")
 		sig = "function /* "+ebd("oper_name").value+" */ (x, y) {";
 	operEditor.setLabel(sig);
 }
 
-function oper_checkvalid(editmode){
+function oper_checkvalid(editmode) {
 	var oper_list = ebd("oper_list");
 	var s1 = ebd("oper_name").value;
 	
@@ -166,7 +166,7 @@ function oper_checkvalid(editmode){
 var funcEditor, operEditor;
 var funcHandler, constHandler, operHandler;
 
-function operMoveUp(){
+function operMoveUp() {
 	var t = ebd("oper_list");
 	var n = t.selectedIndex;
 	if (n > 1) {
@@ -177,7 +177,7 @@ function operMoveUp(){
 	operHandler.changed = true;
 }
 
-function operMoveDown(){
+function operMoveDown() {
 	var t = ebd("oper_list");
 	var n = t.selectedIndex;
 	if (n >= 1 && n < t.getRowCount()-1) {
@@ -216,7 +216,7 @@ function intiValues() {
 	constHandler.load();
 }
 
-function dotDigit(){
+function dotDigit() {
 	var val;
 	var x = ebd("roundAllowed").checked;
 	ebd("digit_af_dot").disabled = !x;
@@ -224,7 +224,7 @@ function dotDigit(){
 	ebd("pref-digit").value = val;
 }
 
-function options_accept(){
+function options_accept() {
 	if (constHandler.accept())
 		if (funcHandler.accept())
 			if (operHandler.accept())

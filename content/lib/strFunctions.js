@@ -5,7 +5,7 @@ if (!scicalc.Strings)
 
 scicalc.Strings = {
 
-	addBaseToFunctions : function(exp,functions,base){
+	addBaseToFunctions : function(exp,functions,base) {
 		for (var j = 0; j < functions.length; j++) {
 			var re = new RegExp( "\\#"+functions[j]+"\\(","g");
 			exp = exp.replace(re, base + "." + functions[j] + "(");
@@ -14,7 +14,7 @@ scicalc.Strings = {
 	},
 
 	// Adds base with brackets
-	addBaseToFunctions2 : function(exp,functions,base){
+	addBaseToFunctions2 : function(exp,functions,base) {
 		for (var j = 0; j < functions.length; j++) {
 			var str2find = "#" + functions[j] + "(";
 			var i = exp.indexOf(str2find);
@@ -28,7 +28,7 @@ scicalc.Strings = {
 		return exp;
 	},
 	
-	find_index_right : function (exp){
+	find_index_right : function (exp) {
 		if (exp.indexOf("(") == 0) {
 			var count = 1;
 			var index = 1;
@@ -47,7 +47,7 @@ scicalc.Strings = {
 		throw scicalc.invalidExpError;
 	},
 
-	find_index_left : function(exp){
+	find_index_left : function(exp) {
 		if (exp.lastIndexOf(")") == exp.length-1) {
 			var count = 1;
 			var index = 1;
@@ -66,7 +66,7 @@ scicalc.Strings = {
 		throw scicalc.invalidExpError;
 	},
 
-	reformOperators : function(exp,functions,identifiers, rightAsst){
+	reformOperators : function(exp,functions,identifiers,rightAsst) {
 		for (var j = 0; j < identifiers.length; j++) {
 			var str2find = ")" + identifiers[j] + "(";
 			var i = rightAsst[j] ? exp.lastIndexOf(str2find) : exp.indexOf(str2find);
@@ -81,7 +81,7 @@ scicalc.Strings = {
 		return exp;
 	},
 
-	getRegxSeries : function(limit){
+	getRegxSeries : function(limit) {
 		return "0-" + ((limit < 11) ? (limit-1) : ("9A-" + (limit-1).toString(32).toUpperCase()));
 	}
-}
+};
