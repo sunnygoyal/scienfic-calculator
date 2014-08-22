@@ -1,9 +1,9 @@
 <!ENTITY scicalc.app.name "Wissenschaftlicher Taschenrechner">
 <!ENTITY scicalc.label.selectbase "Wähle Basis">
 <!ENTITY scicalc.askmode.help "Eine Ganzzahl zwischen 2 und 24 oder h=Hex, b=Bin, d=Dez">
-<!ENTITY scicalc.mode.popup.bin "Bin">
-<!ENTITY scicalc.mode.popup.dec "Dez">
-<!ENTITY scicalc.mode.popup.hex "Hex">
+<!ENTITY scicalc.mode.popup.bin "Binär">
+<!ENTITY scicalc.mode.popup.dec "Dezimal">
+<!ENTITY scicalc.mode.popup.hex "Hexadezimal">
 <!ENTITY scicalc.mode.popup.other "Weitere...">
 <!ENTITY scicalc.mode.popup.complex "Komplex">
 <!ENTITY scicalc.angle.angle "Winkel">

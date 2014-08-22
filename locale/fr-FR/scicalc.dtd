@@ -9,6 +9,6 @@
 <!ENTITY scicalc.angle.angle "Angle">
 <!ENTITY scicalc.angle.radians "radians">
 <!ENTITY scicalc.angle.degrees "degrés">
-<!ENTITY scicalc.menu.options "Options">
+<!ENTITY scicalc.menu.options "Options...">
 <!ENTITY scicalc.info.variables "Variables">
 <!ENTITY scicalc.info.history "Calculs récents">
