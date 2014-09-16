@@ -1,8 +1,9 @@
-content    statusscicalc    content/
+content  statusscicalc   content/
+skin     statusscicalc   classic/1.0   chrome://statusscicalc/content/skin/
 
-overlay	   chrome://browser/content/browser.xul    chrome://statusscicalc/content/browserOverlay.xul
-skin	statusscicalc	classic/1.0	chrome://statusscicalc/content/skin/
+overlay  chrome://browser/content/browser.xul   chrome://statusscicalc/content/browserOverlay.xul
 
-locale    statusscicalc   en-US   locale/en-US/
-locale	  statusscicalc	  fr-FR   locale/fr-FR/
-locale	  statusscicalc	  de-DE   locale/de-DE/
+locale   statusscicalc   de-DE   locale/de-DE/
+locale   statusscicalc   en-US   locale/en-US/
+locale   statusscicalc   fi-FI   locale/fi-FI/
+locale   statusscicalc   fr-FR   locale/fr-FR/
