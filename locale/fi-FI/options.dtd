@@ -1,0 +1,37 @@
+<!ENTITY options.tab.settings "Asetukset">
+<!ENTITY options.tab.constants "Vakiot">
+<!ENTITY options.tab.functions "Funktiot">
+<!ENTITY options.tab.operators "Operaattorit">
+<!ENTITY settings.label.usemodulo "&#37;-merkki ymmärretään">
+<!ENTITY settings.menuitem.modulo "jakojäännöksenä (modulo)">
+<!ENTITY settings.menuitem.percent "prosenttina">
+<!ENTITY settings.label.operator "">
+<!ENTITY settings.label.history "Historian pituus:">
+<!ENTITY settings.label.round "Pyöristyksen desimaalit">
+<!ENTITY settings.label.roundlength "Pilkun jälkeisten lukujen määrä">
+<!ENTITY settings.checkbox.comma "Pilkku (,)">
+<!ENTITY settings.checkbox.comma.argument "Käsittele argumenttien erottimena">
+<!ENTITY settings.checkbox.comma.dot "Käsittele pisteenä">
+<!ENTITY settings.checkbox.comma.ignore "Jätä huomiotta">
+<!ENTITY settings.addonbar.accessKey "Pikanäppäin:">
+<!ENTITY settings.addonbar.width "Kentän leveys:">
+<!ENTITY settings.addonbar.collapsible "Kenttä pienennettävissä">
+<!ENTITY constants.listitem.calculated "*laskettu*">
+<!ENTITY constants.listitem.natlogbase "Luonnollinen logaritmi">
+<!ENTITY constants.listitem.answer "Solution of last Expression">
+<!ENTITY constants.button.add "Lisää">
+<!ENTITY constants.button.delete "Poista">
+<!ENTITY constants.button.edit "Muokkaa">
+<!ENTITY constants.button.reload "Uudelleenlataa">
+<!ENTITY constants.button.save "Tallenna">
+<!ENTITY constants.label.identifier "Tunniste:">
+<!ENTITY constants.label.value "Arvo:">
+<!ENTITY constants.label.description "Kuvaus:">
+<!ENTITY constants.button.cancel "Peruuta">
+<!ENTITY constants.button.done "OK">
+<!ENTITY functions.label.name "Funktion nimi:">
+<!ENTITY functions.label.args "Argumenttien määrä:">
+<!ENTITY operators.label.operator "Operaattori:">
+<!ENTITY operators.label.asst "Assosiatiivisuus:">
+<!ENTITY operators.label.moveUp "Siirrä ylös">
+<!ENTITY operators.label.moveDown "Siirrä alas">
