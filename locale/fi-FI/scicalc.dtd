@@ -1,0 +1,14 @@
+<!ENTITY scicalc.app.name "Scientific Calculator">
+<!ENTITY scicalc.label.selectbase "Valitse kantaluku">
+<!ENTITY scicalc.askmode.help "Mikä tahansa kokonaisluku väliltä 2 ja 24, tai h=heksa, b=binääri, d=desimaali">
+<!ENTITY scicalc.mode.popup.bin "Binääri">
+<!ENTITY scicalc.mode.popup.dec "Desimaali">
+<!ENTITY scicalc.mode.popup.hex "Heksadesimaali">
+<!ENTITY scicalc.mode.popup.other "Muu...">
+<!ENTITY scicalc.mode.popup.complex "Monimutkainen">
+<!ENTITY scicalc.angle.angle "Kulma">
+<!ENTITY scicalc.angle.radians "radiaania">
+<!ENTITY scicalc.angle.degrees "astetta">
+<!ENTITY scicalc.menu.options "Asetukset...">
+<!ENTITY scicalc.info.variables "Muuttujat">
+<!ENTITY scicalc.info.history "Viimeisimmät laskutoimitukset">
