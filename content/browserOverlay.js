@@ -18,6 +18,7 @@ scicalc.str = Components.classes["@mozilla.org/intl/stringbundle;1"]
 
 scicalc.invalidExpError = {desc: scicalc.str("expError")};
 
+
 /**
  * The main namespace is used for all UI related controls
  */
@@ -172,6 +173,15 @@ scicalc.main = (function() {
    * Addon initialization
    */
   window.addEventListener("load", function() {
+  
+    // install the Scientific Calculator to the toolbar on firstRun
+	Application.getExtensions(function (extensions) {
+	  let extension = extensions.get("ststusscicalc@sunny");
+	  if (extension.firstRun) {
+	    install();
+	  }
+	});
+
     //set preference manager
 	prefManager = Components.classes["@mozilla.org/preferences-service;1"]
 	  .getService(Components.interfaces.nsIPrefBranch)
@@ -496,6 +506,30 @@ scicalc.main = (function() {
 	}
 	this.inputbox.blur();
 	window.content.focus();
+  };
+
+  /**
+   * Code that is run on firstRun of the add-on ("add-on installation")
+   */
+  var install = function() {
+	// add toolbar item
+	if (!document.getElementById("scicalc-container")) {
+		// if the PanelUI is present add calculator panel there, otherwise use addon-bar
+		if (CustomizableUI) {
+			CustomizableUI.addWidgetToArea("scicalc-container", "PanelUI-contents", 0);
+		} else {
+			var toolbar = document.getElementById("addon-bar");
+			if (toolbar) {
+				toolbar.insertItem("scicalc-container", null);
+				toolbar.setAttribute("currentset", toolbar.currentSet);
+				document.persist(toolbar.id, "currentset");
+				toolbar.collapsed = false; // make sure toolbar is visible
+				document.persist(toolbar.id, "collapsed");
+			}
+		}
+		initiateDefaultUI(true); // necessary on older Firefox versions
+		                         // (possibly because of the asynchronous behavior of the firstRun detection...)
+	}
   };
 
   /************** Public Methods *****************/
