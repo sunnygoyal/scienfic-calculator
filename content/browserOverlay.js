@@ -437,8 +437,13 @@ scicalc.main = (function() {
 	if (evalClass == EVAL_CLASS_REAL) {
 	  if (clas.mode == 10) {
 		getStr = function(i) { return i; };
-	  } else{
-		getStr = function(i) { return i.toString(clas.mode).toUpperCase(); };
+	  } else {
+	    // prevent really long results > 25 characters which would not fit into the history box anyway and would blow it up
+		getStr = function(i) { var str = i.toString(clas.mode).toUpperCase();
+		                       if (str.length > 25)
+							     return str.substr(0,25) + "...";
+							   else
+							     return str; };
 	  }
 	} else {
 	  getStr = function(i) { return i.toString(); };

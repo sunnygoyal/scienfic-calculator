@@ -42,8 +42,8 @@
 		<label value="&scicalc.info.history;"/>
 		<listbox id="scicalc-historyBox">
 			<listcols>
-				<listcol flex="1" crop="end"/>
-				<listcol/>
+				<listcol flex="1"/>
+				<listcol flex="1"/>
 			</listcols>
 		</listbox>
 	</panel>

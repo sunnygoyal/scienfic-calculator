@@ -74,8 +74,8 @@
 #scicalc-container[cui-areatype="menu-panel"] #scicalc-input  {
 	margin-top: 6px;
 	height: 24px;
-	min-width: 262px;
-	max-width: 262px;
+	min-width: 21.75em;
+	max-width: 21.75em;
 	visibility: visible !important;
 }
 
@@ -163,12 +163,19 @@ toolbarpaletteitem[place="palette"]	#scicalc-close {
 	-moz-appearance: none;
 	border: none;
 	margin: 2px 0;
-	overflow: hidden;
 }
 
-#scicalc-historyBox > listitem > listcell:last-child {
-	margin-left: 5px;
-	margin-right: 3px;
+#scicalc-historyBox listcol {
+	min-width: 3em;
+}
+
+#scicalc-historyBox .listcell-label {
+	padding-left: 4px;
+	padding-right: 4px;
+}	
+
+#scicalc-historyBox listcell:last-child {
+	text-align: right;
 	color: #777;
 }
 
