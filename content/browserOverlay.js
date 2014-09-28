@@ -260,7 +260,7 @@ scicalc.main = (function() {
     c.setAttribute("label",val);
     a.appendChild(b);
     a.appendChild(c);
-    a.addEventListener("mouseover", historyElMouseOver, false);
+    a.addEventListener("mouseenter", historyElMouseOver, false);
 	historyBox.insertBefore(a, historyBox.firstChild.nextSibling);
   };
 
