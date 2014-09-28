@@ -341,11 +341,6 @@ scicalc.main = (function() {
 
     var that = this;
 
-    var showError = function(err) {
-      ebd("scicalc-errordesc").value = err;
-      errorPop.openPopup(icon, "before_start", 10);
-    };
-
 	prefManager.getBoolPref("addonBarCollapsible") ?
 		panel.classList.add("collapsible","collapsed") :
 		panel.classList.remove("collapsible","collapsed");
@@ -356,39 +351,25 @@ scicalc.main = (function() {
 	  if (!e.which) return;
 
       if (e.which == 13) { // hit enter (-> evaluate)
-		var exp = this.value;
-		var result;
-		  try {
-		  	result = scicalc[evalClass].compute(exp);
-		  	this.value = result;
-		  	setFocus(this);
-		  } catch (e) {
-		  	that.error();
-			if (e.desc && typeof(e.desc) == "string")
-			  showError(e.desc);
-			else if (e.name.toLowerCase() == "syntaxerror")
-			  showError(scicalc.invalidExpError.desc);
-			else
-			  console.log(e); // unexpected error
-		  }
-          e.preventDefault();
-		} else if (e.which == 33) { // hit page up  (-> show mode popup)
-		  that.showModePopup();
-		} else if (e.which == 34) { // hit page down  (-> choose base)
-		  that.showAskPopup();
-		} else if (e.which == 40 || e.which == 38) { // hit arrow up/down (-> show history box)
-		  var key = e.which;
-		  var popupHandler = function() {
-			POPUP_LISTENER.remove(infoPop, popupHandler);
-			historyBox.focus();
-			historyBox.selectedIndex = (key == 40) ? 0 : (historyBox.itemCount - 1);
-		  };
-		  POPUP_LISTENER.add(infoPop, popupHandler);
-		  that.showHistoryPopup();
-          e.preventDefault();
-		} else if (e.which == 27) { // hit escape (-> close calculator)
-		  that.closeCalc();
-		}
+		that.evaluate(this);
+        e.preventDefault();
+	  } else if (e.which == 33) { // hit page up  (-> show mode popup)
+		that.showModePopup();
+	  } else if (e.which == 34) { // hit page down  (-> choose base)
+		that.showAskPopup();
+	  } else if (e.which == 40 || e.which == 38) { // hit arrow up/down (-> show history box)
+		var key = e.which;
+		var popupHandler = function() {
+		  POPUP_LISTENER.remove(infoPop, popupHandler);
+		  historyBox.focus();
+		  historyBox.selectedIndex = (key == 40) ? 0 : (historyBox.itemCount - 1);
+		};
+		POPUP_LISTENER.add(infoPop, popupHandler);
+		that.showHistoryPopup();
+        e.preventDefault();
+	  } else if (e.which == 27) { // hit escape (-> close calculator)
+		that.closeCalc();
+	  }
     }, false);
 	
 	inputbox.addEventListener("click", function(e) {
@@ -421,6 +402,36 @@ scicalc.main = (function() {
 	}, false);
   }
 
+  // Evaluates the entered expression
+  CalculatorUI.prototype.evaluate = function(that) {
+	var exp = that.value;
+	var result;
+
+	if (exp == "clear") {
+	  console.log("clear");
+	  scicalc[EVAL_CLASS_REAL].variables = [];
+	  scicalc[EVAL_CLASS_REAL].ans = 0;
+	  scicalc[EVAL_CLASS_COMPLEX].variables = [];
+	  scicalc[EVAL_CLASS_COMPLEX].ans = new scicalc.Complex(0);
+	  scicalc.main.clearHistory();
+	  result = "";
+	} else try {
+	  result = scicalc[evalClass].compute(exp);
+	} catch (e) {
+	  this.error();
+	  if (e.desc && typeof(e.desc) == "string")
+	    this.showError(e.desc);
+	  else if (e.name.toLowerCase() == "syntaxerror")
+	    this.showError(scicalc.invalidExpError.desc);
+	  else
+	    console.log(e); // unexpected error
+	}
+	
+	if (typeof result != 'undefined')
+	  that.value = result;
+	setFocus(that);
+  };
+
   // Animates the icon to indicate an error.
   CalculatorUI.prototype.error = function() {
     var icon = this.icon;
@@ -429,10 +440,16 @@ scicalc.main = (function() {
 	  icon.setAttribute("error", true);
 	}, 50);
   };
+  
+  // Shows the error popup containing the error message "err"
+  CalculatorUI.prototype.showError = function(err) {
+	ebd("scicalc-errordesc").value = err;
+	errorPop.openPopup(this.icon, "before_start", 10);
+  };
 
   // Shows the history popup attached to this panel
   CalculatorUI.prototype.showHistoryPopup = function() {
-    var getStr;
+	var getStr;
 	var clas = scicalc[evalClass];
 	if (evalClass == EVAL_CLASS_REAL) {
 	  if (clas.mode == 10) {
@@ -591,9 +608,9 @@ scicalc.main = (function() {
 	},
 
 	openOptions : function() {
-		window.openDialog("chrome://statusscicalc/content/options.xul","omanager",
-						  "chrome, modal=yes, toolbar");
-		scicalc.realMath.loadUserData();
+	  window.openDialog("chrome://statusscicalc/content/options.xul","omanager",
+	                    "chrome, modal=yes, toolbar");
+	  scicalc.realMath.loadUserData();
 	},
 
 	hideAskPopup : function() {
@@ -638,6 +655,18 @@ scicalc.main = (function() {
 
 	  while(docf.childNodes.length > 2*historyLength)
 		docf.removeChild(docf.childNodes[0]);
+	  scicalc.fileIO.saveXML(historyDoc,"history.xml");
+	},
+
+	clearHistory : function() {
+	  while (historyBox.childNodes.length > 1) {
+		historyBox.removeChild(historyBox.lastChild);
+	  }
+	  historyBox.setAttribute('rows', 0);
+
+	  var docf = historyDoc.firstChild;
+	  while(docf.firstChild)
+		docf.removeChild(docf.firstChild);
 	  scicalc.fileIO.saveXML(historyDoc,"history.xml");
 	},
 
