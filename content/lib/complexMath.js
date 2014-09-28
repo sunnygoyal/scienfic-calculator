@@ -48,7 +48,7 @@ scicalc.complexMath = {
 		if (id == 'i') return (new scicalc.Complex(0,1));
 		if (id == 'e') return (new scicalc.Complex(Math.exp(1)));
 		if (id == 'pi') return (new scicalc.Complex(Math.PI));
-		if (id == 'ans') return (new scicalc.complexMath.ans);
+		if (id == 'ans') return (scicalc.complexMath.ans);
 		
 		
 		for (var i = 0; i < this.variables.length; i++)
