@@ -162,21 +162,25 @@ toolbarpaletteitem[place="palette"]	#scicalc-close {
 #scicalc-historyBox {
 	-moz-appearance: none;
 	border: none;
-	margin: 2px 0;
+	margin: 0;
 }
 
 #scicalc-historyBox listcol {
 	min-width: 3em;
 }
 
-#scicalc-historyBox .listcell-label {
-	padding-left: 4px;
-	padding-right: 4px;
-}	
-
 #scicalc-historyBox listcell:last-child {
 	text-align: right;
 	color: #777;
+}
+
+#scicalc-historyBox .listcell-label {
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+#scicalc-historyBox listboxbody {
+	overflow: hidden; /* workaround for bug 491788 */
 }
 
 #scicalc-info > label {
