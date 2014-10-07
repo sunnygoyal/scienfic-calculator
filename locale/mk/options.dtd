@@ -1,0 +1,37 @@
+<!ENTITY options.tab.settings "Поставувања">
+<!ENTITY options.tab.constants "Константи">
+<!ENTITY options.tab.functions "Функции">
+<!ENTITY options.tab.operators "Оператори">
+<!ENTITY settings.label.usemodulo "Користи '&#37;' за">
+<!ENTITY settings.menuitem.modulo "модуло">
+<!ENTITY settings.menuitem.percent "процент">
+<!ENTITY settings.label.operator "оператор">
+<!ENTITY settings.label.history "Должина на историската лента:">
+<!ENTITY settings.label.round "Заокружи на децимали">
+<!ENTITY settings.label.roundlength "Број на цифри по децималата:">
+<!ENTITY settings.checkbox.comma "Запирка (,)">
+<!ENTITY settings.checkbox.comma.argument "Употреби како сепаратор за аргументи">
+<!ENTITY settings.checkbox.comma.dot "Употреби како точка">
+<!ENTITY settings.checkbox.comma.ignore "Игнорирај">
+<!ENTITY settings.addonbar.accessKey "Клуч за пристап:">
+<!ENTITY settings.addonbar.width "Ширина на полето за внес:">
+<!ENTITY settings.addonbar.collapsible "Смалувачко поле за внес">
+<!ENTITY constants.listitem.calculated "*пресметано*">
+<!ENTITY constants.listitem.natlogbase "База на природни логаритми">
+<!ENTITY constants.listitem.answer "Решение од последниот израз">
+<!ENTITY constants.button.add "Додади">
+<!ENTITY constants.button.delete "Избриши">
+<!ENTITY constants.button.edit "Уреди">
+<!ENTITY constants.button.reload "Освежи">
+<!ENTITY constants.button.save "Всними">
+<!ENTITY constants.label.identifier "Идентификатор:">
+<!ENTITY constants.label.value "Вредност:">
+<!ENTITY constants.label.description "Опис:">
+<!ENTITY constants.button.cancel "Поништи">
+<!ENTITY constants.button.done "Завршено">
+<!ENTITY functions.label.name "Име на функцијата:">
+<!ENTITY functions.label.args "Број на арг.:">
+<!ENTITY operators.label.operator "Оператор:">
+<!ENTITY operators.label.asst "Асоцијативност:">
+<!ENTITY operators.label.moveUp "Помести нагоре">
+<!ENTITY operators.label.moveDown "Помести надолу">
