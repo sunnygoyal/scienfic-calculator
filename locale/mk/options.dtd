@@ -27,7 +27,7 @@
 <!ENTITY constants.label.identifier "Идентификатор:">
 <!ENTITY constants.label.value "Вредност:">
 <!ENTITY constants.label.description "Опис:">
-<!ENTITY constants.button.cancel "Откажи">
+<!ENTITY constants.button.cancel "Поништи">
 <!ENTITY constants.button.done "Завршено">
 <!ENTITY functions.label.name "Име на функцијата:">
 <!ENTITY functions.label.args "Број на арг.:">
