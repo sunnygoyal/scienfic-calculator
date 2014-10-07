@@ -34,4 +34,4 @@
 <!ENTITY operators.label.operator "Оператор:">
 <!ENTITY operators.label.asst "Асоцијативност:">
 <!ENTITY operators.label.moveUp "Помести нагоре">
-<!ENTITY operators.label.moveDown "Move Down">
+<!ENTITY operators.label.moveDown "Помести надолу">
