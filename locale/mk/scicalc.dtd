@@ -1,0 +1,14 @@
+<!ENTITY scicalc.app.name "Научен дигитрон">
+<!ENTITY scicalc.label.selectbase "Одбери ја основицата">
+<!ENTITY scicalc.askmode.help "Било кој цел број меѓу 2 и 24 или h=hex, b=bin, d=dec">
+<!ENTITY scicalc.mode.popup.bin "Бинарен">
+<!ENTITY scicalc.mode.popup.dec "Децимален">
+<!ENTITY scicalc.mode.popup.hex "Хексадецимален">
+<!ENTITY scicalc.mode.popup.other "Друго...">
+<!ENTITY scicalc.mode.popup.complex "Комплексен">
+<!ENTITY scicalc.angle.angle "Агол">
+<!ENTITY scicalc.angle.radians "радијани">
+<!ENTITY scicalc.angle.degrees "степени">
+<!ENTITY scicalc.menu.options "Опции...">
+<!ENTITY scicalc.info.variables "Непознати">
+<!ENTITY scicalc.info.history "Скорешни пресметки">
