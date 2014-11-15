@@ -184,7 +184,7 @@ scicalc.main = (function() {
 
     //set preference manager
 	prefManager = Components.classes["@mozilla.org/preferences-service;1"]
-	  .getService(Components.interfaces.nsIPrefBranch)
+	  .getService(Components.interfaces.nsIPrefService)
 	  .getBranch("extensions.ststusscicalc.");
     prefManager.QueryInterface(Components.interfaces.nsIPrefBranch2);
 	prefManager.addObserver("", prefObserver, false);
