@@ -74,6 +74,7 @@
 #scicalc-container[cui-areatype="menu-panel"] #scicalc-input  {
 	margin-top: 6px;
 	height: 24px;
+	font-size: inherit;
 	min-width: 21.75em;
 	max-width: 21.75em;
 	visibility: visible !important;
