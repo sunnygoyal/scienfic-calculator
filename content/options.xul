@@ -108,11 +108,12 @@
 				</listbox>
 				<vbox flex="1">
 					<hbox class="listcontrol_toolbar">
-						<spacer flex="1"/>
+						<separator orient="vertical" class="groove"/>
 						<toolbarbutton id="const_but_add"    oncommand="constHandler.clicked_add();" tooltiptext="&constants.button.add;"/>
-						<toolbarbutton id="const_but_del"    oncommand="constHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
 						<toolbarbutton id="const_but_edit"   oncommand="constHandler.clicked_edit();" tooltiptext="&constants.button.edit;"/>
+						<toolbarbutton id="const_but_del"    oncommand="constHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
 					</hbox>
+					<separator class="thin"/>
 					<grid>
 						<columns>
 							<column/>
@@ -147,11 +148,12 @@
 					<listbox id="func_list" onselect="funcHandler.list_sel()" width="80" height="40"/>
 					<vbox flex="1">
 						<hbox class="listcontrol_toolbar">
-							<spacer flex="1"/>
+							<separator orient="vertical" class="groove"/>
 							<toolbarbutton id="func_but_add"    oncommand="funcHandler.clicked_add();" tooltiptext="&constants.button.add;"/>
-							<toolbarbutton id="func_but_del"    oncommand="funcHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
 							<toolbarbutton id="func_but_edit"   oncommand="funcHandler.clicked_edit();" tooltiptext="&constants.button.edit;"/>
+							<toolbarbutton id="func_but_del"    oncommand="funcHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
 						</hbox>
+						<separator class="thin"/>
 						<grid>
 							<columns>
 								<column/>
@@ -197,11 +199,12 @@
 					</vbox>
 					<vbox flex="1">
 						<hbox class="listcontrol_toolbar">
-							<spacer flex="1"/>
+							<separator orient="vertical" class="groove"/>
 							<toolbarbutton id="oper_but_add"    oncommand="operHandler.clicked_add();" tooltiptext="&constants.button.add;"/>
-							<toolbarbutton id="oper_but_del"    oncommand="operHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
 							<toolbarbutton id="oper_but_edit"   oncommand="operHandler.clicked_edit();" tooltiptext="&constants.button.edit;"/>
+							<toolbarbutton id="oper_but_del"    oncommand="operHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
 						</hbox>
+						<separator class="thin"/>
 						<grid>
 							<columns>
 								<column/>
