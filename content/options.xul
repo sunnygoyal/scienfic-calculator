@@ -12,7 +12,7 @@
 <prefwindow title="&scicalc.app.name;"
             id="statusscicalc-pref"
             xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-            buttons="accept,cancel" ondialogaccept="return options_accept();">
+			buttons="accept">
 
   <prefpane id="statussicalc_pref" onpaneload="intiValues()">
 	<script type="application/x-javascript" src="lib/listcontrol.js"/>

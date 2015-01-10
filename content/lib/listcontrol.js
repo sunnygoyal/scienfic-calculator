@@ -119,6 +119,7 @@ function listControl(prefix, nodeName, attributes, newname, codepressH) {
 			listBox.removeItemAt(listBox.selectedIndex);
 			this.changed = true;
 			this.list_sel();
+			this.accept();
 		}
 	};
 	
@@ -144,6 +145,8 @@ function listControl(prefix, nodeName, attributes, newname, codepressH) {
 		listBox.selectedItem = element;
 		this.changed = true;
 		this.list_sel();
+		
+		this.accept();
 	};
 
 	this.clicked_reload = function() {
@@ -173,13 +176,12 @@ function listControl(prefix, nodeName, attributes, newname, codepressH) {
 	};
 	
 	this.accept = function() {
-		if (!this.changed) return true;
-		var val = askConfirm(mystrings("saveTitle"), mystrings(prefix+"SaveDescription"), true);
-		if (val == 2) return true;
-		if (val == 1) return false;
-
 		this.clicked_save();
-		return true;
+		
+		var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+		                   .getService(Components.interfaces.nsIWindowMediator);
+		var mainWindow = wm.getMostRecentWindow("navigator:browser");
+		mainWindow.scicalc.realMath.loadUserData();
 	};
 
 }
