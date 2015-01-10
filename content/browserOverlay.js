@@ -608,8 +608,29 @@ scicalc.main = (function() {
 	},
 
 	openOptions : function() {
-	  window.openDialog("chrome://statusscicalc/content/options.xul","omanager",
-	                    "chrome, modal=yes, toolbar");
+	  optionsURL = "chrome://statusscicalc/content/options.xul";
+	  // emulate "Options" button in "about:addons" as close as possible
+	  // TODO: Can we use "cmd_showItemPreferences" directly?
+	  // (see http://lxr.mozilla.org/mozilla-central/source/toolkit/mozapps/extensions/content/extensions.js#1034)
+	  var windows = Services.wm.getEnumerator(null);
+	  while (windows.hasMoreElements()) {
+	    var win = windows.getNext();
+	    if (win.closed) {
+	      continue;
+	    }
+	    if (win.document.documentURI == optionsURL) {
+	      win.focus();
+	      return;
+	    }
+	  }
+	  var features = "chrome,titlebar,toolbar,centerscreen";
+	  try {
+	    var instantApply = Services.prefs.getBoolPref("browser.preferences.instantApply");
+	    features += instantApply ? ",dialog=no" : ",modal";
+	  } catch (e) {
+	    features += ",modal";
+	  }
+	  window.openDialog(optionsURL, "", features);
 	  scicalc.realMath.loadUserData();
 	},
 
