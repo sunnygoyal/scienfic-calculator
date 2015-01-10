@@ -112,8 +112,6 @@
 						<toolbarbutton id="const_but_add"    oncommand="constHandler.clicked_add();" tooltiptext="&constants.button.add;"/>
 						<toolbarbutton id="const_but_del"    oncommand="constHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
 						<toolbarbutton id="const_but_edit"   oncommand="constHandler.clicked_edit();" tooltiptext="&constants.button.edit;"/>
-						<toolbarbutton id="const_but_reload" oncommand="constHandler.clicked_reload();" tooltiptext="&constants.button.reload;"/>
-						<toolbarbutton id="const_but_save"   oncommand="constHandler.clicked_save();" tooltiptext="&constants.button.save;"/>	
 					</hbox>
 					<grid>
 						<columns>
@@ -153,8 +151,6 @@
 							<toolbarbutton id="func_but_add"    oncommand="funcHandler.clicked_add();" tooltiptext="&constants.button.add;"/>
 							<toolbarbutton id="func_but_del"    oncommand="funcHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
 							<toolbarbutton id="func_but_edit"   oncommand="funcHandler.clicked_edit();" tooltiptext="&constants.button.edit;"/>
-							<toolbarbutton id="func_but_reload" oncommand="funcHandler.clicked_reload();" tooltiptext="&constants.button.reload;"/>
-							<toolbarbutton id="func_but_save"   oncommand="funcHandler.clicked_save();" tooltiptext="&constants.button.save;"/>	
 						</hbox>
 						<grid>
 							<columns>
@@ -205,8 +201,6 @@
 							<toolbarbutton id="oper_but_add"    oncommand="operHandler.clicked_add();" tooltiptext="&constants.button.add;"/>
 							<toolbarbutton id="oper_but_del"    oncommand="operHandler.clicked_delete();" tooltiptext="&constants.button.delete;"/>
 							<toolbarbutton id="oper_but_edit"   oncommand="operHandler.clicked_edit();" tooltiptext="&constants.button.edit;"/>
-							<toolbarbutton id="oper_but_reload" oncommand="operHandler.clicked_reload();" tooltiptext="&constants.button.reload;"/>
-							<toolbarbutton id="oper_but_save"   oncommand="operHandler.clicked_save();" tooltiptext="&constants.button.save;"/>	
 						</hbox>
 						<grid>
 							<columns>

@@ -41,7 +41,6 @@ function setDisable(ids, val) {
 function listControl(prefix, nodeName, attributes, newname, codepressH) {
 
 	var editMode = "edit";
-	this.changed = false;
 	
 	var controlIds = [prefix+"_but_cancel",prefix+"_but_done", prefix+"_name"];
 	for (var i = 0; i < attributes.length; i++)
@@ -97,8 +96,6 @@ function listControl(prefix, nodeName, attributes, newname, codepressH) {
 		}
 
 		this.list_sel();
-
-		this.changed = false;
 	};
 	
 	this.clicked_add = function() {
@@ -117,7 +114,6 @@ function listControl(prefix, nodeName, attributes, newname, codepressH) {
 	this.clicked_delete = function() {
 		if (askConfirm(mystrings("deleteTitle"), mystrings(prefix + "DeleteDescription")) == 0) {
 			listBox.removeItemAt(listBox.selectedIndex);
-			this.changed = true;
 			this.list_sel();
 			this.accept();
 		}
@@ -143,19 +139,13 @@ function listControl(prefix, nodeName, attributes, newname, codepressH) {
 			element.setAttribute(attributes[i], ebd(prefix + "_" + attributes[i]).value);
 		if (codepressH) element.setAttribute("code", codepressH.getCode());
 		listBox.selectedItem = element;
-		this.changed = true;
 		this.list_sel();
 		
 		this.accept();
 	};
-
-	this.clicked_reload = function() {
-		if (this.changed && askConfirm(mystrings("reloadTitle"), mystrings(prefix+"ReloadDescription")) != 0)
-			return;
-		this.load();
-	};
 	
-	this.clicked_save = function() {
+	this.accept = function() {
+		// save changed list to file
 		var doc = document.implementation.createDocument("", "", null);
 		var elements = doc.createElement(nodeName + "s");
 		for (var i = minListLength; i < listBox.getRowCount(); i++) {
@@ -172,12 +162,9 @@ function listControl(prefix, nodeName, attributes, newname, codepressH) {
 		}
 		doc.appendChild(elements);
 		scicalc.fileIO.saveXML(doc,nodeName + "s.xml");
-		this.changed = false;
-	};
-	
-	this.accept = function() {
-		this.clicked_save();
 		
+		// reload UserData so changes take effect
+		// TODO: it would probably be wise not to reload all lists on every change
 		var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
 		                   .getService(Components.interfaces.nsIWindowMediator);
 		var mainWindow = wm.getMostRecentWindow("navigator:browser");

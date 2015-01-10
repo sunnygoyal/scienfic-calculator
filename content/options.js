@@ -174,7 +174,7 @@ function operMoveUp() {
 		t.insertBefore(t.selectedItem,t.getItemAtIndex(n));
 		t.selectedIndex = n;
 	}
-	operHandler.changed = true;
+	operHandler.accept();
 }
 
 function operMoveDown() {
@@ -185,7 +185,7 @@ function operMoveDown() {
 		t.insertBefore(t.selectedItem,t.getItemAtIndex(n));
 		t.selectedIndex = n-1;
 	}
-	operHandler.changed = true;
+	operHandler.accept();
 }
 
 
