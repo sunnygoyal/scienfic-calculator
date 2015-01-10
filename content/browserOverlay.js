@@ -631,7 +631,6 @@ scicalc.main = (function() {
 	    features += ",modal";
 	  }
 	  window.openDialog(optionsURL, "", features);
-	  scicalc.realMath.loadUserData();
 	},
 
 	hideAskPopup : function() {

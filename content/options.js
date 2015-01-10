@@ -225,9 +225,14 @@ function dotDigit() {
 }
 
 function options_accept() {
+	var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
+	                   .getService(Components.interfaces.nsIWindowMediator);
+	var mainWindow = wm.getMostRecentWindow("navigator:browser");
+
 	if (constHandler.accept())
 		if (funcHandler.accept())
 			if (operHandler.accept())
+				mainWindow.scicalc.realMath.loadUserData();
 				return true;
 	return false;
 }
