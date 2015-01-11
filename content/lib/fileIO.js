@@ -15,16 +15,40 @@ scicalc.fileIO = (function () {
 		return file;
 	};
 
+	// remove all text nodes that consist only of whitespace from a DOM tree
+	var clean = function(xml) {
+		for (var i = 0; i < xml.childNodes.length; i++) {
+			var child = xml.childNodes[i];
+			if (child.nodeType === 3 && !/\S/.test(child.nodeValue)) {
+				xml.removeChild(child);
+				i--;
+			}
+			else if (child.nodeType === 1) {
+				clean(child);
+			}
+		}
+	};
+
+	var indent = function(xml) {
+		for (var i = 0; i < xml.children.length; i++) {
+			xml.insertBefore(document.createTextNode("\n\t"), xml.children[i]);
+		}
+		xml.appendChild(document.createTextNode("\n"));
+	};
+
 	return {
 	saveXML : function(xml, filename) {
 		var maindir = getStorageDir();
-		if (!maindir.exists() || !maindir.isDirectory()) maindir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0777);
+		if (!maindir.exists() || !maindir.isDirectory())
+			maindir.create(Components.interfaces.nsIFile.DIRECTORY_TYPE, 0777);
 		
-		var serializer = Components.classes["@mozilla.org/xmlextras/xmlserializer;1"].createInstance(Components.interfaces.nsIDOMSerializer);
+		var serializer = Components.classes["@mozilla.org/xmlextras/xmlserializer;1"]
+		                           .createInstance(Components.interfaces.nsIDOMSerializer);
 		var foStream = Components.classes["@mozilla.org/network/file-output-stream;1"]
-				   .createInstance(Components.interfaces.nsIFileOutputStream);
-		
+		                         .createInstance(Components.interfaces.nsIFileOutputStream);
+
 		foStream.init(getFilePath(filename), 0x02 | 0x08 | 0x20, 0664, 0);
+		indent(xml.firstChild);
 		serializer.serializeToStream(xml, foStream, "");
 		foStream.close();
 	},
@@ -43,7 +67,9 @@ scicalc.fileIO = (function () {
 		var req = new XMLHttpRequest();
 		req.open("GET", url, false);
 		req.send(null);
-		return req.responseXML;
+		var xml = req.responseXML;
+		clean(xml);
+		return xml;
 	}
 	};
 })();

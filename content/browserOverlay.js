@@ -212,7 +212,7 @@ scicalc.main = (function() {
     historyBox = ebd("scicalc-historyBox");
 
     historyDoc = scicalc.fileIO.getXML("history.xml");
-	var hnodes = historyDoc.firstChild.childNodes;
+	var hnodes = historyDoc.firstChild.children;
 	var n = historyLength;
 	if (hnodes.length == 0) n = 0;
 	if (hnodes.length < n) n = hnodes.length;
@@ -659,7 +659,7 @@ scicalc.main = (function() {
 
 	addHistory : function(ques, ans) {
 	  addHistoryEl(ques,ans);
-	  var popChildren = historyBox.childNodes;
+	  var popChildren = historyBox.children;
 	  for (var nodesToRemove = historyLength+1; nodesToRemove < popChildren.length; nodesToRemove++) {
 		historyBox.removeChild(popChildren[nodesToRemove]);
 	  }
@@ -673,13 +673,13 @@ scicalc.main = (function() {
 	  var docf = historyDoc.firstChild;
 	  docf.appendChild(entry);
 
-	  while(docf.childNodes.length > 2*historyLength)
-		docf.removeChild(docf.childNodes[0]);
-	  scicalc.fileIO.saveXML(historyDoc,"history.xml");
+	  while(docf.children.length > 2*historyLength)
+		docf.removeChild(docf.children[0]);
+	  scicalc.fileIO.saveXML(historyDoc.cloneNode(true), "history.xml");
 	},
 
 	clearHistory : function() {
-	  while (historyBox.childNodes.length > 1) {
+	  while (historyBox.children.length > 1) {
 		historyBox.removeChild(historyBox.lastChild);
 	  }
 	  historyBox.setAttribute('rows', 0);
@@ -687,7 +687,7 @@ scicalc.main = (function() {
 	  var docf = historyDoc.firstChild;
 	  while(docf.firstChild)
 		docf.removeChild(docf.firstChild);
-	  scicalc.fileIO.saveXML(historyDoc,"history.xml");
+	  scicalc.fileIO.saveXML(historyDoc.cloneNode(true),"history.xml");
 	},
 
     /**

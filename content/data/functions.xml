@@ -1,1 +1,5 @@
-<functions><function name="si" args="3" code="return a*(100+b)*c/100;" desc="simple interest"/><function name="ci" args="3" code="return a*Math.pow((1+b/100),c);" desc="compound interest"/><function name="avg" args="2" code="return a/2+b/2;" desc="average of two numbers"/></functions>
+<functions>
+	<function name="si" args="3" code="return a*(100+b)*c/100;" desc="simple interest"/>
+	<function name="ci" args="3" code="return a*Math.pow((1+b/100),c);" desc="compound interest"/>
+	<function name="avg" args="2" code="return a/2+b/2;" desc="average of two numbers"/>
+</functions>

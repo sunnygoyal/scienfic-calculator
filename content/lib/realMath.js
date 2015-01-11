@@ -158,7 +158,7 @@ scicalc.realMath = {
 	},
 	
 	loadCustomFunctions : function() {
-		var entries = scicalc.fileIO.getXML("functions.xml").firstChild.childNodes;
+		var entries = scicalc.fileIO.getXML("functions.xml").firstChild.children;
 		scicalc.realMath.customFunctions.length = 0;
 
 		delete scicalc.cf;
@@ -182,7 +182,7 @@ scicalc.realMath = {
 	},
 	
 	loadCustomOperators : function() {
-		var entries = scicalc.fileIO.getXML("operators.xml").firstChild.childNodes;
+		var entries = scicalc.fileIO.getXML("operators.xml").firstChild.children;
 		scicalc.realMath.customOperators.length = 0;
 		scicalc.realMath.cOAsstRight.length = 0;
 
@@ -212,7 +212,7 @@ scicalc.realMath = {
 	loadConstants : function() {
 		scicalc.realMath.constants = [["e", " exp(1)"], ["pi", "Math.PI"], ["ans", "scicalc.realMath.ans"]];
 			
-		var entries = scicalc.fileIO.getXML("constants.xml").firstChild.childNodes;
+		var entries = scicalc.fileIO.getXML("constants.xml").firstChild.children;
 		
 		for (var i = 0; i < entries.length; i++) {
 			var id = entries[i].getAttribute("name");

@@ -77,7 +77,7 @@ function listControl(prefix, nodeName, attributes, newname, codepressH) {
 		while (listBox.getRowCount() > minListLength)
 			listBox.removeItemAt(minListLength);		//remove old items
 
-		var entries = scicalc.fileIO.getXML(nodeName+"s.xml").firstChild.childNodes;
+		var entries = scicalc.fileIO.getXML(nodeName+"s.xml").firstChild.children;
 
 		for (var i = 0; i < entries.length; i++) {
 			var name = entries[i].getAttribute("name");
