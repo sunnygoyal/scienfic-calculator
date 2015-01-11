@@ -133,6 +133,7 @@ function listControl(prefix, nodeName, attributes, newname, codepressH) {
 			element = listBox.selectedItem;
 		else
 			element = listBox.appendItem(0,0);
+		listBox.ensureElementIsVisible(element);
 
 		element.label = ebd(prefix+"_name").value;
 		for (var i = 0; i < attributes.length; i++)		
