@@ -10,20 +10,18 @@
 <!ENTITY settings.label.round "Roundoff Decimals">
 <!ENTITY settings.label.roundlength "Number of digits after decimal:">
 <!ENTITY settings.checkbox.comma "Comma (,)">
-<!ENTITY settings.checkbox.comma.argument "Treat as argument seperator">
+<!ENTITY settings.checkbox.comma.argument "Treat as argument separator">
 <!ENTITY settings.checkbox.comma.dot "Treat as dot">
 <!ENTITY settings.checkbox.comma.ignore "Ignore">
 <!ENTITY settings.addonbar.accessKey "Access Key:">
 <!ENTITY settings.addonbar.width "Width of the input field:">
 <!ENTITY settings.addonbar.collapsible "Collapsible input field">
 <!ENTITY constants.listitem.calculated "*calculated*">
-<!ENTITY constants.listitem.natlogbase "Natural Log Base">
-<!ENTITY constants.listitem.answer "Solution of last Expression">
+<!ENTITY constants.listitem.natlogbase "Base of Natural Logarithm">
+<!ENTITY constants.listitem.answer "Solution of Last Expression">
 <!ENTITY constants.button.add "Add">
 <!ENTITY constants.button.delete "Delete">
 <!ENTITY constants.button.edit "Edit">
-<!ENTITY constants.button.reload "Reload">
-<!ENTITY constants.button.save "Save">
 <!ENTITY constants.label.identifier "Identifier:">
 <!ENTITY constants.label.value "Value:">
 <!ENTITY constants.label.description "Description:">
