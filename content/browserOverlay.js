@@ -408,7 +408,6 @@ scicalc.main = (function() {
 	var result;
 
 	if (exp == "clear") {
-	  console.log("clear");
 	  scicalc[EVAL_CLASS_REAL].variables = [];
 	  scicalc[EVAL_CLASS_REAL].ans = 0;
 	  scicalc[EVAL_CLASS_COMPLEX].variables = [];
