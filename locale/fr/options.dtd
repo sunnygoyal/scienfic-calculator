@@ -22,8 +22,6 @@
 <!ENTITY constants.button.add "Ajouter">
 <!ENTITY constants.button.delete "Supprimer">
 <!ENTITY constants.button.edit "Modifier">
-<!ENTITY constants.button.reload "Recharger">
-<!ENTITY constants.button.save "Enregistrer">
 <!ENTITY constants.label.identifier "Symbole:">
 <!ENTITY constants.label.value "Valeur :">
 <!ENTITY constants.label.description "Description:">

@@ -5,7 +5,7 @@
 <!ENTITY settings.label.usemodulo "&#37;-merkki ymmärretään">
 <!ENTITY settings.menuitem.modulo "jakojäännöksenä (modulo)">
 <!ENTITY settings.menuitem.percent "prosenttina">
-<!ENTITY settings.label.operator "">
+<!ENTITY settings.label.operator " ">
 <!ENTITY settings.label.history "Historian pituus:">
 <!ENTITY settings.label.round "Pyöristyksen desimaalit">
 <!ENTITY settings.label.roundlength "Pilkun jälkeisten lukujen määrä">
@@ -22,8 +22,6 @@
 <!ENTITY constants.button.add "Lisää">
 <!ENTITY constants.button.delete "Poista">
 <!ENTITY constants.button.edit "Muokkaa">
-<!ENTITY constants.button.reload "Uudelleenlataa">
-<!ENTITY constants.button.save "Tallenna">
 <!ENTITY constants.label.identifier "Tunniste:">
 <!ENTITY constants.label.value "Arvo:">
 <!ENTITY constants.label.description "Kuvaus:">
