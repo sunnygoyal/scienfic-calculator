@@ -1,0 +1,30 @@
+[main]
+host = https://www.transifex.com
+
+[scientific-calculator-toolbar.optionsdtd]
+file_filter = locale/<lang>/options.dtd
+source_file = locale/en-US/options.dtd
+source_lang = en_US
+type = DTD
+minimum_perc = 0
+
+[scientific-calculator-toolbar.optionsproperties]
+file_filter = locale/<lang>/options.properties
+source_file = locale/en-US/options.properties
+source_lang = en_US
+type = MOZILLAPROPERTIES
+minimum_perc = 0
+
+[scientific-calculator-toolbar.scicalcdtd]
+file_filter = locale/<lang>/scicalc.dtd
+source_file = locale/en-US/scicalc.dtd
+source_lang = en_US
+type = DTD
+minimum_perc = 0
+
+[scientific-calculator-toolbar.scicalcproperties]
+file_filter = locale/<lang>/scicalc.properties
+source_file = locale/en-US/scicalc.properties
+source_lang = en_US
+type = MOZILLAPROPERTIES
+minimum_perc = 0
