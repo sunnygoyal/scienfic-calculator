@@ -11,7 +11,7 @@
 		<em:version>5.3.3</em:version>
 		<em:description>A full-featured scientific calculator which can be placed in any Firefox tool-bar or the Australis PanelUI.</em:description>
 		<em:creator>Sunny Goyal</em:creator>
-		<em:homepageURL>https://github.com/sunnygoyal/scienfic-calculator</em:homepageURL>
+		<em:homepageURL>https://addons.mozilla.org/addon/scientific-calculator</em:homepageURL>
 		<em:iconURL>chrome://statusscicalc/skin/icon.png</em:iconURL>
 		<em:icon64URL>chrome://statusscicalc/skin/icon64.png</em:icon64URL>
 		<em:optionsURL>chrome://statusscicalc/content/options.xul</em:optionsURL>
