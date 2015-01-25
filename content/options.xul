@@ -103,7 +103,7 @@
 			<tabpanel orient="horizontal">
 				<listbox id="const_list" onselect="constHandler.list_sel()" width="80">
 					<listitem value="&constants.listitem.calculated;" desc="&constants.listitem.natlogbase;" label="e"/>
-					<listitem value="&constants.listitem.calculated;" desc="3.14159" label="pi"/>
+					<listitem value="&constants.listitem.calculated;" desc="&constants.listitem.pi;" label="pi"/>
 					<listitem value="&constants.listitem.calculated;" desc="&constants.listitem.answer;" label="ans"/>
 				</listbox>
 				<vbox flex="1">

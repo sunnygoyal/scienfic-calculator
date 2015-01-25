@@ -18,6 +18,7 @@
 <!ENTITY settings.addonbar.collapsible "Collapsible input field">
 <!ENTITY constants.listitem.calculated "*calculated*">
 <!ENTITY constants.listitem.natlogbase "Base of Natural Logarithm">
+<!ENTITY constants.listitem.pi "The Number Pi (π)">
 <!ENTITY constants.listitem.answer "Solution of Last Expression">
 <!ENTITY constants.button.add "Add">
 <!ENTITY constants.button.delete "Delete">
