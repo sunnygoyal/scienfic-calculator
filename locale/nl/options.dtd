@@ -1,0 +1,36 @@
+<!ENTITY options.tab.settings "Instellingen">
+<!ENTITY options.tab.constants "Constanten">
+<!ENTITY options.tab.functions "Functies">
+<!ENTITY options.tab.operators "Operatoren">
+<!ENTITY settings.label.usemodulo "Gebruik '&#37;' als">
+<!ENTITY settings.menuitem.modulo "restbepaling bij deling">
+<!ENTITY settings.menuitem.percent "procent">
+<!ENTITY settings.label.operator "operator">
+<!ENTITY settings.label.history "Lengte van geschiedenislijst:">
+<!ENTITY settings.label.round "Decimalen afronden">
+<!ENTITY settings.label.roundlength "Aantal cijfers achter de decimaal:">
+<!ENTITY settings.checkbox.comma "Komma (,)">
+<!ENTITY settings.checkbox.comma.argument "Behandelen als argumentscheiding">
+<!ENTITY settings.checkbox.comma.dot "Behandelen als punt">
+<!ENTITY settings.checkbox.comma.ignore "Negeren">
+<!ENTITY settings.addonbar.accessKey "Toegangssleutel:">
+<!ENTITY settings.addonbar.width "Breedte van het invoerveld:">
+<!ENTITY settings.addonbar.collapsible "Inklapbaar invoerveld">
+<!ENTITY constants.listitem.calculated "*berekend*">
+<!ENTITY constants.listitem.natlogbase "Basis van natuurlijk logaritme">
+<!ENTITY constants.listitem.pi "Het getal Pi (π)">
+<!ENTITY constants.listitem.answer "Oplossing van laatste expressie">
+<!ENTITY constants.button.add "Toevoegen">
+<!ENTITY constants.button.delete "Verwijderen">
+<!ENTITY constants.button.edit "Bewerken">
+<!ENTITY constants.label.identifier "Identificeerder:">
+<!ENTITY constants.label.value "Waarde:">
+<!ENTITY constants.label.description "Beschrijving:">
+<!ENTITY constants.button.cancel "Annuleren">
+<!ENTITY constants.button.done "Afronden">
+<!ENTITY functions.label.name "Functienaam:">
+<!ENTITY functions.label.args "Aantal argumenten:">
+<!ENTITY operators.label.operator "Operator:">
+<!ENTITY operators.label.asst "Associativiteit:">
+<!ENTITY operators.label.moveUp "Naar boven verplaatsen">
+<!ENTITY operators.label.moveDown "Naar beneden verplaatsen">

@@ -18,6 +18,7 @@
 <!ENTITY settings.addonbar.collapsible "Erweiterbares Eingabefeld">
 <!ENTITY constants.listitem.calculated "*berechnet*">
 <!ENTITY constants.listitem.natlogbase "Basis des natürlichen Logarithmus">
+<!ENTITY constants.listitem.pi "Kreiszahl Pi (π)">
 <!ENTITY constants.listitem.answer "Ergebnis des letzten Ausdrucks">
 <!ENTITY constants.button.add "Hinzufügen">
 <!ENTITY constants.button.delete "Löschen">

@@ -1,0 +1,14 @@
+<!ENTITY scicalc.app.name "Wetenschappelijke Rekenmachine">
+<!ENTITY scicalc.label.selectbase "Selecteer basis">
+<!ENTITY scicalc.askmode.help "Ieder geheel getal tussen 2 en 24 of h=hex, b=bin, d=dec">
+<!ENTITY scicalc.mode.popup.bin "Binair">
+<!ENTITY scicalc.mode.popup.dec "Decimaal">
+<!ENTITY scicalc.mode.popup.hex "Hexadecimaal">
+<!ENTITY scicalc.mode.popup.other "Overig...">
+<!ENTITY scicalc.mode.popup.complex "Uitgebreid">
+<!ENTITY scicalc.angle.angle "Hoek">
+<!ENTITY scicalc.angle.radians "radialen">
+<!ENTITY scicalc.angle.degrees "graden">
+<!ENTITY scicalc.menu.options "Opties...">
+<!ENTITY scicalc.info.variables "Variabelen">
+<!ENTITY scicalc.info.history "Recente berekeningen">

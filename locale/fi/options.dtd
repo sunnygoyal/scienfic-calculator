@@ -18,6 +18,7 @@
 <!ENTITY settings.addonbar.collapsible "Kenttä pienennettävissä">
 <!ENTITY constants.listitem.calculated "*laskettu*">
 <!ENTITY constants.listitem.natlogbase "Luonnollinen logaritmi">
+<!ENTITY constants.listitem.pi "The Number Pi (π)">
 <!ENTITY constants.listitem.answer "Solution of last Expression">
 <!ENTITY constants.button.add "Lisää">
 <!ENTITY constants.button.delete "Poista">

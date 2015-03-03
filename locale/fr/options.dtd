@@ -18,6 +18,7 @@
 <!ENTITY settings.addonbar.collapsible "Calculatrice pliante">
 <!ENTITY constants.listitem.calculated "*calculée*">
 <!ENTITY constants.listitem.natlogbase "Base du logarithme naturel">
+<!ENTITY constants.listitem.pi "Le nombre pi (π)">
 <!ENTITY constants.listitem.answer "Résultat de la dernière expression">
 <!ENTITY constants.button.add "Ajouter">
 <!ENTITY constants.button.delete "Supprimer">
