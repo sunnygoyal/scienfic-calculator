@@ -30,7 +30,10 @@
 <!ENTITY constants.button.done "Done">
 <!ENTITY functions.label.name "Function Name:">
 <!ENTITY functions.label.args "No. of args.:">
+<!ENTITY functions.label.code "Code:">
 <!ENTITY operators.label.operator "Operator:">
 <!ENTITY operators.label.asst "Associativity:">
+<!ENTITY operators.label.left "Left">
+<!ENTITY operators.label.right "Right">
 <!ENTITY operators.label.moveUp "Move Up">
 <!ENTITY operators.label.moveDown "Move Down">

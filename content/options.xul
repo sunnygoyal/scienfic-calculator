@@ -177,7 +177,7 @@
 					</vbox>
 				</hbox>
 				
-				<label control="func_code" value="Code:"/>
+				<label control="func_code" value="&functions.label.code;"/>
 				<iframe id="func_code" name="func_code" src="" frameBorder="1" flex="1"/>
 				
 				<hbox>
@@ -219,8 +219,8 @@
 									<label control="oper_asst" value="&operators.label.asst;"/>
 									<menulist id="oper_asst" style="-moz-appearance:textfield;">
 										<menupopup>
-											<menuitem label="Left" value=""/>
-											<menuitem label="Right" value="rt"/>
+											<menuitem label="&operators.label.left;" value=""/>
+											<menuitem label="&operators.label.right;" value="rt"/>
 										</menupopup>
 									</menulist>
 								</row>
@@ -233,7 +233,7 @@
 					</vbox>
 				</hbox>
 				
-				<label control="oper_code" value="Code:"/>
+				<label control="oper_code" value="&functions.label.code;"/>
 				<iframe id="oper_code" name="oper_code" src="" frameBorder="1" flex="1"/>
 			
 				<hbox>
