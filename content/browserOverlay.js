@@ -275,7 +275,7 @@ scicalc.main = (function() {
    */
   var changeModeInternal = function(nid, mode, uihandler) {
     if (nid == "ask")
-	  ebd("scicalc_mode_ask").label = "Base ("+mode+")...";
+	  ebd("scicalc_mode_ask").setAttribute("acceltext", mode);
 
     if ((mode < 1) || (mode > 24))
 	  mode = 10;
@@ -517,7 +517,7 @@ scicalc.main = (function() {
   CalculatorUI.prototype.showAskPopup = function() {
     var modeAsk = ebd("scicalc_mode_ask");
 	var textbox = ebd("scicalc-modeaskpopup-value");
-	textbox.value = modeAsk.label.substring(modeAsk.label.indexOf("(")+1, modeAsk.label.indexOf(")"));
+	textbox.value = modeAsk.getAttribute("acceltext");
 	askPop.openPopup(this.icon, "before_start", 10);
   };
 
@@ -690,8 +690,8 @@ scicalc.main = (function() {
 	},
 
     /**
-     * Changes the mode to the specifid base if it is one of 1 (complex), 2, 10, 16. Ohterwise shows
-     * the ask popup.
+     * Changes the mode to the specified base if it is one of 1 (complex), 2, 10, 16.
+     * Otherwise shows the ask popup.
      */
     changeMode : function(base) {
       if (MODES[base]) {

@@ -4,7 +4,7 @@
 <!ENTITY scicalc.mode.popup.bin "Binary">
 <!ENTITY scicalc.mode.popup.dec "Decimal">
 <!ENTITY scicalc.mode.popup.hex "Hexadecimal">
-<!ENTITY scicalc.mode.popup.other "Other...">
+<!ENTITY scicalc.mode.popup.other "Custom Base...">
 <!ENTITY scicalc.mode.popup.complex "Complex">
 <!ENTITY scicalc.angle.angle "Angle">
 <!ENTITY scicalc.angle.radians "radians">
