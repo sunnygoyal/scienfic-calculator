@@ -1,0 +1,14 @@
+<!ENTITY scicalc.app.name "科学计算器">
+<!ENTITY scicalc.label.selectbase "选择底数">
+<!ENTITY scicalc.askmode.help "任何 2 至 24 之间的整数，或者 b=二进制，d=十进制，h=十六进制">
+<!ENTITY scicalc.mode.popup.bin "二进制 (b)">
+<!ENTITY scicalc.mode.popup.dec "十进制 (d)">
+<!ENTITY scicalc.mode.popup.hex "十六进制 (h)">
+<!ENTITY scicalc.mode.popup.other "Custom Base...">
+<!ENTITY scicalc.mode.popup.complex "复合 (虚数)">
+<!ENTITY scicalc.angle.angle "角度">
+<!ENTITY scicalc.angle.radians "弧度 (red)">
+<!ENTITY scicalc.angle.degrees "角度 (deg)">
+<!ENTITY scicalc.menu.options "选项...">
+<!ENTITY scicalc.info.variables "变量">
+<!ENTITY scicalc.info.history "最近的计算">

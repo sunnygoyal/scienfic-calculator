@@ -4,7 +4,7 @@
 <!ENTITY scicalc.mode.popup.bin "Бинарен">
 <!ENTITY scicalc.mode.popup.dec "Децимален">
 <!ENTITY scicalc.mode.popup.hex "Хексадецимален">
-<!ENTITY scicalc.mode.popup.other "Друго...">
+<!ENTITY scicalc.mode.popup.other "Custom Base...">
 <!ENTITY scicalc.mode.popup.complex "Комплексен">
 <!ENTITY scicalc.angle.angle "Агол">
 <!ENTITY scicalc.angle.radians "радијани">

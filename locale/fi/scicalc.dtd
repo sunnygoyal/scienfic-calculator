@@ -4,7 +4,7 @@
 <!ENTITY scicalc.mode.popup.bin "Binääri">
 <!ENTITY scicalc.mode.popup.dec "Desimaali">
 <!ENTITY scicalc.mode.popup.hex "Heksadesimaali">
-<!ENTITY scicalc.mode.popup.other "Muu...">
+<!ENTITY scicalc.mode.popup.other "Custom Base...">
 <!ENTITY scicalc.mode.popup.complex "Monimutkainen">
 <!ENTITY scicalc.angle.angle "Kulma">
 <!ENTITY scicalc.angle.radians "radiaania">

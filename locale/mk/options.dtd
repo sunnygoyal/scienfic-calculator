@@ -30,7 +30,10 @@
 <!ENTITY constants.button.done "Завршено">
 <!ENTITY functions.label.name "Име на функцијата:">
 <!ENTITY functions.label.args "Број на арг.:">
+<!ENTITY functions.label.code "Code:">
 <!ENTITY operators.label.operator "Оператор:">
 <!ENTITY operators.label.asst "Асоцијативност:">
+<!ENTITY operators.label.left "лево">
+<!ENTITY operators.label.right "право">
 <!ENTITY operators.label.moveUp "Помести нагоре">
 <!ENTITY operators.label.moveDown "Помести надолу">

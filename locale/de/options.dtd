@@ -30,7 +30,10 @@
 <!ENTITY constants.button.done "Fertig">
 <!ENTITY functions.label.name "Name der Funktion:">
 <!ENTITY functions.label.args "Anz. der Argumente:">
+<!ENTITY functions.label.code "Quelltext:">
 <!ENTITY operators.label.operator "Operator:">
 <!ENTITY operators.label.asst "Assoziativität:">
+<!ENTITY operators.label.left "Links">
+<!ENTITY operators.label.right "Rechts">
 <!ENTITY operators.label.moveUp "Nach oben">
 <!ENTITY operators.label.moveDown "Nach unten">

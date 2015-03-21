@@ -30,7 +30,10 @@
 <!ENTITY constants.button.done "Valider">
 <!ENTITY functions.label.name "Nom de fonction:">
 <!ENTITY functions.label.args "Nbre d'arguments:">
+<!ENTITY functions.label.code "Code:">
 <!ENTITY operators.label.operator "Opérateur:">
 <!ENTITY operators.label.asst "Associativité:">
+<!ENTITY operators.label.left "Gauche">
+<!ENTITY operators.label.right "Droit">
 <!ENTITY operators.label.moveUp "Vers le haut">
 <!ENTITY operators.label.moveDown "Vers le bas">

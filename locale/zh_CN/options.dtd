@@ -1,0 +1,39 @@
+<!ENTITY options.tab.settings "设置">
+<!ENTITY options.tab.constants "常量">
+<!ENTITY options.tab.functions "函数">
+<!ENTITY options.tab.operators "操作符">
+<!ENTITY settings.label.usemodulo "使用 &#37; 作为">
+<!ENTITY settings.menuitem.modulo "模数">
+<!ENTITY settings.menuitem.percent "百分比">
+<!ENTITY settings.label.operator "操作符">
+<!ENTITY settings.label.history "历史列表长度:">
+<!ENTITY settings.label.round "舍入小数">
+<!ENTITY settings.label.roundlength "小数位数:">
+<!ENTITY settings.checkbox.comma "逗号 (,)">
+<!ENTITY settings.checkbox.comma.argument "作为参数分隔">
+<!ENTITY settings.checkbox.comma.dot "作为点">
+<!ENTITY settings.checkbox.comma.ignore "忽略">
+<!ENTITY settings.addonbar.accessKey "访问键:">
+<!ENTITY settings.addonbar.width "输入栏宽度:">
+<!ENTITY settings.addonbar.collapsible "可折叠输入栏">
+<!ENTITY constants.listitem.calculated "*计算结果*">
+<!ENTITY constants.listitem.natlogbase "自然对数的底数">
+<!ENTITY constants.listitem.pi "数字 Pi (π)">
+<!ENTITY constants.listitem.answer "上次公式的解">
+<!ENTITY constants.button.add "添加">
+<!ENTITY constants.button.delete "删除">
+<!ENTITY constants.button.edit "编辑">
+<!ENTITY constants.label.identifier "标识符:">
+<!ENTITY constants.label.value "值:">
+<!ENTITY constants.label.description "描述:">
+<!ENTITY constants.button.cancel "取消">
+<!ENTITY constants.button.done "完成">
+<!ENTITY functions.label.name "函数名:">
+<!ENTITY functions.label.args "参数数量:">
+<!ENTITY functions.label.code "Code:">
+<!ENTITY operators.label.operator "操作符:">
+<!ENTITY operators.label.asst "结合律:">
+<!ENTITY operators.label.left "Left">
+<!ENTITY operators.label.right "Right">
+<!ENTITY operators.label.moveUp "上移">
+<!ENTITY operators.label.moveDown "下移">

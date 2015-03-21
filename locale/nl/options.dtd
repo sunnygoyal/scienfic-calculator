@@ -30,7 +30,10 @@
 <!ENTITY constants.button.done "Afronden">
 <!ENTITY functions.label.name "Functienaam:">
 <!ENTITY functions.label.args "Aantal argumenten:">
+<!ENTITY functions.label.code "Broncode:">
 <!ENTITY operators.label.operator "Operator:">
 <!ENTITY operators.label.asst "Associativiteit:">
+<!ENTITY operators.label.left "Links">
+<!ENTITY operators.label.right "Rechts">
 <!ENTITY operators.label.moveUp "Naar boven verplaatsen">
 <!ENTITY operators.label.moveDown "Naar beneden verplaatsen">

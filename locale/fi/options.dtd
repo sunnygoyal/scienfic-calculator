@@ -30,7 +30,10 @@
 <!ENTITY constants.button.done "OK">
 <!ENTITY functions.label.name "Funktion nimi:">
 <!ENTITY functions.label.args "Argumenttien määrä:">
+<!ENTITY functions.label.code "Llähdekoodi">
 <!ENTITY operators.label.operator "Operaattori:">
 <!ENTITY operators.label.asst "Assosiatiivisuus:">
+<!ENTITY operators.label.left "Vasen">
+<!ENTITY operators.label.right "Oikea">
 <!ENTITY operators.label.moveUp "Siirrä ylös">
 <!ENTITY operators.label.moveDown "Siirrä alas">
