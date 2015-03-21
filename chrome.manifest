@@ -4,8 +4,9 @@ skin     statusscicalc   classic/1.0   chrome://statusscicalc/content/skin/
 overlay  chrome://browser/content/browser.xul   chrome://statusscicalc/content/browserOverlay.xul
 
 locale   statusscicalc   de      locale/de/
-locale   statusscicalc   en-US   locale/en-US/
+locale   statusscicalc   en-US   locale/en_US/
 locale   statusscicalc   fi      locale/fi/
 locale   statusscicalc   fr      locale/fr/
 locale   statusscicalc   mk      locale/mk/
 locale   statusscicalc   nl      locale/nl/
+locale   statusscicalc   zh-CN   locale/zh_CN/
