@@ -1,0 +1,39 @@
+<!ENTITY options.tab.settings "সেটিংস্‌">
+<!ENTITY options.tab.constants "ধ্রুবক">
+<!ENTITY options.tab.functions "অপেক্ষকগুলি">
+<!ENTITY options.tab.operators "অপারেটর">
+<!ENTITY settings.label.usemodulo "'&#37;' ব্যবহার করুন">
+<!ENTITY settings.menuitem.modulo "modulo">
+<!ENTITY settings.menuitem.percent "percent">
+<!ENTITY settings.label.operator "অপারেটর হিসাবে">
+<!ENTITY settings.label.history "ইতিহাস তালিকার দৈর্ঘ্য:">
+<!ENTITY settings.label.round "Roundoff Decimals">
+<!ENTITY settings.label.roundlength "দশমিকের পরের সংখ্যাগুলি:">
+<!ENTITY settings.checkbox.comma "কমা (,)">
+<!ENTITY settings.checkbox.comma.argument "Treat as argument separator">
+<!ENTITY settings.checkbox.comma.dot "Treat as dot">
+<!ENTITY settings.checkbox.comma.ignore "Ignore">
+<!ENTITY settings.addonbar.accessKey "Access Key:">
+<!ENTITY settings.addonbar.width "Width of the input field:">
+<!ENTITY settings.addonbar.collapsible "Collapsible input field">
+<!ENTITY constants.listitem.calculated "*calculated*">
+<!ENTITY constants.listitem.natlogbase "Base of Natural Logarithm">
+<!ENTITY constants.listitem.pi "The Number Pi (π)">
+<!ENTITY constants.listitem.answer "Solution of Last Expression">
+<!ENTITY constants.button.add "Add">
+<!ENTITY constants.button.delete "Delete">
+<!ENTITY constants.button.edit "Edit">
+<!ENTITY constants.label.identifier "Identifier:">
+<!ENTITY constants.label.value "Value:">
+<!ENTITY constants.label.description "Description:">
+<!ENTITY constants.button.cancel "Cancel">
+<!ENTITY constants.button.done "Done">
+<!ENTITY functions.label.name "Function Name:">
+<!ENTITY functions.label.args "No. of args.:">
+<!ENTITY functions.label.code "কোড:">
+<!ENTITY operators.label.operator "Operator:">
+<!ENTITY operators.label.asst "Associativity:">
+<!ENTITY operators.label.left "বাম">
+<!ENTITY operators.label.right "ডান">
+<!ENTITY operators.label.moveUp "উপর দিকে যান">
+<!ENTITY operators.label.moveDown "নিচের দিকে যান">

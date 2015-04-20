@@ -1,0 +1,14 @@
+<!ENTITY scicalc.app.name "বৈজ্ঞানিক ক্যালকুলেটর">
+<!ENTITY scicalc.label.selectbase "Base নির্বাচন করুন">
+<!ENTITY scicalc.askmode.help "2 থেকে 24 এর মধ্যে যে কোন পূর্ণ সংখ্যা অথবা h=hex, b=bin, d=dec">
+<!ENTITY scicalc.mode.popup.bin "বাইনারি">
+<!ENTITY scicalc.mode.popup.dec "দশমিক">
+<!ENTITY scicalc.mode.popup.hex "হেক্সাডেসিমেল">
+<!ENTITY scicalc.mode.popup.other "নিজস্ব বেস ...">
+<!ENTITY scicalc.mode.popup.complex "জটিল">
+<!ENTITY scicalc.angle.angle "কোন">
+<!ENTITY scicalc.angle.radians "রেডিয়ান">
+<!ENTITY scicalc.angle.degrees "ডিগ্রী">
+<!ENTITY scicalc.menu.options "বিকল্পসমূহ ...">
+<!ENTITY scicalc.info.variables "ভেরিয়েবল">
+<!ENTITY scicalc.info.history "সাম্প্রতিক গণনাগুলি">

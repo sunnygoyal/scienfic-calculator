@@ -1,0 +1,14 @@
+<!ENTITY scicalc.app.name "Scientific Calculator">
+<!ENTITY scicalc.label.selectbase "Επιλέξτε Βάση">
+<!ENTITY scicalc.askmode.help "Οποιοσδήποτε ακέραιος μεταξύ 2 και 24 ή h = hex, b = bin, d = Δεκ.">
+<!ENTITY scicalc.mode.popup.bin "Δυαδικό">
+<!ENTITY scicalc.mode.popup.dec "Δεκαδικό">
+<!ENTITY scicalc.mode.popup.hex "Δεκαεξαδικό">
+<!ENTITY scicalc.mode.popup.other "Προσαρμοσμένη Βάση...">
+<!ENTITY scicalc.mode.popup.complex "Σύμπλεγμα">
+<!ENTITY scicalc.angle.angle "Γωνία">
+<!ENTITY scicalc.angle.radians "ακτίνια">
+<!ENTITY scicalc.angle.degrees "μοίρες">
+<!ENTITY scicalc.menu.options "Επιλογές...">
+<!ENTITY scicalc.info.variables "Μεταβλητές">
+<!ENTITY scicalc.info.history "Πρόσφατοι Υπολογισμοί">

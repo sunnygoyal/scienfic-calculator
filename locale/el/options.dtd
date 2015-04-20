@@ -1,0 +1,39 @@
+<!ENTITY options.tab.settings "Ρυθμίσεις">
+<!ENTITY options.tab.constants "Σταθερές">
+<!ENTITY options.tab.functions "Λειτουργίες">
+<!ENTITY options.tab.operators "Φορείς">
+<!ENTITY settings.label.usemodulo "Χρηση '&#37;' ως">
+<!ENTITY settings.menuitem.modulo "ατελης διαίρεση">
+<!ENTITY settings.menuitem.percent "τοις εκατό">
+<!ENTITY settings.label.operator "φορεας">
+<!ENTITY settings.label.history "Μήκος λίστας ιστορίκου:">
+<!ENTITY settings.label.round "Στρογγύλευση Δεκαδικων">
+<!ENTITY settings.label.roundlength "Αριθμός ψηφίων μετά τα δεκαδικά">
+<!ENTITY settings.checkbox.comma "Κόμμα (,)">
+<!ENTITY settings.checkbox.comma.argument "Αντιμετωπιση ως διαχωριστικό επιχείρημα">
+<!ENTITY settings.checkbox.comma.dot "Αντιμετωπιση ως κουκκίδα">
+<!ENTITY settings.checkbox.comma.ignore "Παράβλεψη">
+<!ENTITY settings.addonbar.accessKey "Κλειδί Πρόσβασης:">
+<!ENTITY settings.addonbar.width "Πλάτος του πεδίου εισαγωγής:">
+<!ENTITY settings.addonbar.collapsible "Αναδιπλούμενο πεδίο εισαγωγής">
+<!ENTITY constants.listitem.calculated "*υπολογίζεται*">
+<!ENTITY constants.listitem.natlogbase "Βάση του φυσικού λογαρίθμου">
+<!ENTITY constants.listitem.pi "Ο αριθμός Πι (π)">
+<!ENTITY constants.listitem.answer "Λύση της τελευταίας Έκφρασης">
+<!ENTITY constants.button.add "Προσθήκη">
+<!ENTITY constants.button.delete "Διαγραφή">
+<!ENTITY constants.button.edit "Επεξεργασία">
+<!ENTITY constants.label.identifier "Αναγνωριστικό:">
+<!ENTITY constants.label.value "Αξία:">
+<!ENTITY constants.label.description "Περιγραφή:">
+<!ENTITY constants.button.cancel "Ακύρωση">
+<!ENTITY constants.button.done "Ολοκληρώθηκε">
+<!ENTITY functions.label.name "Όνομα Λειτουργίας:">
+<!ENTITY functions.label.args "Αρ. επι.:">
+<!ENTITY functions.label.code "Κωδικός:">
+<!ENTITY operators.label.operator "Φορεας:">
+<!ENTITY operators.label.asst "Συσχέτιση:">
+<!ENTITY operators.label.left "Αριστερά">
+<!ENTITY operators.label.right "Δεξιά">
+<!ENTITY operators.label.moveUp "Μετακίνηση προς τα πάνω">
+<!ENTITY operators.label.moveDown "Μετακίνηση προς τα κάτω">
