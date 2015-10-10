@@ -281,6 +281,12 @@ scicalc.main = (function() {
 	  mode = 10;
     ebd("scicalc_mode_" + nid).setAttribute("checked", "true");
 
+	switch (mode) {
+	  case  1: ebd("scicalc-base").value = "ⅈ"; break;
+	  case 10: ebd("scicalc-base").value = ""; break;
+	  default: ebd("scicalc-base").value = mode;
+	}
+
     if (uihandler) {
       var updateExp = function(mode, exp) {
   		if (mode == 1)

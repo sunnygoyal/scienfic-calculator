@@ -35,6 +35,15 @@
 	margin: 0 !important;
 }
 
+#scicalc-base {
+	margin: 0;
+	padding: 0;
+	padding-top: 6px;
+	height: 16px;
+	font-size: 10px;
+	color: gray;
+}
+
 #scicalc-close {
 	list-style-image: url("chrome://statusscicalc/skin/close.png");
 	-moz-image-region: rect(0px, 12px, 12px, 0px);
@@ -42,12 +51,16 @@
 	cursor: default;
 	opacity: 0.5;
 	padding: 3px;
-	-moz-transition: opacity .3s;
 	visibility: collapse;
 }
 
 #scicalc-close:hover {
 	opacity: 0.9;
+}
+
+#scicalc-close,
+#scicalc-base {
+	-moz-transition: opacity .3s;
 }
 
 /** customizations (visibility and animations) for collapsible input panel **/
@@ -66,7 +79,8 @@
 	-moz-transition: visibility 0s .3s;
 }
 
-#scicalc-container.collapsible.collapsed #scicalc-close {
+#scicalc-container.collapsible.collapsed #scicalc-close,
+#scicalc-container.collapsible.collapsed #scicalc-base {
 	opacity: 0;
 }
 
@@ -80,10 +94,11 @@
 	visibility: visible !important;
 }
 
-#scicalc-container[cui-areatype="menu-panel"] > #scicalc-button {
-	display: none;
+#scicalc-container[cui-areatype="menu-panel"] #scicalc-base {
+	opacity: 1 !important;
 }
 
+#scicalc-container[cui-areatype="menu-panel"] > #scicalc-button,
 #scicalc-container[cui-areatype="menu-panel"] #scicalc-close {
 	display: none;
 }
@@ -97,7 +112,8 @@ toolbarpaletteitem[place="palette"]	#scicalc-input {
 }
 
 toolbarpaletteitem[place="palette"]	#scicalc-button,
-toolbarpaletteitem[place="palette"]	#scicalc-close {
+toolbarpaletteitem[place="palette"]	#scicalc-close,
+toolbarpaletteitem[place="palette"]	#scicalc-base {
 	display:none;
 }
 

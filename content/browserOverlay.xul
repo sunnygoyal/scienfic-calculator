@@ -61,6 +61,7 @@
 			<spacer flex="1"/>
 			<textbox id="scicalc-input" class="searchbar-textbox" flex="9">
 				<image id="scicalc-icon" class="scicalc-icon" />
+				<label id="scicalc-base"/>
 				<image id="scicalc-close" />
 			</textbox>
 			<spacer flex="1"/>
