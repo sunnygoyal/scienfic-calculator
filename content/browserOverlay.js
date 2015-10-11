@@ -149,7 +149,8 @@ scicalc.main = (function() {
     var panel = ebd(WIDGET_ID);
     if (panel) {
       // UI found. initiate the rest.
-      defaultCalculatorUI = new CalculatorUI(panel, ebd("scicalc-input"), ebd("scicalc-icon"), ebd("scicalc-button"), ebd("scicalc-close"));
+      defaultCalculatorUI = new CalculatorUI(panel, ebd("scicalc-button"), ebd("scicalc-input"),
+	                                                ebd("scicalc-icon"), ebd("scicalc-base"), ebd("scicalc-close"));
 
       // We need to update listeners if they are already added.
       updateListeners = listenersAlreadyAdded;
@@ -280,11 +281,9 @@ scicalc.main = (function() {
     if ((mode < 1) || (mode > 24))
 	  mode = 10;
     ebd("scicalc_mode_" + nid).setAttribute("checked", "true");
-
-	switch (mode) {
-	  case  1: ebd("scicalc-base").value = "ⅈ"; break;
-	  case 10: ebd("scicalc-base").value = ""; break;
-	  default: ebd("scicalc-base").value = mode;
+	
+	if (prefManager) {
+	  prefManager.setIntPref("defaultMode", mode);
 	}
 
     if (uihandler) {
@@ -320,6 +319,8 @@ scicalc.main = (function() {
         uihandler.error();
 	  else
 		uihandler.inputbox.value = ret;
+
+	  uihandler.updateBase();
     }
 
     if (mode == 1)
@@ -328,9 +329,6 @@ scicalc.main = (function() {
 	  evalClass = EVAL_CLASS_REAL;
 	  scicalc.realMath.mode = mode;
     }
-	if (prefManager) {
-	  prefManager.setIntPref("defaultMode", mode);
-	}
   };
 
   /**
@@ -338,11 +336,13 @@ scicalc.main = (function() {
    * calculator active in a browser, for example one calculator in the toolbar and another in
    * the status bar.
    */
-  function CalculatorUI(panel, inputbox, icon, button, closeIcon) {
+  function CalculatorUI(panel, button, inputbox, icon, base, closeIcon) {
     this.panel = panel;
-	this.inputbox = inputbox;
-    this.icon = icon;
 	this.button = button;
+	this.inputbox = inputbox;
+	
+    this.icon = icon;
+	this.base = base;
 	this.closeIcon = closeIcon;
 
     var that = this;
@@ -351,6 +351,8 @@ scicalc.main = (function() {
 		panel.classList.add("collapsible","collapsed") :
 		panel.classList.remove("collapsible","collapsed");
 	inputbox.style.width = prefManager.getIntPref("addonBarWidth") + "px";
+	
+	this.updateBase();
 
     inputbox.addEventListener("keydown", function(e) {
       errorPop.hidePopup();
@@ -525,6 +527,16 @@ scicalc.main = (function() {
 	var textbox = ebd("scicalc-modeaskpopup-value");
 	textbox.value = modeAsk.getAttribute("acceltext");
 	askPop.openPopup(this.icon, "before_start", 10);
+  };
+
+  CalculatorUI.prototype.updateBase = function() {
+    var base = this.base;
+	mode = prefManager.getIntPref("defaultMode");
+	switch (mode) {
+	  case  1: base.value = "ⅈ"; break;
+	  case 10: base.value = ""; break;
+	  default: base.value = mode;
+	}
   };
 
   CalculatorUI.prototype.closeCalc = function() {
