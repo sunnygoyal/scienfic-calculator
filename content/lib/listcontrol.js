@@ -1,7 +1,7 @@
 const mystrings = Components.classes["@mozilla.org/intl/stringbundle;1"]
-			.getService(Components.interfaces.nsIStringBundleService)
-			.createBundle("chrome://statusscicalc/locale/options.properties")
-			.GetStringFromName;
+                            .getService(Components.interfaces.nsIStringBundleService)
+                            .createBundle("chrome://statusscicalc/locale/options.properties")
+                            .GetStringFromName;
 
 
 function ebd(id) {
