@@ -30,10 +30,10 @@
 <!ENTITY constants.button.done "完成">
 <!ENTITY functions.label.name "函数名:">
 <!ENTITY functions.label.args "参数数量:">
-<!ENTITY functions.label.code "Code:">
+<!ENTITY functions.label.code "代码:">
 <!ENTITY operators.label.operator "操作符:">
 <!ENTITY operators.label.asst "结合律:">
-<!ENTITY operators.label.left "Left">
-<!ENTITY operators.label.right "Right">
+<!ENTITY operators.label.left "左">
+<!ENTITY operators.label.right "右">
 <!ENTITY operators.label.moveUp "上移">
 <!ENTITY operators.label.moveDown "下移">

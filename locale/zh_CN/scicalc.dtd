@@ -4,7 +4,7 @@
 <!ENTITY scicalc.mode.popup.bin "二进制 (b)">
 <!ENTITY scicalc.mode.popup.dec "十进制 (d)">
 <!ENTITY scicalc.mode.popup.hex "十六进制 (h)">
-<!ENTITY scicalc.mode.popup.other "Custom Base...">
+<!ENTITY scicalc.mode.popup.other "自定义底数...">
 <!ENTITY scicalc.mode.popup.complex "复合 (虚数)">
 <!ENTITY scicalc.angle.angle "角度">
 <!ENTITY scicalc.angle.radians "弧度 (red)">
