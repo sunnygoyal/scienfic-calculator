@@ -165,7 +165,7 @@ scicalc.complexMath = {
 
 	reformNumbers : function(exp) {
 	
-		exp = exp.replace(/\s([0-9\.]+)\s/g, ' (new scicalc.Complex($1,0)) ' );
+		exp = exp.replace(/\s([0-9\.]+)\s/g, ' (new scicalc.Complex($1,0)) ');
 
 		var re = /\+\-/g;
 		exp = exp.replace(re,"-");

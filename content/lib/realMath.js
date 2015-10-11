@@ -116,7 +116,7 @@ scicalc.realMath = {
 		          "\\`\\~\\@\\$\\&\\_\\\\\\|\\:\\;\\?\\<\\>\\.\\+\\-\\*\\/\\^\\!\\%\\(\\)\\s\\,]*";
 		var re = new RegExp(reg,"g");
 		for (var i = 0; i < functions.length; i++)
-			exp = exp.replace(" "+functions[i]+"(" , "", "g");
+			exp = exp.replace(new RegExp(" "+functions[i]+"\\(", "g") , "");
 
 		for (var i = 0; i < scicalc.realMath.customFunctions.length; i++)
 			exp = exp.replace(new RegExp(" "+scicalc.realMath.customFunctions[i]+"\\(" , "g"), "");
