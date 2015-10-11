@@ -289,8 +289,8 @@ scicalc.main = (function() {
     if (uihandler) {
       var updateExp = function(mode, exp) {
   		if (mode == 1)
-		  return (evalClass == "complex") ? exp : "";
-		if (evalClass == "complex")
+		  return (evalClass == EVAL_CLASS_COMPLEX) ? exp : "";
+		if (evalClass == EVAL_CLASS_COMPLEX)
 		  return "";
 
 		if (scicalc.realMath.mode == mode)
