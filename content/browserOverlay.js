@@ -363,9 +363,9 @@ scicalc.main = (function() {
 			if (e.which == 13) { // hit enter (-> evaluate)
 				that.evaluate(this);
 				e.preventDefault();
-			} else if (e.which == 33) { // hit page up  (-> show mode popup)
+			} else if (e.which == 33) { // hit page up (-> show mode popup)
 				that.showModePopup();
-			} else if (e.which == 34) { // hit page down  (-> choose base)
+			} else if (e.which == 34) { // hit page down (-> choose base)
 				that.showAskPopup();
 			} else if (e.which == 40 || e.which == 38) { // hit arrow up/down (-> show history box)
 				var key = e.which;
@@ -387,6 +387,7 @@ scicalc.main = (function() {
 				var popupHandler = function() {
 					POPUP_LISTENER.remove(infoPop, popupHandler);
 					historyBox.focus();
+					historyBox.selectedIndex = -1;
 				};
 				POPUP_LISTENER.add(infoPop, popupHandler);
 				that.showHistoryPopup();
