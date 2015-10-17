@@ -175,17 +175,20 @@ scicalc.main = (function() {
 	 */
 	window.addEventListener("load", function() {
 		// install the Scientific Calculator to the toolbar on firstRun
-		Application.getExtensions(function (extensions) {
-			let extension = extensions.get("ststusscicalc@sunny");
-			if (extension.firstRun) {
-				install();
-			}
-		});
+		//    "extensions.ststusscicalc@sunny.install-event-fired" is used
+		//    for backwards compatibility with FUEL methods previously used
+		var installPref = Components.classes["@mozilla.org/preferences-service;1"]
+		                            .getService(Components.interfaces.nsIPrefService)
+		                            .getBranch("extensions.ststusscicalc@sunny.");
+		if (!installPref.prefHasUserValue("install-event-fired")) {
+			install();
+			installPref.setBoolPref("install-event-fired", true);
+		}
 
 		//set preference manager
 		prefManager = Components.classes["@mozilla.org/preferences-service;1"]
-								.getService(Components.interfaces.nsIPrefService)
-								.getBranch("extensions.ststusscicalc.");
+		                        .getService(Components.interfaces.nsIPrefService)
+		                        .getBranch("extensions.ststusscicalc.");
 		prefManager.QueryInterface(Components.interfaces.nsIPrefBranch2);
 		prefManager.addObserver("", prefObserver, false);
 
