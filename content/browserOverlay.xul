@@ -10,7 +10,7 @@
         <vbox id="scicalc-askmode-content">
           <label id="scicalc-calcPopupTitle" value="&scicalc.label.selectbase;" flex="1"/>
           <hbox>
-              <textbox size="2" maxlength="2" id="scicalc-modeaskpopup-value" onkeydown="if (event.which==13) scicalc.main.acceptAskPopup();"/>
+              <textbox size="2" maxlength="2" id="scicalc-modeaskpopup-value" onkeydown="if (event.which==13) {scicalc.main.acceptAskPopup(); event.preventDefault();}"/>
               <spacer flex="1"/>
               <button class="calcbutton butok" oncommand="scicalc.main.acceptAskPopup();"/>
               <button class="calcbutton butcancel" oncommand="scicalc.main.hideAskPopup();"/>
