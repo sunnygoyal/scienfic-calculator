@@ -1,0 +1,39 @@
+<!ENTITY options.tab.settings "Настройки">
+<!ENTITY options.tab.constants "Постоянные">
+<!ENTITY options.tab.functions "Функции">
+<!ENTITY options.tab.operators "Операторы">
+<!ENTITY settings.label.usemodulo "Использовать '&#37;' как">
+<!ENTITY settings.menuitem.modulo "по модулю">
+<!ENTITY settings.menuitem.percent "процент">
+<!ENTITY settings.label.operator "оператор">
+<!ENTITY settings.label.history "История списка длины:">
+<!ENTITY settings.label.round "Округление дроби">
+<!ENTITY settings.label.roundlength "Количество цифр после дроби:">
+<!ENTITY settings.checkbox.comma "Запятая (,)">
+<!ENTITY settings.checkbox.comma.argument "Обрабатывать к качестве разделителя аргументов">
+<!ENTITY settings.checkbox.comma.dot "Обрабатывать как точку">
+<!ENTITY settings.checkbox.comma.ignore "Игнорировать">
+<!ENTITY settings.addonbar.accessKey "Код доступа:">
+<!ENTITY settings.addonbar.width "Ширина поля ввода:">
+<!ENTITY settings.addonbar.collapsible "Скрывающее поля ввода">
+<!ENTITY constants.listitem.calculated "*вычисление*">
+<!ENTITY constants.listitem.natlogbase "Основание натурального логарифма">
+<!ENTITY constants.listitem.pi "Число пи (π)">
+<!ENTITY constants.listitem.answer "Результат последнего выражения">
+<!ENTITY constants.button.add "Добавить">
+<!ENTITY constants.button.delete "Удалить">
+<!ENTITY constants.button.edit "Править">
+<!ENTITY constants.label.identifier "Идентификатор:">
+<!ENTITY constants.label.value "Значение:">
+<!ENTITY constants.label.description "Описание:">
+<!ENTITY constants.button.cancel "Отмена">
+<!ENTITY constants.button.done "Сделано">
+<!ENTITY functions.label.name "Имя функции:">
+<!ENTITY functions.label.args "Количество аргументов:">
+<!ENTITY functions.label.code "Код:">
+<!ENTITY operators.label.operator "Оператор:">
+<!ENTITY operators.label.asst "Ассоциативность:">
+<!ENTITY operators.label.left "Влево">
+<!ENTITY operators.label.right "Вправо">
+<!ENTITY operators.label.moveUp "Переместить вверх">
+<!ENTITY operators.label.moveDown "Переместить вниз">

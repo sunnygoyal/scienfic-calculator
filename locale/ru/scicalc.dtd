@@ -1,0 +1,14 @@
+<!ENTITY scicalc.app.name "Научный калькулятор">
+<!ENTITY scicalc.label.selectbase "Выбор основания">
+<!ENTITY scicalc.askmode.help "Любое число в диапазоне от 2 до 24 или h=hex, b=bin, d=dec">
+<!ENTITY scicalc.mode.popup.bin "Двоичная">
+<!ENTITY scicalc.mode.popup.dec "Десятиричная">
+<!ENTITY scicalc.mode.popup.hex "Шестнадцатеричная">
+<!ENTITY scicalc.mode.popup.other "Настроить основание...">
+<!ENTITY scicalc.mode.popup.complex "Комплексное число">
+<!ENTITY scicalc.angle.angle "Угол">
+<!ENTITY scicalc.angle.radians "радианы">
+<!ENTITY scicalc.angle.degrees "градусы">
+<!ENTITY scicalc.menu.options "Настройки...">
+<!ENTITY scicalc.info.variables "Переменные">
+<!ENTITY scicalc.info.history "Последние расчеты">
